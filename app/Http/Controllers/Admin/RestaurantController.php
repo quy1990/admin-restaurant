@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Restaurant;
 use App\Repositories\ReservationRepository;
 use Illuminate\Http\Request;
 use App\Repositories\RestaurantRepository;
@@ -12,7 +11,7 @@ class RestaurantController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Restaurant::class, 'restaurant');
+        //$this->authorizeResource(Restaurant::class);
     }
 
     public function index()

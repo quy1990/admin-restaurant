@@ -17,11 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::prefix('admin')->namespace('admin')->group(function () {
     Route::resources([
         //'/'               => 'HomeController',
+        '/'               => 'RestaurantController',
         'restaurants'     => 'RestaurantController',
         'reservations'    => 'ReservationController',
         'invitations'     => 'InvitationController',
