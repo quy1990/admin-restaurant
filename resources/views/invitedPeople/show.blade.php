@@ -79,7 +79,6 @@
                                         </div>
                                     </form>
                                 </div>
-                                @include("invitation.table")
                             </div>
                         </div>
                     </div>

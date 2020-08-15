@@ -81,6 +81,6 @@ class InvitationRepository
      */
     public static function getByReservation(Reservation $reservation)
     {
-        return $reservation->invitations();
+        return $reservation->invitations()->paginate();
     }
 }

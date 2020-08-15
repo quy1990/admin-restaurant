@@ -2,7 +2,7 @@
 
 @section('content')
     <form class="form-horizontal form-label-left" method="POST"
-          action="{{ route('reservations.update', $reservation->id) }}">
+          action="{{ route('invitations.update', $invitation->id) }}">
         @method("PUT")
         @csrf
         <!-- page content -->
@@ -10,7 +10,7 @@
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Reservation Edit</h3>
+                            <h3>Invitation Edit</h3>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -18,7 +18,7 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Reservation Edit</h2>
+                                    <h2>Invitation Edit</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -39,7 +39,7 @@
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="name" required="required" class="form-control "
                                                        name="restaurant"
-                                                       value="{{$reservation->restaurant->getFullName()}}">
+                                                       value="{{$invitation->restaurant?$invitation->restaurant->getFullName():"No data"}}">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -48,7 +48,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="user" required="required" class="form-control"
-                                                       name="user" value="{{$reservation->user->getFullName()}}">
+                                                       name="user" value="{{$invitation->user?$invitation->user->getFullName():"No data"}}">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -58,7 +58,7 @@
                                                     class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input id="middle-name" class="form-control" type="text"
-                                                       name="number_people" value="{{$reservation->number_people}}">
+                                                       name="number_people" value="{{$invitation->number_people}}">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -68,7 +68,7 @@
                                                     class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input id="middle-name" class="form-control" type="text"
-                                                       name="booking_time" value="{{$reservation->booking_time}}">
+                                                       name="booking_time" value="{{$invitation->booking_time}}">
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -79,7 +79,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                @include("invitation.table")
+                                @include("invitedPeople.table")
                             </div>
                         </div>
                     </div>

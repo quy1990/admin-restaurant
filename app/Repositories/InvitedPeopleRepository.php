@@ -6,7 +6,7 @@ use App\Models\InvitedPeople;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use App\Models\Invitation;
 /**
  * Class RestaurantResource.
  */
@@ -15,13 +15,11 @@ class InvitedPeopleRepository
     /**
      * get a list of Restaurants
      *
-     * @param User $user
-     *
      * @return LengthAwarePaginator
      */
-    public static function getAll(User $user): LengthAwarePaginator
+    public static function getAll(): LengthAwarePaginator
     {
-        return InvitedPeople::where('user_id', $user->id)->paginate();
+        return InvitedPeople::paginate();
     }
 
     /**
@@ -94,13 +92,11 @@ class InvitedPeopleRepository
     }
 
     /**
-     * @param int $invitation_id
-     * @return array
+     * @param Invitation $invitation
+     * @return
      */
-    public static function getByInvitationId(int $invitation_id)
+    public static function getByInvitation(Invitation $invitation)
     {
-        return InvitationRepository::get($invitation_id)->invitedPeoples()->get()->map(function ($item) {
-            return $item->format();
-        });
+        return $invitation->invitedPeoples()->paginate();
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class InvitedPeopleController extends Controller
+class InvitedpeopleController extends Controller
 {
 
     private $user;
@@ -28,8 +28,8 @@ class InvitedPeopleController extends Controller
     public function index()
     {
         $user = $this->user;
-        $invitedPeople = InvitedPeopleRepository::getAll($user);
-        return view("invitedPeople.index", compact("invitedPeople", "user"));
+        $invitedPeoples = InvitedPeopleRepository::getAll();
+        return view("invitedPeople.index", compact("invitedPeoples", "user"));
     }
 
 

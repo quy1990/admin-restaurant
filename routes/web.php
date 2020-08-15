@@ -28,15 +28,7 @@ Route::middleware('auth')
             'restaurants'     => 'RestaurantController',
             'reservations'    => 'ReservationController',
             'invitations'     => 'InvitationController',
-            'invitedpeoples'  => 'InvitedPeopleController',
+            'invitedpeoples'  => 'InvitedpeopleController',
         ]);
-        // GET RELATIONS BETWEEN TABLES
-        // get reservations of restaurant
-        Route::get('restaurants/{restaurant}/reservations',
-            'RestaurantController@getReservations');
-
-        // get reservations of restaurant
-        Route::get('restaurants/reservations',
-        'RestaurantController@getReservations');
 });
 

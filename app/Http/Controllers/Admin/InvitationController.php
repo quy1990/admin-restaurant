@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Invitation;
 use App\Models\User;
 use App\Repositories\InvitationRepository;
+use App\Repositories\InvitedPeopleRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class InvitationController extends Controller
     public function show(Invitation $invitation)
     {
         $user = $this->user;
-        return view('invitation.show', compact("invitation", "user"));
+        $invitedPeoples = InvitedPeopleRepository::getByInvitation($invitation);
+        return view('invitation.show', compact("invitation", "invitedPeoples", "user"));
     }
 
     public function edit(Invitation $invitation)

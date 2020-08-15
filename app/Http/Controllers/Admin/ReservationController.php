@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Reservation;
 use App\Models\User;
+use App\Repositories\InvitationRepository;
 use App\Repositories\ReservationRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -58,7 +59,8 @@ class ReservationController extends Controller
     public function show(Reservation $reservation)
     {
         $user = $this->user;
-        return view('reservation.show', compact("reservation", "user"));
+        $invitations = InvitationRepository::getByReservation($reservation);
+        return view('reservation.show', compact("reservation", "invitations", "user"));
     }
 
     /**
