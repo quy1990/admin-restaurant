@@ -26,21 +26,13 @@ Route::prefix('admin')->namespace('admin')->group(function () {
         'invitations'     => 'InvitationController',
         'invited_peoples' => 'InvitedPeopleController',
     ]);
+    // GET RELATIONS BETWEEN TABLES
+    // get reservations of restaurant
+    Route::get('restaurants/{restaurant}/reservations',
+        'RestaurantController@getReservations');
+
+    // get reservations of restaurant
+    Route::get('restaurants/reservations',
+        'RestaurantController@getReservations');
 });
 
-// GET RELATIONS BETWEEN TABLES
-// get reservations of restaurant
-Route::get('restaurants/{restaurant}/reservations',
-    'RestaurantController@getReservations');
-
-// get all restaurants are owned by user
-Route::get('users/restaurants',
-    'UserController@getRestaurants');
-
-// get reservations of user
-Route::get('users/reservations',
-    'UserController@getReservations');
-
-// get reservations of restaurant
-Route::get('restaurants/reservations',
-    'RestaurantController@getReservations');

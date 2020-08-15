@@ -17,8 +17,8 @@ class InvitationController extends Controller
 
     public function __construct()
     {
-        $this->user = Auth::user();
-        $this->authorizeResource(InvitedPeople::class);
+        //$this->user = Auth::user();
+        //$this->authorizeResource(InvitedPeople::class);
     }
 
     public function index(): JsonResponse

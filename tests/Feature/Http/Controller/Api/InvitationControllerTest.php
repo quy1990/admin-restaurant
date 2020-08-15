@@ -91,6 +91,8 @@ class InvitationControllerTest extends TestCase
      */
     public function can_create_a_invitation()
     {
+        $this->withoutExceptionHandling();
+
         $user = factory(User::class)->create();
         $object = $this->generateObject($user);
 
@@ -113,6 +115,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_invitation
+     * @test
      */
     public function can_return_a_invitation()
     {
@@ -129,6 +132,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_invitation_not_found
+     * @test
      */
     public function will_fail_with_a_404_if_invitation_not_found()
     {
@@ -139,6 +143,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_update_invitation_not_found
+     * @test
      */
     public function will_fail_with_a_404_if_we_want_to_update_invitation_not_found()
     {
@@ -149,6 +154,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_update_a_invitation
+     * @test
      */
     public function can_update_a_invitation()
     {
@@ -179,6 +185,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_delete_invitation_not_found
+     * @test
      */
     public function will_fail_with_a_404_if_we_want_to_delete_invitation_not_found()
     {
@@ -189,6 +196,7 @@ class InvitationControllerTest extends TestCase
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_delete_a_invitation
+     * @test
      */
     public function can_delete_a_invitation()
     {

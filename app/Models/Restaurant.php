@@ -29,6 +29,24 @@ class Restaurant extends Model
         return $this->name;
     }
 
+    public function getFullName()
+    {
+        return $this->name;
+    }
+
+    public function getNumberBookedSeatsInNextWeek()
+    {
+        $start_time = date('Y-m-d');
+        $to = date('Y-m-d', strtotime("+1 week"));
+        return $this->reservations()
+            ->whereBetween('booking_time', [$start_time, $to])
+            ->sum('number_people');
+    }
+    public function getPercentOfNumberBookedSeatsInNextWeek()
+    {
+        return $this->getNumberBookedSeatsInNextWeek()/$this->seat_number;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'reservations')
