@@ -52,11 +52,17 @@
                                     <li><a href="{{ route('invitedpeoples.create') }}">Add one</a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-edit"></i>Customer <span
+                                        class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ route('customers.index') }}">Get All</a></li>
+                                    <li><a href="{{ route('customers.create') }}">Add one</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <!-- /sidebar menu -->
-
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
                     <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -73,7 +79,5 @@
                     </a>
                 </div>
                 <!-- /menu footer buttons -->
-
-
             </div>
         </div>

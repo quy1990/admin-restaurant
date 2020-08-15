@@ -18,8 +18,7 @@
                                style="width:100%">
                             <thead>
                             <tr>
-                                <th>Actions</th>
-                                <th>Invitation</th>
+                                <th>Invitation Messages</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Created Date</th>
@@ -28,33 +27,6 @@
                             <tbody>
                             @foreach ($invitedPeoples as $invitedPeople)
                                 <tr>
-                                    <td>
-                                        <ul class="list-inline m-0">
-                                            <li class="list-inline-item">
-                                                <a href="">
-                                                    <button class="btn btn-success btn-sm rounded-0"
-                                                            type="button"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Edit">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <form method="POST" class=""
-                                                      action="">@method('DELETE')@csrf
-                                                    <button class="btn btn-danger btn-sm rounded-0"
-                                                            type="submit"
-                                                            onclick="return confirm('Are you sure?')"
-                                                            data-toggle="tooltip" data-placement="top" title=""
-                                                            data-original-title="Delete">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
                                     <td>
                                         <a href="{{ route('invitations.show', ['invitation' => $invitedPeople->invitation_id]) }}">{{ $invitedPeople->invitation->message }}</a>
                                     </td>

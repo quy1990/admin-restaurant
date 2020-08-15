@@ -15,6 +15,7 @@ class Invitation extends Model
     {
         return [
             'id'             => $this->id,
+            'user_id'        => (string)$this->user_id,
             'reservation_id' => (string)$this->reservation_id,
             'message'        => $this->message,
         ];
@@ -28,6 +29,11 @@ class Invitation extends Model
     public function reservation()
     {
         return $this->belongsTo(Reservation::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public static function boot()

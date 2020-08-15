@@ -42,6 +42,7 @@ class Restaurant extends Model
             ->whereBetween('booking_time', [$start_time, $to])
             ->sum('number_people');
     }
+
     public function getPercentOfNumberBookedSeatsInNextWeek()
     {
         return $this->getNumberBookedSeatsInNextWeek()/$this->seat_number;

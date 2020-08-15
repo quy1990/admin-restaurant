@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 //use Your Model
@@ -82,5 +83,14 @@ class InvitationRepository
     public static function getByReservation(Reservation $reservation)
     {
         return $reservation->invitations()->paginate();
+    }
+
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public static function getByUser(User $user)
+    {
+        return $user->invitations()->paginate();
     }
 }

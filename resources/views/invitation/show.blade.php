@@ -48,17 +48,8 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="user" required="required" class="form-control"
-                                                       name="user" value="{{$invitation->user?$invitation->user->getFullName():"No data"}}">
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label for="middle-name"
-                                                   class="col-form-label col-md-3 col-sm-3 label-align"
-                                                   name="number_people">Number People<span
-                                                    class="required">*</span></label>
-                                            <div class="col-md-6 col-sm-6 ">
-                                                <input id="middle-name" class="form-control" type="text"
-                                                       name="number_people" value="{{$invitation->number_people}}">
+                                                       name="user"
+                                                       value="{{$invitation->user?$invitation->user->getFullName():"No data"}}">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -68,7 +59,17 @@
                                                     class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input id="middle-name" class="form-control" type="text"
-                                                       name="booking_time" value="{{$invitation->booking_time}}">
+                                                       name="booking_time"
+                                                       value="{{$invitation->reservation->booking_time}}">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label for="middle-name"
+                                                   class="col-form-label col-md-3 col-sm-3 label-align"
+                                                   name="booking_time">Messages</label>
+                                            <div class="col-md-6 col-sm-6 ">
+                                                <textarea id="middle-name" class="form-control" rows="5" type="textarea"
+                                                          name="message">{!! $invitation->message !!}</textarea>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

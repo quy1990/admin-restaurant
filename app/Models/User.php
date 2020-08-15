@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @method static truncate()
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -40,6 +43,12 @@ class User extends Authenticatable
     {
         return $this->name;
     }
+
+    public function getFullNameWithLink()
+    {
+        return "<a href='". route('customers.show', ['customer' => $this->id])."'>".$this->name."</a>";
+    }
+
     public function isSuperAdmin()
     {
         return true;
@@ -79,5 +88,10 @@ class User extends Authenticatable
     public function invitedPeoples()
     {
         return $this->hasMany(InvitedPeople::class );
+    }
+
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class );
     }
 }

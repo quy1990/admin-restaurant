@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Invitations</h2>
+            <h2>Users</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -19,18 +19,19 @@
                             <thead>
                             <tr>
                                 <th>Actions</th>
-                                <th>Customer</th>
-                                <th>Messages</th>
-                                <th>Created Date</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Registered at</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($invitations as $invitation)
+                            @foreach ($users as $user)
                                 <tr>
                                     <td>
                                         <ul class="list-inline m-0">
                                             <li class="list-inline-item">
-                                                <a href="{{ route('invitations.show', ['invitation' => $invitation->id]) }}">
+                                                <a href="{{ route('customers.show', ['customer' => $user->id]) }}">
                                                     <button class="btn btn-success btn-sm rounded-0"
                                                             type="button"
                                                             data-toggle="tooltip" data-placement="top" title=""
@@ -40,27 +41,25 @@
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <a href="{{ route('invitations.destroy', ['invitation' => $invitation->id]) }}">
                                                     <button class="btn btn-danger btn-sm rounded-0"
                                                             type="submit"
-                                                            onclick="return confirm('Are you sure?')"
                                                             data-toggle="tooltip" data-placement="top" title=""
                                                             data-original-title="Delete">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </a>
-                                                </a>
                                             </li>
                                         </ul>
                                     </td>
-                                    <td>{!! $invitation->user?$invitation->user->getFullNameWithLink():"No Data" !!}</td>
-                                    <td>{{ $invitation->message }}</td>
-                                    <td>{{ $invitation->created_at }}</td>
+                                    <td><a href="{{ route('customers.show', ['customer' => $user->id]) }}">{{ $user->getFullName() }}</a></td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {{$invitations->links()}}
+                        {{$users->links()}}
                     </div>
                 </div>
             </div>

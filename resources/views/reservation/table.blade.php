@@ -41,8 +41,7 @@
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
-                                                <form method="POST" class=""
-                                                      action="{{ route('reservations.destroy',['reservation' => $reservation->id]) }}">@method('DELETE')@csrf
+                                                <a href="{{ route('reservations.destroy', ['reservation' => $reservation->id]) }}">
                                                     <button class="btn btn-danger btn-sm rounded-0"
                                                             type="submit"
                                                             onclick="return confirm('Are you sure?')"
@@ -50,7 +49,7 @@
                                                             data-original-title="Delete">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
-                                                </form>
+                                                </a>
                                                 </a>
                                             </li>
                                         </ul>
@@ -58,7 +57,7 @@
                                     <td>
                                         <a href="{{ route('restaurants.show', ['restaurant' => $reservation->restaurant->id]) }}">{{ $reservation->restaurant->getFullName() }}</a>
                                     </td>
-                                    <td>{{ $reservation->user->getFullName() }}</td>
+                                    <td>{!! $reservation->user?$reservation->user->getFullNameWithLink():"No Data" !!}</td>
                                     <td>{{ $reservation->number_people }}</td>
                                     <td>{{ $reservation->booking_time }}</td>
                                 </tr>

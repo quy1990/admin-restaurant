@@ -10,6 +10,6 @@ $factory->define(Restaurant::class, function (Faker $faker) {
         'address'     => $faker->address,
         'email'       => $faker->email,
         'phone'       => $faker->phoneNumber,
-        'seat_number' => random_int(30, 40),
+        'seat_number' => random_int(30, 200),
     ];
 });

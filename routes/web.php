@@ -24,11 +24,12 @@ Route::middleware('auth')
     ->namespace('admin')
     ->group(function () {
         Route::resources([
-            '/'               => 'RestaurantController',
-            'restaurants'     => 'RestaurantController',
-            'reservations'    => 'ReservationController',
-            'invitations'     => 'InvitationController',
-            'invitedpeoples'  => 'InvitedpeopleController',
+            '/'              => 'RestaurantController',
+            'restaurants'    => 'RestaurantController',
+            'reservations'   => 'ReservationController',
+            'invitations'    => 'InvitationController',
+            'invitedpeoples' => 'InvitedpeopleController',
+            'customers'      => 'UserController',
         ]);
 });
 

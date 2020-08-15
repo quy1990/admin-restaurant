@@ -4,12 +4,11 @@
     <!-- page content -->
     <div class="right_col" role="main">
         <!-- top tiles -->
-    @include("layouts.topTile")
-    <!-- /top tiles -->
+        @include("customer.topTile")
+        <!-- /top tiles -->
         <!-- table -->
-    @include("invitedPeople.table")
-    <!-- /table -->
+        @include("customer.table")
+        <!-- /table -->
     </div>
     <!-- /page content -->
 @endsection
-
