@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Invitation;
+use App\Models\Reservation;
 use App\Models\Restaurant;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -73,5 +74,13 @@ class InvitationRepository
     public static function delete($id)
     {
         return self::get($id)->delete();
+    }
+
+    /**
+     * @param Reservation $reservation
+     */
+    public static function getByReservation(Reservation $reservation)
+    {
+        return $reservation->invitations();
     }
 }

@@ -1,9 +1,6 @@
 @extends('backend.backend')
 
 @section('content')
-    <form class="form-horizontal form-label-left" method="POST" action="{{ route('restaurants.update', $restaurant->id) }}">
-        @method("PUT")
-        @csrf
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -28,7 +25,10 @@
                             </div>
                             <div class="x_content">
                                 <br/>
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                                      method="POST" action="{{ route('restaurants.update', $restaurant->id) }}">
+                                    @method("PUT")
+                                    @csrf
 
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Restaurant's
@@ -69,14 +69,13 @@
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
                                     </div>
-
                                 </form>
+                                @include("reservation.table")
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </form>
+
 @endsection

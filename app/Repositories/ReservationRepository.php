@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 
 //use Your Model
 
@@ -92,10 +93,10 @@ class ReservationRepository
     /**
      * get all reservations by Restaurant
      * @param Restaurant $restaurant
-     * @return Collection
+     * @return paginate
      */
-    public static function getByRestaurant(Restaurant $restaurant): Collection
+    public static function getByRestaurant(Restaurant $restaurant): paginate
     {
-        return $restaurant->reservations()->get();
+        return $restaurant->reservations()->paginate();
     }
 }

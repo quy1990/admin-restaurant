@@ -102,7 +102,7 @@
                                                     </li>
                                                 </ul>
                                             </td>
-                                            <td>{{ $restaurant->getFullName() }}</td>
+                                            <td><a href="{{ route('restaurants.show', ['restaurant' => $restaurant->id]) }}">{{ $restaurant->getFullName() }}</a></td>
                                             <td>{{ $restaurant->address }}</td>
                                             <td>{{ $restaurant->email }}</td>
                                             <td>

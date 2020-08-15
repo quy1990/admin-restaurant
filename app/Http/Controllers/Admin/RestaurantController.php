@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Repositories\InvitationRepository;
+use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class RestaurantController extends Controller
@@ -50,7 +51,8 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         $user = $this->user;
-        return view('restaurant.show', compact("restaurant", "user"));
+        $reservations = ReservationRepository::getByRestaurant($restaurant);
+        return view('restaurant.show', compact("restaurant", "reservations", "user"));
     }
 
     public function edit(Restaurant $restaurant)

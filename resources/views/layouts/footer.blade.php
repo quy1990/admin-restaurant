@@ -1,71 +1,53 @@
-	
-	<!-- Start Footer -->
-    <footer class="footer-area bg-f">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<h3>About Us</h3>
-					<p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui, at ornare turpis ultrices sit amet. Nulla cursus lorem ut nisi porta, ac eleifend arcu ultrices.</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Opening hours</h3>
-					<p><span class="text-color">Monday: </span>Closed</p>
-					<p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Contact information</h3>
-					<p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-					<p class="lead"><a href="#">+01 2000 800 9999</a></p>
-					<p><a href="#"> info@admin.com</a></p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Subscribe</h3>
-					<div class="subscribe_form">
-						<form class="subscribe_form">
-							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-							<button type="submit" class="submit">SUBSCRIBE</button>
-							<div class="clearfix"></div>
-						</form>
-					</div>
-					<ul class="list-inline f-social">
-						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<p class="company-name">All Rights Reserved. &copy; 2018 <a href="#">Yamifood Restaurant</a> Design By : 
-					<a href="https://html.design/">html design</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-    </footer>
-	<!-- End Footer -->
-	
-	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-	<!-- ALL JS FILES -->
-	<script src="/js/jquery-3.2.1.min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-	<script src="/js/jquery.superslides.min.js"></script>
-	<script src="/js/images-loded.min.js"></script>
-	<script src="/js/isotope.min.js"></script>
-	<script src="/js/baguetteBox.min.js"></script>
-	<script src="/js/form-validator.min.js"></script>
-    <script src="/js/contact-form-script.js"></script>
-    <script src="/js/custom.js"></script>
-</body>
-</html>
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+              Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+          </footer>
+          <!-- /footer content -->
+        </div>
+      </div>
+      <!-- jQuery -->
+      <script src="{{ asset('/vendors/jquery/dist/jquery.min.js)}}"></script>
+      <!-- Bootstrap -->
+      <script src="{{ asset('/vendors/bootstrap/dist/js/bootstrap.bundle.min.js)}}"></script>
+      <!-- FastClick -->
+      <script src="{{ asset('/vendors/fastclick/lib/fastclick.js)}}"></script>
+      <!-- NProgress -->
+      <script src="{{ asset('/vendors/nprogress/nprogress.js)}}"></script>
+      <!-- Chart.js -->
+      <script src="{{ asset('/vendors/Chart.js/dist/Chart.min.js)}}"></script>
+      <!-- gauge.js -->
+      <script src="{{ asset('/vendors/gauge.js/dist/gauge.min.js)}}"></script>
+      <!-- bootstrap-progressbar -->
+      <script src="{{ asset('/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js)}}"></script>
+      <!-- iCheck -->
+      <script src="{{ asset('/vendors/iCheck/icheck.min.js)}}"></script>
+      <!-- Skycons -->
+      <script src="{{ asset('/vendors/skycons/skycons.js)}}"></script>
+      <!-- Flot -->
+      <script src="{{ asset('/vendors/Flot/jquery.flot.js)}}"></script>
+      <script src="{{ asset('/vendors/Flot/jquery.flot.pie.js)}}"></script>
+      <script src="{{ asset('/vendors/Flot/jquery.flot.time.js)}}"></script>
+      <script src="{{ asset('/vendors/Flot/jquery.flot.stack.js)}}"></script>
+      <script src="{{ asset('/vendors/Flot/jquery.flot.resize.js)}}"></script>
+      <!-- Flot plugins -->
+      <script src="{{ asset('/vendors/flot.orderbars/js/jquery.flot.orderBars.js)}}"></script>
+      <script src="{{ asset('/vendors/flot-spline/js/jquery.flot.spline.min.js)}}"></script>
+      <script src="{{ asset('/vendors/flot.curvedlines/curvedLines.js)}}"></script>
+      <!-- DateJS -->
+      <script src="{{ asset('/vendors/DateJS/build/date.js)}}"></script>
+      <!-- JQVMap -->
+      <script src="{{ asset('/vendors/jqvmap/dist/jquery.vmap.js)}}"></script>
+      <script src="{{ asset('/vendors/jqvmap/dist/maps/jquery.vmap.world.js)}}"></script>
+      <script src="{{ asset('/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js)}}"></script>
+      <!-- bootstrap-daterangepicker -->
+      <script src="{{ asset('/vendors/moment/min/moment.min.js)}}"></script>
+      <script src="{{ asset('/vendors/bootstrap-daterangepicker/daterangepicker.js)}}"></script>
+
+      <!-- Custom Theme Scripts -->
+      <script src="{{ asset('/build/js/custom.min.js)}}"></script>
+    </body>
+  </html>
