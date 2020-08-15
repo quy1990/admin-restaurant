@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Restaurant;
-use App\User;
+use App\Models\User;
 use Highlight\Mode;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;

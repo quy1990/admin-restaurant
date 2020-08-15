@@ -88,13 +88,16 @@
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item">
-                                                        <a href="{{ route('restaurants.destroy',['restaurant' => $restaurant->id]) }}">
+                                                        <form method="POST" class=""
+                                                              action="{{ route('restaurants.destroy',['restaurant' => $restaurant->id]) }}">@method('DELETE')@csrf
                                                             <button class="btn btn-danger btn-sm rounded-0"
-                                                                    type="button"
+                                                                    type="submit"
+                                                                    onclick="return confirm('Are you sure?')"
                                                                     data-toggle="tooltip" data-placement="top" title=""
                                                                     data-original-title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
+                                                        </form>
                                                         </a>
                                                     </li>
                                                 </ul>

@@ -17,22 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->namespace('admin')->group(function () {
-    Route::resources([
-        //'/'               => 'HomeController',
-        '/'               => 'RestaurantController',
-        'restaurants'     => 'RestaurantController',
-        'reservations'    => 'ReservationController',
-        'invitations'     => 'InvitationController',
-        'invited_peoples' => 'InvitedPeopleController',
-    ]);
-    // GET RELATIONS BETWEEN TABLES
-    // get reservations of restaurant
-    Route::get('restaurants/{restaurant}/reservations',
-        'RestaurantController@getReservations');
+Auth::routes();
 
-    // get reservations of restaurant
-    Route::get('restaurants/reservations',
+Route::middleware('auth')
+    ->prefix('admin')
+    ->namespace('admin')
+    ->group(function () {
+        Route::resources([
+            '/'               => 'RestaurantController',
+            'restaurants'     => 'RestaurantController',
+            'reservations'    => 'ReservationController',
+            'invitations'     => 'InvitationController',
+            'invitedpeoples'  => 'InvitedPeopleController',
+        ]);
+        // GET RELATIONS BETWEEN TABLES
+        // get reservations of restaurant
+        Route::get('restaurants/{restaurant}/reservations',
+            'RestaurantController@getReservations');
+
+        // get reservations of restaurant
+        Route::get('restaurants/reservations',
         'RestaurantController@getReservations');
 });
 

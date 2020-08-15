@@ -1,5 +1,5 @@
 @include('backend.header')
-@include('backend.sidemenu')
+@include('backend.sideMenu')
 @include('backend.topNavigation')
 @yield('content')
 @include('backend.footer')
