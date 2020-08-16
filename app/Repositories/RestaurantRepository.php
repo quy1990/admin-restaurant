@@ -29,7 +29,6 @@ class RestaurantRepository
     }
 
     /**
-     * get A Restaurant with id
      * @param $id
      * @return Restaurant
      */
@@ -39,7 +38,6 @@ class RestaurantRepository
     }
 
     /**
-     * get a format Restaurant with id
      * @param $id
      * @return array
      */
@@ -49,8 +47,6 @@ class RestaurantRepository
     }
 
     /**
-     * Create a new Restaurant
-     *
      * @param Request $request
      * @param User $user
      * @return Model
@@ -61,7 +57,6 @@ class RestaurantRepository
     }
 
     /**
-     * update a Restaurant
      * @param $request
      * @param $id
      * @return Model
@@ -73,7 +68,6 @@ class RestaurantRepository
     }
 
     /**
-     * delete a row in Database
      * @param Restaurant $restaurant
      * @return bool|null
      * @throws \Exception
@@ -121,8 +115,9 @@ class RestaurantRepository
 
     /**
      * @param Invitation $invitation
+     * @return array
      */
-    public static function getByInvitation(Invitation $invitation)
+    public static function getByInvitation(Invitation $invitation): array
     {
         return $invitation->restaurant()->get()->first()->format();
     }
