@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Invitation;
+use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 use Highlight\Mode;
@@ -62,5 +64,23 @@ class UserRepository
     public static function getByRestaurant(Restaurant $restaurant): paginate
     {
         return $restaurant->owners()->paginate();
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return array
+     */
+    public static function getByInvitation(Invitation $invitation): array
+    {
+        return $invitation->user()->get()->first()->format();
+    }
+
+    /**
+     * @param Reservation $reservation
+     * @return array
+     */
+    public static function getByReservation(Reservation $reservation): array
+    {
+        return $reservation->user()->get()->first()->format();
     }
 }

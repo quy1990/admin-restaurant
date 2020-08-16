@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Models\Invitation;
+use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
-use Highlight\Mode;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -19,9 +20,10 @@ class RestaurantRepository
 {
     /**
      * get a list of Restaurants
+     * @param Request $request
      * @return LengthAwarePaginator
      */
-    public static function getAll():LengthAwarePaginator
+    public static function getAll(Request $request): LengthAwarePaginator
     {
         return Restaurant::paginate();
     }
@@ -41,7 +43,7 @@ class RestaurantRepository
      * @param $id
      * @return array
      */
-    public static function show($id):array
+    public static function show($id): array
     {
         return self::get($id)->format();
     }
@@ -91,11 +93,46 @@ class RestaurantRepository
     }
 
     /**
+     * @param Restaurant $restaurant
+     * @return paginate
+     */
+    public static function getInvitations(Restaurant $restaurant): paginate
+    {
+        return $restaurant->invitations()->paginate();
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @return paginate
+     */
+    public static function getOwners(Restaurant $restaurant): paginate
+    {
+        return $restaurant->owners()->paginate();
+    }
+
+    /**
      * @param User $user
      * @return paginate
      */
     public static function getByUser(User $user): paginate
     {
         return $user->ownedRestaurants()->paginate();
+    }
+
+    /**
+     * @param Invitation $invitation
+     */
+    public static function getByInvitation(Invitation $invitation)
+    {
+        return $invitation->restaurant()->get()->first()->format();
+    }
+
+    /**
+     * @param Reservation $reservation
+     * @return array
+     */
+    public static function getByReservation(Reservation $reservation): array
+    {
+        return $reservation->restaurant()->get()->first()->format();
     }
 }

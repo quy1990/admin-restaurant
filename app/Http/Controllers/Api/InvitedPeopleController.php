@@ -17,8 +17,8 @@ class InvitedPeopleController extends Controller
 
     public function __construct()
     {
-        $this->user = Auth::user();
-        $this->authorizeResource(InvitedPeople::class);
+//        $this->user = Auth::user();
+//        $this->authorizeResource(InvitedPeople::class);
     }
 
     public function index(): JsonResponse
@@ -58,7 +58,7 @@ class InvitedPeopleController extends Controller
      */
     public function show(InvitedPeople $invitedPeople): JsonResponse
     {
-        return response()->json(InvitedPeopleRepository::show($invitedPeople->id), Httpstatus::HTTP_OK);
+        return response()->json(InvitedPeopleRepository::show($invitedPeople), Httpstatus::HTTP_OK);
     }
 
     /**

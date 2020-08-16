@@ -19,17 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware('auth')
-    ->prefix('admin')
-    ->namespace('admin')
-    ->group(function () {
-        Route::resources([
-            '/'              => 'RestaurantController',
-            'restaurants'    => 'RestaurantController',
-            'reservations'   => 'ReservationController',
-            'invitations'    => 'InvitationController',
-            'invitedpeoples' => 'InvitedpeopleController',
-            'customers'      => 'UserController',
-        ]);
-});
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::middleware('auth:web')
+        ->prefix('admin')
+        ->namespace('admin')
+        ->group(
+            function () {
+                Route::resources([
+                    '/'              => 'RestaurantController',
+                    'restaurants'    => 'RestaurantController',
+                    'reservations'   => 'ReservationController',
+                    'invitations'    => 'InvitationController',
+                    'invitedpeoples' => 'InvitedpeopleController',
+                    'customers'      => 'UserController',
+                ]);});
 

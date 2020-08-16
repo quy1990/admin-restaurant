@@ -16,6 +16,8 @@ class CreateInvitedPeoplesTable extends Migration
         Schema::create('invited_peoples', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invitation_id');
+            $table->foreignId('reservation_id');
+            $table->foreignId('restaurant_id');
             $table->foreignId('user_id');
             $table->string('email');
             $table->string('phone');

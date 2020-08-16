@@ -68,13 +68,13 @@ class InvitationRepository
 
     /**
      * delete a row in Database
-     * @param $id
+     * @param Invitation $invitation
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete($id)
+    public static function delete(Invitation $invitation)
     {
-        return self::get($id)->delete();
+        return $invitation->delete();
     }
 
     /**

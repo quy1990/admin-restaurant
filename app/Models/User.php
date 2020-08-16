@@ -39,6 +39,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function format()
+    {
+        return [
+            'id'        => (string)$this->id,
+            'name'        => (string)$this->name,
+        ];
+    }
+
     public function getFullName()
     {
         return $this->name;

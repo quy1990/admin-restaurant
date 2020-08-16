@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
-
+use Illuminate\Database\Eloquent\Model;
 //use Your Model
 
 /**
@@ -31,7 +32,7 @@ class ReservationRepository
      * @param $id
      * @return Reservation | null
      */
-    public static function get($id)
+    public static function get($id): Reservation
     {
         return Reservation::findOrFail($id);
     }
@@ -50,9 +51,9 @@ class ReservationRepository
      * Create a new Reservation
      * @param Request $request
      * @param User $user
-     * @return Reservation
+     * @return Model
      */
-    public static function store(Request $request, User $user): Reservation
+    public static function store(Request $request, User $user): Model
     {
         return $user->reservations()->create($request->all());
     }
@@ -83,11 +84,11 @@ class ReservationRepository
     /**
      * get all Reservation by User
      * @param User $user
-     * @return Collection
+     * @return paginate
      */
-    public static function getByUser(User $user): Collection
+    public static function getByUser(User $user): paginate
     {
-        return $user->reservations()->get();
+        return $user->reservations()->paginate();
     }
 
     /**
@@ -98,5 +99,15 @@ class ReservationRepository
     public static function getByRestaurant(Restaurant $restaurant): paginate
     {
         return $restaurant->reservations()->paginate();
+    }
+
+    /**
+     * get all reservations by Restaurant
+     * @param Invitation $invitation
+     * @return array
+     */
+    public static function getByInvitation(Invitation $invitation): array
+    {
+        return $invitation->reservation()->get()->first()->format();
     }
 }

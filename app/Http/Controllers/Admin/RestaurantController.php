@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Restaurant;
-use App\Models\User;
-use App\Repositories\InvitationRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -16,20 +15,22 @@ class RestaurantController extends Controller
 {
 
     private $user;
+
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->user = User::find(54);
+        $this->user = Auth::user();
+        //dd($this->user);
         //$this->authorizeResource(Restaurant::class);
     }
 
     /**
+     * @param Request $request
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = $this->user;
-        $restaurants = RestaurantRepository::getAll();
+        $restaurants = RestaurantRepository::getAll($request);
         return view("restaurant.index", compact("restaurants", "user"));
     }
 

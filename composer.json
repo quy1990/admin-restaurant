@@ -37,10 +37,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
+        "kyslik/column-sortable": "^6.0",
         "laravel/framework": "^7.24",
+        "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "kyslik/column-sortable": "^6.0"
+        "lukasoppermann/http-status": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

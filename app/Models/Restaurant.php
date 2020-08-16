@@ -64,6 +64,11 @@ class Restaurant extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    public function invitations()
+    {
+        return $this->hasMany(Invitation::class);
+    }
+
     public static function boot()
     {
         parent::boot();

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\InvitedPeople;
 use App\Repositories\InvitationRepository;
+use App\Repositories\ReservationRepository;
+use App\Repositories\RestaurantRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,9 +66,38 @@ class InvitationController extends Controller
      * Remove the specified resource from storage.
      * @param Invitation $invitation
      * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy(Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::delete($invitation->id), Httpstatus::HTTP_NO_CONTENT);
+        return response()->json(InvitationRepository::delete($invitation), Httpstatus::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return JsonResponse
+     */
+    public function getRestaurant(Invitation $invitation)
+    {
+        return response()->json(RestaurantRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return JsonResponse
+     */
+    public function getReservation(Invitation $invitation)
+    {
+        return response()->json(ReservationRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return JsonResponse
+     */
+    public function getUser(Invitation $invitation)
+    {
+        return response()->json(UserRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
     }
 }

@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Invitation;
+use phpDocumentor\Reflection\Types\Self_;
+
 /**
  * Class RestaurantResource.
  */
@@ -34,12 +36,12 @@ class InvitedPeopleRepository
 
     /**
      * get a format InvitedPeople by id
-     * @param int $id
+     * @param InvitedPeople $invitedPeople
      * @return array
      */
-    public static function show(int $id): array
+    public static function show(InvitedPeople $invitedPeople): array
     {
-        return self::get($id)->format();
+        return self::get($invitedPeople->id)->format();
     }
 
     /**
@@ -82,13 +84,13 @@ class InvitedPeopleRepository
 
     /**
      * delete a row in Database
-     * @param $id
+     * @param InvitedPeople $invitedPeople
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete($id)
+    public static function delete(InvitedPeople $invitedPeople)
     {
-        return self::get($id)->delete();
+        return $invitedPeople->delete();
     }
 
     /**

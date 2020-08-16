@@ -7,7 +7,6 @@ use App\Models\Restaurant;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as Httpstatus;
 
 class RestaurantController extends Controller
@@ -16,19 +15,19 @@ class RestaurantController extends Controller
 
     public function __construct()
     {
-        $this->user = Auth::user();
-        $this->authorizeResource(Restaurant::class);
+//        $this->user = Auth::user();
+//        $this->authorizeResource(Restaurant::class);
     }
 
     /**
      * get a list of Restaurants
-     *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         return response()
-            ->json(RestaurantRepository::getAll(), Httpstatus::HTTP_OK);
+            ->json(RestaurantRepository::getAll($request), Httpstatus::HTTP_OK);
     }
 
     /**
@@ -85,6 +84,28 @@ class RestaurantController extends Controller
     public function getReservations(Restaurant $restaurant): JsonResponse
     {
         return response()->json(RestaurantRepository::getReservations($restaurant), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * get all Reservations of this restaurant
+     *
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getInvitations(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(RestaurantRepository::getReservations($restaurant), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * get all Reservations of this restaurant
+     *
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getOwners(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(RestaurantRepository::getOwners($restaurant), Httpstatus::HTTP_OK);
     }
 
 }

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invitation;
 use App\Models\Reservation;
+use App\Models\Restaurant;
+use App\Repositories\InvitationRepository;
 use App\Repositories\ReservationRepository;
+use App\Repositories\RestaurantRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as Httpstatus;
 
 class ReservationController extends Controller
@@ -16,8 +20,8 @@ class ReservationController extends Controller
 
     public function __construct()
     {
-        $this->user = Auth::user();
-        $this->authorizeResource(Reservation::class);
+//        $this->user = Auth::user();
+//        $this->authorizeResource(Reservation::class);
     }
 
     /**
@@ -73,10 +77,54 @@ class ReservationController extends Controller
      * @param Reservation $reservation
      * @return JsonResponse
      */
-    public function destroy(Reservation $reservation):JsonResponse
+    public function destroy(Reservation $reservation): JsonResponse
     {
         ReservationRepository::delete($reservation);
 
         return response()->json([], Httpstatus::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Invitation $invitation
+     * @return JsonResponse
+     */
+    public function getByInvitation(Invitation $invitation): JsonResponse
+    {
+        return response()->json(InvitationRepository::getByReservation(), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Reservation $reservation
+     * @return JsonResponse
+     */
+    public function getRestaurant(Reservation $reservation): JsonResponse
+    {
+        return response()->json(RestaurantRepository::getByReservation($reservation), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Reservation $reservation
+     * @return JsonResponse
+     */
+    public function getUser(Reservation $reservation): JsonResponse
+    {
+        return response()->json(UserRepository::getByReservation($reservation), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Reservation $reservation
+     * @return JsonResponse
+     */
+    public function getInvitations(Reservation $reservation): JsonResponse
+    {
+        return response()->json(InvitationRepository::getByReservation($reservation), Httpstatus::HTTP_OK);
     }
 }

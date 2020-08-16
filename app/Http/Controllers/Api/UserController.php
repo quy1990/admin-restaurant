@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reservation;
+use App\Models\User;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
+use App\Repositories\InvitationRepository;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -15,22 +17,32 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->user = Auth::user();
+        //$this->user = Auth::user();
     }
 
     /**
+     * @param User $user
      * @return mixed
      */
-    public function getRestaurants()
+    public function getRestaurant(User $user)
     {
-        return response()->json(RestaurantRepository::getByUser($this->user), 200);
+        return response()->json(RestaurantRepository::getByUser($user), 200);
     }
 
     /**
+     * @param User $user
      * @return mixed
      */
-    public function getReservations()
+    public function getReservation(User $user)
     {
-        return response()->json(ReservationRepository::getByUser($this->user), 200);
+        return response()->json(ReservationRepository::getByUser($user), 200);
+    }
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public function getInvitation(User $user)
+    {
+        return response()->json(InvitationRepository::getByUser($user), 200);
     }
 }

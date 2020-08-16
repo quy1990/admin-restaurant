@@ -41,14 +41,18 @@ class InvitedPeopleSeeder extends Seeder
 
         for ($i = 0; $i < $this->quantity; $i++) {
             factory(Invitation::class)->create([
-                'reservation_id' => random_int(1, $this->quantity),
                 'user_id'        => random_int(1, $this->quantity),
+                'reservation_id' => random_int(1, $this->quantity),
+                'restaurant_id'  => random_int(1, $this->quantity),
             ]);
         }
 
         for ($i = 0; $i < $this->quantity; $i++) {
             factory(InvitedPeople::class)->create([
+                'reservation_id' => random_int(1, $this->quantity),
                 'invitation_id' => random_int(1, $this->quantity),
+                'restaurant_id' => random_int(1, $this->quantity),
+                'user_id'       => random_int(1, $this->quantity),
             ]);
         }
 
