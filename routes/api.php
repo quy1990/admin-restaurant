@@ -59,7 +59,4 @@ Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
         Route::get('{invitation}/reservation',
             'InvitationController@getReservation');
     });
-
-    //logout
-    Route::get('logout', 'AuthController@logout');
 });
