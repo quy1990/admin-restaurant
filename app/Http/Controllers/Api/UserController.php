@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        //$this->user = Auth::user();
+        $this->authorizeResource(User::class);
     }
 
     /**
@@ -33,7 +33,7 @@ class UserController extends Controller
      * @param User $user
      * @return mixed
      */
-    public function getReservation(User $user)
+    public function getReservations(User $user)
     {
         return response()->json(ReservationRepository::getByUser($user), 200);
     }
@@ -41,7 +41,7 @@ class UserController extends Controller
      * @param User $user
      * @return mixed
      */
-    public function getInvitation(User $user)
+    public function getInvitations(User $user)
     {
         return response()->json(InvitationRepository::getByUser($user), 200);
     }

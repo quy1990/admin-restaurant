@@ -20,11 +20,11 @@ Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
         Route::get('{user}/restaurants',
             'UserController@getRestaurants');
 
-        Route::get('{user}/reservation',
-            'UserController@getReservation');
+        Route::get('{user}/reservations',
+            'UserController@getReservations');
 
-        Route::get('{user}/invitation',
-            'UserController@getInvitation');
+        Route::get('{user}/invitations',
+            'UserController@getInvitations');
     });
 
     Route::group(['prefix' => 'restaurants'], function () {
