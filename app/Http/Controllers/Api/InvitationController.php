@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Repositories\InvitationRepository;
+use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
 use App\Repositories\UserRepository;
@@ -98,5 +99,14 @@ class InvitationController extends Controller
     public function getUser(Invitation $invitation)
     {
         return response()->json(UserRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return JsonResponse
+     */
+    public function getPeoples(Invitation $invitation)
+    {
+        return response()->json(PeopleRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
     }
 }

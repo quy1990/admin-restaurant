@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
 
         Route::get('{reservation}/invitations',
             'ReservationController@getInvitations');
+
+        Route::get('{reservation}/peoples',
+            'ReservationController@getPeoples');
     });
 
     Route::group(['prefix' => 'invitations'], function () {
@@ -58,5 +61,8 @@ Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
 
         Route::get('{invitation}/reservation',
             'InvitationController@getReservation');
+
+        Route::get('{invitation}/peoples',
+            'InvitationController@getPeoples');
     });
 });

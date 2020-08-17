@@ -231,7 +231,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/invitedpeoples",
+					"name": "/api/peoples",
 					"event": [
 						{
 							"listen": "test",
@@ -250,7 +250,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitedpeoples",
+							"raw": "http://localhost:8000/api/peoples",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -258,14 +258,14 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"invitedpeoples"
+								"peoples"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "/api/invitedpeoples?page=2",
+					"name": "/api/peoples?page=2",
 					"event": [
 						{
 							"listen": "test",
@@ -284,7 +284,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitedpeoples?page=2",
+							"raw": "http://localhost:8000/api/peoples?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -292,7 +292,7 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"invitedpeoples"
+								"peoples"
 							],
 							"query": [
 								{
@@ -416,7 +416,7 @@
 					"response": []
 				},
 				{
-					"name": "/api/invitedpeoples/1",
+					"name": "/api/peoples/1",
 					"event": [
 						{
 							"listen": "test",
@@ -435,7 +435,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitedpeoples/1",
+							"raw": "http://localhost:8000/api/peoples/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -443,7 +443,7 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"invitedpeoples",
+								"peoples",
 								"1"
 							]
 						}
@@ -818,6 +818,42 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "/api/reservations/1/peoples",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "08850765-72a8-44b7-844c-da1876954d1e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reservations/1/peoples",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reservations",
+										"1",
+										"peoples"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -933,6 +969,42 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "/api/invitations/1/peoples",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "92ec852b-ddee-4a92-86cd-cd41b95d7fb7",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/invitations/1/peoples",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"invitations",
+										"1",
+										"peoples"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -968,6 +1040,9 @@
 			"item": [
 				{
 					"name": "/signup",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1043,7 +1118,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmMwOTNiYTJjYmU2ZjZjNjU3M2FiYTc4YmY1ZmM3NDA2MDVjNDVmMjAzMGM4YzVhZTRkNWI3OWEzNWQ5OGIzZDZkYzRiMjAxY2M0MmVhMmEiLCJpYXQiOjE1OTc2OTEzNTIsIm5iZiI6MTU5NzY5MTM1MiwiZXhwIjoxNjEzNTg4OTUwLCJzdWIiOiI3MDEiLCJzY29wZXMiOltdfQ.hyAu68tiDVmwt24AoqEoIRYJ2PjD40mJZH2J_Fpta3xDXHCvs4n-MD9QAHttHxmTVku6gAWNX8F68l-OlHpKe7Ly3ZjUYka00CA-XNJNiaL1W0KVch3vIsANZ003NucafAueUUJ9bBNRkctOYwEd72UWNNGcSXC3tAYwpQ9N4whxV2Hv1uePO1GLxg7QO8aU8jQWiDDVzaENludR6qi-qPpDO4zCZAsNVfEneBsd3L9G1e1bbQdRYIPw6lcOPA0kzl-Xq6cbYk4NEZ_wk8oK0asxyJLi7xBasie1zQUl5APFT3XXP7YuQlGzclYX49i9fuZ_Mto74DsLOVVDyJSuVA9Hd7cFbArmfpg1Tb_KlKQTkGFbUKpvX_RqfsjekdNqHY3HUtB7obxN0q3uYmlZs4TX6rH6Adw0YVkn88Yr_vwzte7D18KE4ceMdimGeAA6vHNH3o8pEZ_wdhDEpvlFP8avM0SO7Q3ovUZp3LRqqysZouPi3XgkKrIOce1t8Bip-zVyGcGYKwGlBNYwLPQScoOXCs-x4ZqKFODNa_Vj9Lsy4XQonetb8ezGwVYMOW6RwS1b_ZwMn4abYL6LbuSiQytQyVU3VZclwYDwjJfBHz9QgEif5aYDCi8GqeWDzu12JrgZ7icigO402rnF-QU7IdrKnX4qum_AqAKCyN8FR28",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzg5ODJjMDNhNDAxZTk2MjQ0YWIwZjU5ODYwNDcxOTdiZTk3MTNlODY5OWI5NGE3NGFjZWY4ODYyYjg3NTMyYWFhZWE2ZmUzOTFhNDg4ZDAiLCJpYXQiOjE1OTc3MDE4ODUsIm5iZiI6MTU5NzcwMTg4NSwiZXhwIjoxNjEzNTk5NDg0LCJzdWIiOiI3ODMwIiwic2NvcGVzIjpbXX0.Fbcjy0Zx2qw6kDGiO-0WtFuAXnK3Vo_MUt5cyVq5dFm3CC9_7RKOeuwIHWSTQxgwJ8vH0boNwoO_f7YRfu2764hvbgkMKS1ZkUVra9iIopIaL45ekilKuznpU_ZOSdlte9p-UNhReTY9Et-F83lb4k9OiJlKoTLijhV5YjyBEeXwgg1auFrdFj6wCig7XgHaEgfSzPIZ7rKtde9roKyEF7_fEy0yt2xAgXsFwuKkfp1f224n2fmnbDp7qyV38Qm5C-aVYL0YjNMid6An8tF6R7CDAHtcQM-VmH2W0PjOVfbNz83e-m65_bG9tojDQBNKrqtlBlfO_uNuEkzJc3jMvon_AczDREnhpd4XcIKm6vEp_vU3qkSKUTDDbR3vJQpgTsdFYjlBwEUrhE3BYG5qrv8IA0GWRwJQ8ekypOlADI1qGUlQDOqHkv8u5Gr3Aktg2xALPyUsZ0l1-S8j6uXxxq4dcoOo2_DhX6DKElsJPLnTCUirjn3tyE0VVok3FoU5BgBF9Wj606V5p9ag32colomG20sEYxwaR0kY0jiD2kBJRMcqnjO-5u7nrBAM_09iJDBv7J6og3lucW7JU0bfH5LJqAIgoNzOuzRIJuUCCeIXd5RS2aV98u5cRsDr5cvUkuKlTqaLxZQoYn7kHoQYLejs0jGvc_B-sAoaGQzuP_8",
 				"type": "string"
 			}
 		]

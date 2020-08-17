@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
+use App\Models\Invitation;
 use App\Models\People;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\Invitation;
-use phpDocumentor\Reflection\Types\Self_;
 
 /**
  * Class RestaurantResource.
@@ -62,13 +62,15 @@ class PeopleRepository
      */
     public static function storeAnItem(array $item): array
     {
-        $invitedPeople = new People();
-        $invitedPeople->email = $item['email'];
-        $invitedPeople->phone = $item['phone'];
-        $invitedPeople->invitation_id = $item['invitation_id'];
-        $invitedPeople->user_id = $item['user_id'];
-        $invitedPeople->save();
-        return self::show($invitedPeople->id);
+        $people = new People();
+        $people->email = $item['email'];
+        $people->phone = $item['phone'];
+        $people->invitation_id = $item['invitation_id'];
+        $people->user_id = $item['user_id'];
+        $people->restaurant_id = $item['restaurant_id'];
+        $people->reservation_id = $item['reservation_id'];
+        $people->save();
+        return self::show($people->id);
     }
 
     /**
@@ -100,6 +102,15 @@ class PeopleRepository
      */
     public static function getByInvitation(Invitation $invitation)
     {
-        return $invitation->invitedPeoples()->paginate();
+        return $invitation->peoples()->paginate();
+    }
+
+    /**
+     * @param Reservation $reservation
+     * @return
+     */
+    public static function getByReservation(Reservation $reservation)
+    {
+        return $reservation->peoples()->paginate();
     }
 }

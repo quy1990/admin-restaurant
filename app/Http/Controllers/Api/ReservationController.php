@@ -7,6 +7,7 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Repositories\InvitationRepository;
+use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
 use App\Repositories\UserRepository;
@@ -85,7 +86,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param Invitation $invitation
      * @return JsonResponse
@@ -96,7 +96,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param Reservation $reservation
      * @return JsonResponse
@@ -107,7 +106,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param Reservation $reservation
      * @return JsonResponse
@@ -118,7 +116,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param Reservation $reservation
      * @return JsonResponse
@@ -126,5 +123,15 @@ class ReservationController extends Controller
     public function getInvitations(Reservation $reservation): JsonResponse
     {
         return response()->json(InvitationRepository::getByReservation($reservation), Httpstatus::HTTP_OK);
+    }
+
+    /**
+     *
+     * @param Reservation $reservation
+     * @return JsonResponse
+     */
+    public function getPeoples(Reservation $reservation): JsonResponse
+    {
+        return response()->json(PeopleRepository::getByReservation($reservation), Httpstatus::HTTP_OK);
     }
 }
