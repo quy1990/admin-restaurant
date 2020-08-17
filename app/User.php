@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->avatar??"/images/img.jpg";
     }
+
+    public function isSuperAdmin()
+    {
+        return true;
+    }
 }

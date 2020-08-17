@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Invitation;
+use App\Models\People;
+use App\Models\Reservation;
+use App\Models\Restaurant;
+use App\Policies\InvitationPolicy;
+use App\Policies\InvitedPeoplePolicy;
+use App\Policies\ReservationPolicy;
+use App\Policies\RestaurantPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -14,10 +22,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model\Restaurant'    => 'App\Policies\RestaurantPolicy',
-        'App\Model\Invitation'    => 'App\Policies\InvitationPolicy',
-        'App\Model\InvitedPeople' => 'App\Policies\InvitedPeoplePolicy',
-        'App\Model\Reservation'   => 'App\Policies\ReservationPolicy',
+        Restaurant::class  => RestaurantPolicy::class,
+        Invitation::class  => InvitationPolicy::class,
+        Reservation::class => ReservationPolicy::class,
+        People::class      => InvitedPeoplePolicy::class,
     ];
 
     /**

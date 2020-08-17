@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Repositories\InvitationRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;
@@ -20,7 +20,6 @@ class InvitationController extends Controller
 
     public function __construct()
     {
-        //$this->user = Auth::user();
         $this->authorizeResource(Invitation::class);
     }
 

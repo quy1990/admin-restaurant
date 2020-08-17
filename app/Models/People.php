@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method static truncate()
  */
-class InvitedPeople extends Model
+class People extends Model
 {
-    protected $fillable = ['invitation_id', 'email', 'phone'];
 
-    protected $table = "invited_peoples";
+    protected $table = "peoples";
 
+    protected $fillable = ['invitation_id', 'user_id', 'restaurant_id', 'email', 'phone'];
     /**
      * @return array
      */
@@ -22,6 +22,7 @@ class InvitedPeople extends Model
             'id'            => $this->id,
             'invitation_id' => $this->invitation_id,
             'user_id'       => $this->user_id,
+            'restaurant_id' => $this->restaurant_id,
             'email'         => $this->email,
             'phone'         => $this->phone,
         ];
@@ -30,6 +31,11 @@ class InvitedPeople extends Model
     public function invitation()
     {
         return $this->belongsTo(Invitation::class);
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
     }
 
 

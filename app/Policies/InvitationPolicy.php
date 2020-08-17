@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Invitation;
-use App\Models\User;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InvitationPolicy
@@ -44,8 +44,8 @@ class InvitationPolicy
     public function view(User $user, Invitation $invitation)
     {
         return (
-            $user->id == $invitation->reservation->user_id ||
-            in_array($invitation->reservation->user_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+            $user->id == $invitation->user_id ||
+            in_array($invitation->user_id, $user->ownedRestaurants()->pluck('user_id')));
     }
 
     /**

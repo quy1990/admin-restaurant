@@ -20,8 +20,8 @@ class ReservationController extends Controller
 
     public function __construct()
     {
-//        $this->user = Auth::user();
-//        $this->authorizeResource(Reservation::class);
+//      $this->user = Auth::user();
+        $this->authorizeResource(Reservation::class);
     }
 
     /**

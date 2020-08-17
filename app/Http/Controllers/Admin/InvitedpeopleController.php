@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Models\Reservation;
 use App\Models\User;
-use App\Repositories\InvitedPeopleRepository;
+use App\Repositories\PeopleRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -28,7 +28,7 @@ class InvitedpeopleController extends Controller
     public function index()
     {
         $user = $this->user;
-        $invitedPeoples = InvitedPeopleRepository::getAll();
+        $invitedPeoples = PeopleRepository::getAll();
         return view("invitedPeople.index", compact("invitedPeoples", "user"));
     }
 
@@ -43,17 +43,17 @@ class InvitedpeopleController extends Controller
     public function store(Request $request)
     {
         $user = $this->user;
-        InvitedPeopleRepository::store($request);
+        PeopleRepository::store($request);
         return redirect()->route('invitedPeoples.index');
     }
 
-    public function show(InvitedPeople $invitedPeople)
+    public function show(People $invitedPeople)
     {
         $user = $this->user;
         return view('invitedPeople.show', compact("invitedPeople", "user"));
     }
 
-    public function edit(InvitedPeople $invitedPeople)
+    public function edit(People $invitedPeople)
     {
         $user = $this->user;
         return view('invitedPeople.show', compact("invitedPeople", "user"));
@@ -62,13 +62,13 @@ class InvitedpeopleController extends Controller
     public function update(Request $request, $id)
     {
         $user = $this->user;
-        InvitedPeopleRepository::update($request, $id);
+        PeopleRepository::update($request, $id);
         return redirect()->route('invitedPeople.index', "user");
     }
 
-    public function destroy(InvitedPeople $invitedPeople)
+    public function destroy(People $invitedPeople)
     {
-        InvitedPeopleRepository::delete($invitedPeople);
+        PeopleRepository::delete($invitedPeople);
         return redirect()->route('invitedPeople.index');
     }
 

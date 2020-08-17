@@ -93,9 +93,9 @@ class User extends Authenticatable
         return $this->hasMany(Reservation::class );
     }
 
-    public function invitedPeoples()
+    public function peoples()
     {
-        return $this->hasMany(InvitedPeople::class );
+        return $this->hasMany(People::class );
     }
 
     public function invitations()

@@ -10,10 +10,10 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
     Route::resources([
-        'restaurants'    => 'RestaurantController',
-        'reservations'   => 'ReservationController',
-        'invitations'    => 'InvitationController',
-        'invitedpeoples' => 'InvitedPeopleController',
+        'restaurants'  => 'RestaurantController',
+        'reservations' => 'ReservationController',
+        'invitations'  => 'InvitationController',
+        'peoples'      => 'PeopleController',
     ]);
 
     Route::group(['prefix' => 'users'], function () {

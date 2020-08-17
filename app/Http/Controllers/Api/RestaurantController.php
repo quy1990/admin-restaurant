@@ -16,7 +16,7 @@ class RestaurantController extends Controller
     public function __construct()
     {
 //        $this->user = Auth::user();
-//        $this->authorizeResource(Restaurant::class);
+        $this->authorizeResource(Restaurant::class);
     }
 
     /**

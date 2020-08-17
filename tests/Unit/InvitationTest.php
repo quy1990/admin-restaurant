@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -42,7 +42,7 @@ class InvitationTest extends TestCase
             'reservation_id' => $reservation->id
         ]);
 
-        factory(InvitedPeople::class, 20)->create([
+        factory(People::class, 20)->create([
             'invitation_id' => $invitation->id
         ]);
 
@@ -67,7 +67,7 @@ class InvitationTest extends TestCase
             'reservation_id' => $reservation->id
         ]);
 
-        $invitedPeoples = factory(InvitedPeople::class, 30)->create([
+        $invitedPeoples = factory(People::class, 30)->create([
             'invitation_id' => $invitation->id
         ]);
 

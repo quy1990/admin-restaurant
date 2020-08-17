@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Invitation extends Model
 {
     protected $fillable = ['user_id', 'reservation_id', 'message'];
+    /**
+     * @var mixed
+     */
+    private $user_id;
 
     public function format()
     {
@@ -21,9 +25,9 @@ class Invitation extends Model
         ];
     }
 
-    public function invitedPeoples()
+    public function peoples()
     {
-        return $this->hasMany(InvitedPeople::class);
+        return $this->hasMany(People::class);
     }
 
     public function reservation()

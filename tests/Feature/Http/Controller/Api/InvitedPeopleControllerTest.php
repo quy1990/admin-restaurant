@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Controller\Api;
 
 use App\Models\Invitation;
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
@@ -62,7 +62,7 @@ class InvitedPeopleControllerTest extends TestCase
     public function can_return_a_collection_of_paginated_invited_peoples()
     {
         $user = factory(User::class)->create();
-        factory(InvitedPeople::class, $this->rowToCheck)->create([
+        factory(People::class, $this->rowToCheck)->create([
             'user_id' => $user->id
         ]);
 
@@ -173,7 +173,7 @@ class InvitedPeopleControllerTest extends TestCase
     public function can_return_a_invited_people()
     {
         $user = factory(User::class)->create();
-        $object = factory(InvitedPeople::class)->create(['user_id' => $user->id]);
+        $object = factory(People::class)->create(['user_id' => $user->id]);
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $object->id);
 
         $response->assertStatus(200)
@@ -227,7 +227,7 @@ class InvitedPeopleControllerTest extends TestCase
             'reservation_id' => $reservation->id
         ]);
 
-        $object = factory(InvitedPeople::class)->create([
+        $object = factory(People::class)->create([
             'invitation_id' => $invitation->id,
             'user_id'       => $user->id,
         ]);
@@ -288,7 +288,7 @@ class InvitedPeopleControllerTest extends TestCase
 
         $invitation = factory(Invitation::class)->create(['reservation_id' => $reservation->id]);
 
-        $object = factory(InvitedPeople::class)->create(['invitation_id' => $invitation->id]);
+        $object = factory(People::class)->create(['invitation_id' => $invitation->id]);
 
         $response = $this->actingAs($user, 'api')
             ->json("DELETE", $this->endPoint . '/' . $object->id);

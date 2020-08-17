@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Controller\Api;
 
 use App\Models\Invitation;
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
@@ -321,7 +321,7 @@ class RestaurantControllerTest extends TestCase
             'reservation_id' => $reservation->id
         ]);
 
-        $invitedPeople = factory(InvitedPeople::class)->create([
+        $invitedPeople = factory(People::class)->create([
             'invitation_id' => $invitation->id
         ]);
 
@@ -350,7 +350,7 @@ class RestaurantControllerTest extends TestCase
             'reservation_id' => random_int(0, 99)
         ]);
 
-        factory(InvitedPeople::class)->create(['invitation_id' => random_int(0, 99)]);
+        factory(People::class)->create(['invitation_id' => random_int(0, 99)]);
     }
 
     /**

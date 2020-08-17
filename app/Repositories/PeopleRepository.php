@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\InvitedPeople;
+use App\Models\People;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -12,46 +12,47 @@ use phpDocumentor\Reflection\Types\Self_;
 /**
  * Class RestaurantResource.
  */
-class InvitedPeopleRepository
+class PeopleRepository
 {
     /**
      * get a list of Restaurants
      *
+     * @param User|null $user
      * @return LengthAwarePaginator
      */
-    public static function getAll(): LengthAwarePaginator
+    public static function getAll(?User $user): LengthAwarePaginator
     {
-        return InvitedPeople::paginate();
+        return People::paginate();
     }
 
     /**
-     * get A InvitedPeople by id
+     * get A People by id
      * @param $id
-     * @return InvitedPeople
+     * @return People
      */
-    public static function get($id): InvitedPeople
+    public static function get($id): People
     {
-        return InvitedPeople::findOrfail($id);
+        return People::findOrfail($id);
     }
 
     /**
-     * get a format InvitedPeople by id
-     * @param InvitedPeople $invitedPeople
+     * get a format People by id
+     * @param People $invitedPeople
      * @return array
      */
-    public static function show(InvitedPeople $invitedPeople): array
+    public static function show(People $invitedPeople): array
     {
-        return self::get($invitedPeople->id)->format();
+        return $invitedPeople->format();
     }
 
     /**
-     * Create a new InvitedPeople
+     * Create a new People
      * @param $request
      * @return array
      */
     public static function store(Request $request): array
     {
-        $invitedPeople = InvitedPeople::create($request->all());
+        $invitedPeople = People::create($request->all());
         return self::show($invitedPeople->id);
     }
 
@@ -61,7 +62,7 @@ class InvitedPeopleRepository
      */
     public static function storeAnItem(array $item): array
     {
-        $invitedPeople = new InvitedPeople();
+        $invitedPeople = new People();
         $invitedPeople->email = $item['email'];
         $invitedPeople->phone = $item['phone'];
         $invitedPeople->invitation_id = $item['invitation_id'];
@@ -71,7 +72,7 @@ class InvitedPeopleRepository
     }
 
     /**
-     * update a InvitedPeople
+     * update a People
      * @param $request
      * @param $id
      * @return array
@@ -84,11 +85,11 @@ class InvitedPeopleRepository
 
     /**
      * delete a row in Database
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete(InvitedPeople $invitedPeople)
+    public static function delete(People $invitedPeople)
     {
         return $invitedPeople->delete();
     }

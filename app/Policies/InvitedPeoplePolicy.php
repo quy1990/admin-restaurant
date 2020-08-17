@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\InvitedPeople;
-use App\Models\User;
+use App\Models\People;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InvitedPeoplePolicy
@@ -38,12 +38,12 @@ class InvitedPeoplePolicy
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return mixed
      */
-    public function view(User $user, InvitedPeople $invitedPeople)
+    public function view(User $user, People $invitedPeople)
     {
-        return $user->id == $invitedPeople->user_id;
+        return true;
     }
 
     /**
@@ -54,17 +54,17 @@ class InvitedPeoplePolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->hasVerifiedEmail();
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return mixed
      */
-    public function update(User $user, InvitedPeople $invitedPeople)
+    public function update(User $user, People $invitedPeople)
     {
         return $user->id == $invitedPeople->user_id;
     }
@@ -73,10 +73,10 @@ class InvitedPeoplePolicy
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return mixed
      */
-    public function delete(User $user, InvitedPeople $invitedPeople)
+    public function delete(User $user, People $invitedPeople)
     {
         return $user->id == $invitedPeople->user_id;
     }
@@ -85,10 +85,10 @@ class InvitedPeoplePolicy
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return mixed
      */
-    public function restore(User $user, InvitedPeople $invitedPeople)
+    public function restore(User $user, People $invitedPeople)
     {
         return true;
     }
@@ -97,10 +97,10 @@ class InvitedPeoplePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param InvitedPeople $invitedPeople
+     * @param People $invitedPeople
      * @return mixed
      */
-    public function forceDelete(User $user, InvitedPeople $invitedPeople)
+    public function forceDelete(User $user, People $invitedPeople)
     {
         return true;
     }
