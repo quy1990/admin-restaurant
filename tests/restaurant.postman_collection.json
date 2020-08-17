@@ -28,7 +28,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/restaurants",
+							"raw": "{{base_url}}/api/restaurants",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -62,7 +62,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/restaurants?page=2",
+							"raw": "{{base_url}}/api/restaurants?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -102,7 +102,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/reservations",
+							"raw": "{{base_url}}/api/reservations",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -136,7 +136,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/reservations?page=2",
+							"raw": "{{base_url}}/api/reservations?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -176,7 +176,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitations",
+							"raw": "{{base_url}}/api/invitations",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -210,7 +210,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitations?page=2",
+							"raw": "{{base_url}}/api/invitations?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -250,7 +250,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/peoples",
+							"raw": "{{base_url}}/api/peoples",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -284,7 +284,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/peoples?page=2",
+							"raw": "{{base_url}}/api/peoples?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -330,7 +330,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/restaurants/1",
+							"raw": "{{base_url}}/api/restaurants/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -365,7 +365,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/reservations/1",
+							"raw": "{{base_url}}/api/reservations/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -400,7 +400,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/invitations/1",
+							"raw": "{{base_url}}/api/invitations/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -435,7 +435,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/peoples/1",
+							"raw": "{{base_url}}/api/peoples/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -501,7 +501,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/users/1/restaurants",
+									"raw": "{{base_url}}/api/users/1/restaurants",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -537,7 +537,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/users/1/reservations",
+									"raw": "{{base_url}}/api/users/1/reservations",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -573,7 +573,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/users/1/invitations",
+									"raw": "{{base_url}}/api/users/1/invitations",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -616,7 +616,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/restaurants/1/reservations",
+									"raw": "{{base_url}}/api/restaurants/1/reservations",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -652,7 +652,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/restaurants/1/owners",
+									"raw": "{{base_url}}/api/restaurants/1/owners",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -688,7 +688,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/restaurants/1/invitations",
+									"raw": "{{base_url}}/api/restaurants/1/invitations",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -731,7 +731,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/reservations/1/restaurant",
+									"raw": "{{base_url}}/api/reservations/1/restaurant",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -767,7 +767,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/reservations/1/user",
+									"raw": "{{base_url}}/api/reservations/1/user",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -803,7 +803,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/reservations/1/invitations",
+									"raw": "{{base_url}}/api/reservations/1/invitations",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -839,7 +839,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/reservations/1/peoples",
+									"raw": "{{base_url}}/api/reservations/1/peoples",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -882,7 +882,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/invitations/1/restaurant",
+									"raw": "{{base_url}}/api/invitations/1/restaurant",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -918,7 +918,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/invitations/1/reservation",
+									"raw": "{{base_url}}/api/invitations/1/reservation",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -954,7 +954,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/invitations/1/user",
+									"raw": "{{base_url}}/api/invitations/1/user",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -990,7 +990,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/api/invitations/1/peoples",
+									"raw": "{{base_url}}/api/invitations/1/peoples",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1060,7 +1060,7 @@
 							"raw": "{\n\t\"name\": \"abc\",\n\t\"email\": \"asdskj@dsd.com\",\n\t\"password\": \"abc123!@#\",\n\t\"password_confirmation\":\"abc123!@#\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/auth/signup",
+							"raw": "{{base_url}}/api/auth/signup",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1094,7 +1094,7 @@
 							"raw": "{\n\t\"email\": \"asdskj@dsd.com\",\n\t\"password\": \"abc123!@#\",\n\t\"remember_me\":true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/auth/login",
+							"raw": "{{base_url}}/api/auth/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1118,7 +1118,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzg5ODJjMDNhNDAxZTk2MjQ0YWIwZjU5ODYwNDcxOTdiZTk3MTNlODY5OWI5NGE3NGFjZWY4ODYyYjg3NTMyYWFhZWE2ZmUzOTFhNDg4ZDAiLCJpYXQiOjE1OTc3MDE4ODUsIm5iZiI6MTU5NzcwMTg4NSwiZXhwIjoxNjEzNTk5NDg0LCJzdWIiOiI3ODMwIiwic2NvcGVzIjpbXX0.Fbcjy0Zx2qw6kDGiO-0WtFuAXnK3Vo_MUt5cyVq5dFm3CC9_7RKOeuwIHWSTQxgwJ8vH0boNwoO_f7YRfu2764hvbgkMKS1ZkUVra9iIopIaL45ekilKuznpU_ZOSdlte9p-UNhReTY9Et-F83lb4k9OiJlKoTLijhV5YjyBEeXwgg1auFrdFj6wCig7XgHaEgfSzPIZ7rKtde9roKyEF7_fEy0yt2xAgXsFwuKkfp1f224n2fmnbDp7qyV38Qm5C-aVYL0YjNMid6An8tF6R7CDAHtcQM-VmH2W0PjOVfbNz83e-m65_bG9tojDQBNKrqtlBlfO_uNuEkzJc3jMvon_AczDREnhpd4XcIKm6vEp_vU3qkSKUTDDbR3vJQpgTsdFYjlBwEUrhE3BYG5qrv8IA0GWRwJQ8ekypOlADI1qGUlQDOqHkv8u5Gr3Aktg2xALPyUsZ0l1-S8j6uXxxq4dcoOo2_DhX6DKElsJPLnTCUirjn3tyE0VVok3FoU5BgBF9Wj606V5p9ag32colomG20sEYxwaR0kY0jiD2kBJRMcqnjO-5u7nrBAM_09iJDBv7J6og3lucW7JU0bfH5LJqAIgoNzOuzRIJuUCCeIXd5RS2aV98u5cRsDr5cvUkuKlTqaLxZQoYn7kHoQYLejs0jGvc_B-sAoaGQzuP_8",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGEyYjc3MDZhZmRlN2I5N2Q4MWU0YTc2NDU5MGFkZTFhMWY0YTc1ZmQzMDc5NTk4ZTgxZTRmMTgxN2MzNzJkNTdkYzI0MTA0M2YzMGIyYzYiLCJpYXQiOjE1OTc3MDM2NDQsIm5iZiI6MTU5NzcwMzY0NCwiZXhwIjoxNjEzNjAxMjQzLCJzdWIiOiIxMDU3MiIsInNjb3BlcyI6W119.eUai1dcki0jLVSsgqrIhT9I_57BBc6au5qXpg9kwxmZLvSMAdbACc0U73CHbc7XVJXu8eysYvX1EfgJyzio1Yhh4K1uKPbak_rd7DLNpp6mzUOvRKPf5boKFCUW1q-_hEblfcM3E8yLnK7N3DLqmGVmLX7ee0TBOdm0xxwKTUT7V5XBXd35jHcpd9Hos8OZe-OGvzt3Ayck4EfPYbzmja6yotRWsnrnoNcdeVs6wIWtHMnGjdI9_xisk1Fv_P-xszoMIyItrKoCiQVTTblgXcCDuJxhokAbPSohHYlUXQoTL_XQsfgErjehJGQ7yoMqpm5us21zrOIVvRfzunf6pRxpz8ImBeBQjXmeIdE-hJ8zo3-Qjxv6T0lzHXD-ncMFafVpSR2azSYm6x0l9SGxbOXjjKbr8h50p8Atj_IVTVFnI5AN2HBH-yKqmFE8sqfrYRo3FNQexeXTEcIfy1YBKeuQoUNypOaJ9X2Ku6F1d4_tZ_B7z1-6jRpctn_be3qiMXBF4qjV8oSmT4OP-tPLRotESHEjrdeRYT3K8JSRJsQ2Yjnru7h4VyqClg9RT1TtDEE-fAMYG0v_N8mivxB_nmhp3cFAVMWsE_oqduW_VFGDBGYOms9k58FIENPTsbkOPYnMXfPBp3m2tVI2lFFbwCOqlM6BXLb8fRSQ471qtOa0",
 				"type": "string"
 			}
 		]
@@ -1143,6 +1143,13 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9f034887-ed4a-41a0-82f1-a1af172abc9a",
+			"key": "base_url",
+			"value": ""
 		}
 	],
 	"protocolProfileBehavior": {}

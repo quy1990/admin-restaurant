@@ -76,15 +76,15 @@ class PeopleSeeder extends Seeder
                     $invitation = factory(Invitation::class)->create([
                         'user_id'        => $user->id,
                         'restaurant_id'  => $restaurant->id,
-                        'reservation_id' => $reservation
+                        'reservation_id' => $reservation->id
                     ]);
 
                     for ($i = 0; $i < 5; $i++) {
                         factory(People::class)->create([
                             'user_id'        => $user->id,
                             'restaurant_id'  => $restaurant->id,
-                            'reservation_id' => $reservation,
-                            'invitation_id'  => $invitation,
+                            'reservation_id' => $reservation->id,
+                            'invitation_id'  => $invitation->id,
                         ]);
                     }
                 }
