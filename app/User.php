@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\UserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, UserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -42,11 +43,4 @@ class User extends Authenticatable
         return $this->avatar??"/images/img.jpg";
     }
 
-    /**
-     * @return bool
-     */
-    public function isSuperAdmin(): bool
-    {
-        return false;
-    }
 }

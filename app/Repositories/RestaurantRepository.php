@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 //use Your Model
 
@@ -26,7 +25,7 @@ class RestaurantRepository
     public static function getAll(Request $request): paginate
     {
         $user = User::find($request->user()->id);
-        return User::find($request->user()->id)->hasRight()? self::getByUser($user): Restaurant::paginate();
+        return User::find($request->user()->id)->isSuperAdmin() ? Restaurant::paginate() : self::getByUser($user);
     }
 
     /**

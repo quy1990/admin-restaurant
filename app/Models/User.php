@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\UserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -10,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -55,21 +56,6 @@ class User extends Authenticatable
     public function getFullNameWithLink()
     {
         return "<a href='". route('customers.show', ['customer' => $this->id])."'>".$this->name."</a>";
-    }
-
-    public function isSuperAdmin(): bool
-    {
-        return true;
-    }
-
-    public function hasRight(): bool
-    {
-        return true;
-    }
-
-    public function hasVerifiedEmail()
-    {
-        return true;
     }
 
     public function user_type()
