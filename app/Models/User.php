@@ -57,7 +57,12 @@ class User extends Authenticatable
         return "<a href='". route('customers.show', ['customer' => $this->id])."'>".$this->name."</a>";
     }
 
-    public function isSuperAdmin()
+    public function isSuperAdmin(): bool
+    {
+        return true;
+    }
+
+    public function hasRight(): bool
     {
         return true;
     }

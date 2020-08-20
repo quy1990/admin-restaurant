@@ -9,10 +9,14 @@
 
 ## About Laravel
 
+Start laradock in laradock:
+
+    docker-compose up -d nginx postgres pgadmin  redis workspace
+
 Seeder Database:
 
-    php artisan migrate:refresh --seed
+    docker exec -it laradock_workspace_1 php artisan migrate:refresh --seed
 
-generate key for passprt
+generate key for passport
 
-    php artisan passport:install --force
+    docker exec -it laradock_workspace_1 php artisan passport:install --force

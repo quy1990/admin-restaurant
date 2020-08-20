@@ -42,8 +42,11 @@ class User extends Authenticatable
         return $this->avatar??"/images/img.jpg";
     }
 
-    public function isSuperAdmin()
+    /**
+     * @return bool
+     */
+    public function isSuperAdmin(): bool
     {
-        return true;
+        return false;
     }
 }

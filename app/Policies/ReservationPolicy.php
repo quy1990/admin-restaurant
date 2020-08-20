@@ -3,7 +3,8 @@
 namespace App\Policies;
 
 use App\Models\Reservation;
-use App\Models\User;
+use App\User;
+use App\Models\User as Customer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ReservationPolicy
@@ -43,9 +44,7 @@ class ReservationPolicy
      */
     public function view(User $user, Reservation $reservation)
     {
-        return (
-            $user->id == $reservation->user_id ||
-            in_array($reservation->restaurant_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+        return $this->haveRightOn($user, $reservation);
     }
 
     /**
@@ -68,9 +67,7 @@ class ReservationPolicy
      */
     public function update(User $user, Reservation $reservation)
     {
-        return (
-            $user->id == $reservation->user_id ||
-            in_array($reservation->restaurant_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+        return $this->haveRightOn($user, $reservation);
     }
 
     /**
@@ -82,9 +79,7 @@ class ReservationPolicy
      */
     public function delete(User $user, Reservation $reservation)
     {
-        return (
-            $user->id == $reservation->user_id ||
-            in_array($reservation->restaurant_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+        return $this->haveRightOn($user, $reservation);
     }
 
     /**
@@ -96,7 +91,7 @@ class ReservationPolicy
      */
     public function restore(User $user, Reservation $reservation)
     {
-        return true;
+        return $this->haveRightOn($user, $reservation);
     }
 
     /**
@@ -108,6 +103,20 @@ class ReservationPolicy
      */
     public function forceDelete(User $user, Reservation $reservation)
     {
-        return true;
+        return $this->haveRightOn($user, $reservation);
+    }
+
+    /**
+     * Check right on a object
+     *
+     * @param Customer $user
+     * @param Reservation $reservation
+     * @return bool
+     */
+    public function haveRightOn(User $user, Reservation $reservation)
+    {
+        return $reservation->user_id == $user->id ||
+            in_array($reservation->restaurant_id, Customer::find($user->id)->ownedRestaurants()->pluck('restaurant_id')->toArray());
+
     }
 }

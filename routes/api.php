@@ -8,7 +8,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout');
 });
 
-Route::group(['middleware' => 'auth:api', "namespace" => "api"], function () {
+Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => "v1"], function () {
     Route::resources([
         'restaurants'  => 'RestaurantController',
         'reservations' => 'ReservationController',

@@ -28,7 +28,7 @@ class InvitedpeopleController extends Controller
     public function index()
     {
         $user = $this->user;
-        $invitedPeoples = PeopleRepository::getAll();
+        $invitedPeoples = PeopleRepository::getAll($user);
         return view("invitedPeople.index", compact("invitedPeoples", "user"));
     }
 

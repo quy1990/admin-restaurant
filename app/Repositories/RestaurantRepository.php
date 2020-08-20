@@ -21,11 +21,12 @@ class RestaurantRepository
     /**
      * get a list of Restaurants
      * @param Request $request
-     * @return LengthAwarePaginator
+     * @return paginate
      */
-    public static function getAll(Request $request): LengthAwarePaginator
+    public static function getAll(Request $request): paginate
     {
-        return Restaurant::paginate();
+        $user = User::find($request->user()->id);
+        return User::find($request->user()->id)->hasRight()? self::getByUser($user): Restaurant::paginate();
     }
 
     /**

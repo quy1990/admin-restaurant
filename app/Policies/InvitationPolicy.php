@@ -43,9 +43,7 @@ class InvitationPolicy
      */
     public function view(User $user, Invitation $invitation)
     {
-        return (
-            $user->id == $invitation->user_id ||
-            in_array($invitation->user_id, $user->ownedRestaurants()->pluck('user_id')));
+        return $this->haveRightOn($user, $invitation);
     }
 
     /**
@@ -68,9 +66,7 @@ class InvitationPolicy
      */
     public function update(User $user, Invitation $invitation)
     {
-        return (
-            $user->id == $invitation->reservation->user_id ||
-            in_array($invitation->reservation->user_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+        return $this->haveRightOn($user, $invitation);
     }
 
     /**
@@ -82,9 +78,7 @@ class InvitationPolicy
      */
     public function delete(User $user, Invitation $invitation)
     {
-        return (
-            $user->id == $invitation->reservation->user_id ||
-            in_array($invitation->reservation->user_id, $user->ownedRestaurants()->pluck('restaurant_id')));
+        return $this->haveRightOn($user, $invitation);
     }
 
     /**
@@ -96,7 +90,7 @@ class InvitationPolicy
      */
     public function restore(User $user, Invitation $invitation)
     {
-        return true;
+        return $this->haveRightOn($user, $invitation);
     }
 
     /**
@@ -108,6 +102,19 @@ class InvitationPolicy
      */
     public function forceDelete(User $user, Invitation $invitation)
     {
-        return true;
+        return $this->haveRightOn($user, $invitation);
     }
+
+    /**
+     * Check right on a object
+     *
+     * @param User $user
+     * @param Invitation $invitation
+     * @return bool
+     */
+    public function haveRightOn(User $user, Invitation $invitation)
+    {
+        return $user->id == $invitation->user_id;
+    }
+
 }

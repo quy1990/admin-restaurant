@@ -3,7 +3,8 @@
 namespace App\Policies;
 
 use App\Models\Restaurant;
-use App\Models\User;
+use App\Models\User as Customer;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RestaurantPolicy
@@ -43,7 +44,7 @@ class RestaurantPolicy
      */
     public function view(User $user, Restaurant $restaurant)
     {
-        return true;
+        return $this->haveRightOn($user, $restaurant);
     }
 
     /**
@@ -66,7 +67,7 @@ class RestaurantPolicy
      */
     public function update(User $user, Restaurant $restaurant)
     {
-        return in_array($restaurant->id, $user->ownedRestaurants()->pluck('restaurant_id'));
+        return $this->haveRightOn($user, $restaurant);
     }
 
     /**
@@ -78,7 +79,7 @@ class RestaurantPolicy
      */
     public function delete(User $user, Restaurant $restaurant)
     {
-        return in_array($restaurant->id, $user->ownedRestaurants()->pluck('restaurant_id'));
+        return $this->haveRightOn($user, $restaurant);
     }
 
     /**
@@ -90,7 +91,7 @@ class RestaurantPolicy
      */
     public function restore(User $user, Restaurant $restaurant)
     {
-        return true;
+        return $this->haveRightOn($user, $restaurant);
     }
 
     /**
@@ -102,6 +103,19 @@ class RestaurantPolicy
      */
     public function forceDelete(User $user, Restaurant $restaurant)
     {
-        return true;
+        return $this->haveRightOn($user, $restaurant);
+    }
+
+    /**
+     * Check right on a object
+     *
+     * @param User $user
+     * @param Restaurant $restaurant
+     * @return bool
+     */
+    public function haveRightOn(User $user, Restaurant $restaurant)
+    {
+        return in_array($restaurant->id,
+            Customer::find($user->id)->ownedRestaurants()->pluck('restaurant_id')->toArray());
     }
 }

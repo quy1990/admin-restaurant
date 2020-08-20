@@ -6,7 +6,7 @@ use App\Models\People;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class InvitedPeoplePolicy
+class PeoplePolicy
 {
     use HandlesAuthorization;
 
@@ -38,12 +38,12 @@ class InvitedPeoplePolicy
      * Determine whether the user can view the model.
      *
      * @param User $user
-     * @param People $invitedPeople
+     * @param People $people
      * @return mixed
      */
-    public function view(User $user, People $invitedPeople)
+    public function view(User $user, People $people)
     {
-        return true;
+        return $this->haveRightOn($user, $people);
     }
 
     /**
@@ -61,47 +61,60 @@ class InvitedPeoplePolicy
      * Determine whether the user can update the model.
      *
      * @param User $user
-     * @param People $invitedPeople
+     * @param People $people
      * @return mixed
      */
-    public function update(User $user, People $invitedPeople)
+    public function update(User $user, People $people)
     {
-        return $user->id == $invitedPeople->user_id;
+        return $this->haveRightOn($user, $people);
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param User $user
-     * @param People $invitedPeople
+     * @param People $people
      * @return mixed
      */
-    public function delete(User $user, People $invitedPeople)
+    public function delete(User $user, People $people)
     {
-        return $user->id == $invitedPeople->user_id;
+        return $this->haveRightOn($user, $people);
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param User $user
-     * @param People $invitedPeople
+     * @param People $people
      * @return mixed
      */
-    public function restore(User $user, People $invitedPeople)
+    public function restore(User $user, People $people)
     {
-        return true;
+        return $this->haveRightOn($user, $people);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param User $user
-     * @param People $invitedPeople
+     * @param People $people
      * @return mixed
      */
-    public function forceDelete(User $user, People $invitedPeople)
+    public function forceDelete(User $user, People $people)
     {
-        return true;
+        return $this->haveRightOn($user, $people);
+    }
+
+    /**
+     * Check right on a object
+     *
+     * @param User $user
+     * @param People $people
+     * @return bool
+     */
+    public function haveRightOn(User $user, People $people)
+    {
+        return $user->id == $people->user_id;
     }
 }
+

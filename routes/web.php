@@ -13,25 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::middleware('auth:web')
-        ->prefix('admin')
-        ->namespace('admin')
-        ->group(
-            function () {
-                Route::resources([
-                    '/'              => 'RestaurantController',
-                    'restaurants'    => 'RestaurantController',
-                    'reservations'   => 'ReservationController',
-                    'invitations'    => 'InvitationController',
-                    'invitedpeoples' => 'InvitedpeopleController',
-                    'customers'      => 'UserController',
-                ]);});
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
+Route::group(['middleware' => 'auth:web', "namespace" => "Admin", "prefix" => "admin"], function () {
+    Route::resources([
+        '/'              => 'RestaurantController',
+        'restaurants'    => 'RestaurantController',
+        'reservations'   => 'ReservationController',
+        'invitations'    => 'InvitationController',
+        'invitedpeoples' => 'InvitedpeopleController',
+        'customers'      => 'UserController',
+    ]);
+});
 

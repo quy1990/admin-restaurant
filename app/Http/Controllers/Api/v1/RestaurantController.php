@@ -1,9 +1,9 @@
 <?php
-
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\User;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +15,6 @@ class RestaurantController extends Controller
 
     public function __construct()
     {
-//        $this->user = Auth::user();
         $this->authorizeResource(Restaurant::class);
     }
 
