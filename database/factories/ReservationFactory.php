@@ -4,7 +4,8 @@
 use Illuminate\Database\Eloquent\Factory;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
+use App\Models\User as Customer;
 use Carbon\Carbon;
 
 $factory->define(Reservation::class, function () {

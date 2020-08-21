@@ -1,6 +1,5 @@
 <?php
-
-namespace Tests\Feature\Http\Controller\Api;
+namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Invitation;
 use App\Models\People;
@@ -27,7 +26,7 @@ class InvitedPeopleControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit
      * */
 
-    protected $endPoint = "/api/invited_peoples";
+    protected $endPoint = "/api/v1/invited_peoples";
 
     protected $table = "invited_peoples";
 

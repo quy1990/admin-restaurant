@@ -9,17 +9,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Invitation extends Model
 {
-    protected $fillable = ['user_id', 'reservation_id', 'message'];
-    /**
-     * @var mixed
-     */
-    private $user_id;
+    protected $fillable = ['user_id', 'reservation_id', 'restaurant_id', 'message'];
 
     public function format()
     {
         return [
             'id'             => $this->id,
             'user_id'        => (string)$this->user_id,
+            'restaurant_id'  => (string)$this->restaurant_id,
             'reservation_id' => (string)$this->reservation_id,
             'message'        => $this->message,
         ];
@@ -49,7 +46,7 @@ class Invitation extends Model
     {
         parent::boot();
         self::deleting(function ($invitation) {
-            $invitation->invitedPeoples()->each(function ($item) {
+            $invitation->peoples()->each(function ($item) {
                 $item->delete();
             });
         });

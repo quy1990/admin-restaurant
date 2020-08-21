@@ -55,8 +55,8 @@ class InvitationTest extends TestCase
      */
     public function a_restaurant_has_reservations_invitations()
     {
-        $user = $this->create("User", []);
-        $restaurant = $this->create("Restaurant", []);
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
 
         $reservation = factory(Reservation::class)->create([
             'restaurant_id' => $restaurant->id,
@@ -64,16 +64,18 @@ class InvitationTest extends TestCase
         ]);
 
         $invitation = factory(Invitation::class)->create([
-            'reservation_id' => $reservation->id
+            'reservation_id' => $reservation->id,
+            'restaurant_id' => $restaurant->id,
+            'user_id'       => $user->id
         ]);
 
         $invitedPeoples = factory(People::class, 30)->create([
-            'invitation_id' => $invitation->id
+            'invitation_id' => $invitation->id,
+            'restaurant_id' => $restaurant->id,
+            'user_id'       => $user->id
         ]);
-
-        $this->assertTrue($restaurant->reservations->contains($reservation));
-        $this->assertGreaterThan(0, $restaurant->reservations->count());
-        $this->assertGreaterThan(0, $invitation->invitedPeoples->count());
+        $this->assertTrue(in_array($reservation->id, $restaurant->reservations->pluck('id')->toArray()));
+        $this->assertGreaterThan(0, $invitation->peoples->count());
 
         return [
             'user'           => $user,

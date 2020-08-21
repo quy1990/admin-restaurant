@@ -51,6 +51,7 @@ class InvitationRepository
      */
     public static function store($request): Invitation
     {
+        //dd($request);
         return Invitation::create($request->all());
     }
 

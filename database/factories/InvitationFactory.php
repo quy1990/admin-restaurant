@@ -4,7 +4,8 @@
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\User;
+use App\User;
+use App\Models\User as Customer;
 use App\Models\Restaurant;
 use Faker\Generator as Faker;
 

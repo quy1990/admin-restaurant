@@ -14,8 +14,8 @@ class Reservation extends Model
     public function format(){
         return [
             'id'                => $this->id,
-            'restaurant_id'     => $this->restaurant_id,
             'user_id'           => $this->user_id,
+            'restaurant_id'     => $this->restaurant_id,
             'number_people'     => (string)$this->number_people,
             'booking_time'      => $this->booking_time,
         ];

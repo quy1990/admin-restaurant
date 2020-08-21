@@ -1,7 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Controller\Api;
-
+namespace Tests\Feature\Http\Controller\Api\v1;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
@@ -27,7 +26,7 @@ class RestaurantControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit
      * */
 
-    protected $endPoint = "/api/restaurants";
+    protected $endPoint = "/api/v1/restaurants";
     protected $table = "restaurants";
     protected $rowToCheck = 10;
 

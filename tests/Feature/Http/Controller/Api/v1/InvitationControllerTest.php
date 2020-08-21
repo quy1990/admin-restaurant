@@ -1,13 +1,14 @@
 <?php
 
-namespace Tests\Feature\Http\Controller\Api;
+namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\User;
+use App\Models\Restaurant;
+use App\User;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Faker\Factory;
 
 /**
  * Class InvitationControllerTest
@@ -25,7 +26,7 @@ class InvitationControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit
      * */
 
-    protected $endPoint = "/api/invitations";
+    protected $endPoint = "/api/v1/invitations";
     protected $table = "invitations";
 
     /**
@@ -56,6 +57,7 @@ class InvitationControllerTest extends TestCase
      */
     public function can_return_a_collection_of_paginated_invitations()
     {
+        $this->withoutExceptionHandling();
         factory(Invitation::class, 50)->create();
         $user = factory(User::class)->create();
 
@@ -94,6 +96,7 @@ class InvitationControllerTest extends TestCase
         $this->withoutExceptionHandling();
 
         $user = factory(User::class)->create();
+
         $object = $this->generateObject($user);
 
         $response = $this->actingAs($user, 'api')
@@ -119,12 +122,16 @@ class InvitationControllerTest extends TestCase
      */
     public function can_return_a_invitation()
     {
-        $object = factory(Invitation::class)->create();
         $user = factory(User::class)->create();
+
+        $object = factory(Invitation::class)->create($this->generateObject($user));
+
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $object->id);
         $response->assertStatus(200)
             ->assertExactJson([
                 'id'             => $object->id,
+                'user_id'        => (string)$user->id,
+                'restaurant_id'  => (string)$object->restaurant_id,
                 'reservation_id' => (string)$object->reservation_id,
                 'message'        => $object->message,
             ]);
@@ -158,13 +165,16 @@ class InvitationControllerTest extends TestCase
      */
     public function can_update_a_invitation()
     {
-        $object = factory(Invitation::class)->create();
         $user = factory(User::class)->create();
+        $object = factory(Invitation::class)->create($this->generateObject($user));
 
         $response = $this->actingAs($user, 'api')
             ->json("PUT", $this->endPoint . "/" . $object->id,
                 [
-                    'reservation_id' => $object->reservation_id,
+                    'id'             => $object->id,
+                    'user_id'        => (string)$user->id,
+                    'restaurant_id'  => (string)$object->restaurant_id,
+                    'reservation_id' => (string)$object->reservation_id,
                     'message'        => $object->message . "_update",
                 ]);
 
@@ -172,12 +182,16 @@ class InvitationControllerTest extends TestCase
             ->assertStatus(200)
             ->assertExactJson([
                 'id'             => $object->id,
+                'user_id'        => (string)$user->id,
+                'restaurant_id'  => (string)$object->restaurant_id,
                 'reservation_id' => (string)$object->reservation_id,
                 'message'        => $object->message . "_update",
             ]);
 
         $this->assertDatabaseHas($this->table, [
             'id'             => $object->id,
+            'user_id'        => (string)$user->id,
+            'restaurant_id'  => (string)$object->restaurant_id,
             'reservation_id' => (string)$object->reservation_id,
             'message'        => $object->message . "_update",
         ]);
@@ -200,8 +214,10 @@ class InvitationControllerTest extends TestCase
      */
     public function can_delete_a_invitation()
     {
-        $object = factory(Invitation::class)->create();
+        $this->withoutExceptionHandling();
+
         $user = factory(User::class)->create();
+        $object = factory(Invitation::class)->create($this->generateObject($user));
 
         $response = $this->actingAs($user, 'api')
             ->json("DELETE", $this->endPoint . '/' . $object->id);
@@ -218,9 +234,16 @@ class InvitationControllerTest extends TestCase
     protected function generateObject(User $user): array
     {
         $faker = Factory::create();
-        $reservation = factory(Reservation::class)->create(['user_id' => $user->id]);
+        $restaurant = factory(Restaurant::class)->create();
+        $reservation = factory(Reservation::class)->create([
+            'user_id'       => $user->id,
+            'restaurant_id' => $restaurant->id,
+        ]);
+
         return [
             'reservation_id' => $reservation->id,
+            'user_id'        => $user->id,
+            'restaurant_id'  => $restaurant->id,
             'message'        => $faker->paragraph,
         ];
     }
