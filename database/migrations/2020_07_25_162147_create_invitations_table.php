@@ -18,7 +18,7 @@ class CreateInvitationsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('reservation_id');
             $table->foreignId('restaurant_id');
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

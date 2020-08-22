@@ -19,8 +19,8 @@ class CreatePeoplesTable extends Migration
             $table->foreignId('reservation_id');
             $table->foreignId('restaurant_id');
             $table->foreignId('user_id');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->nullable();;
+            $table->string('phone')->nullable();;
             $table->timestamps();
         });
     }

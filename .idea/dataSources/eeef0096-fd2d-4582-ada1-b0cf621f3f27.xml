@@ -1084,6 +1084,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="54" parent="15" name="permissions">
       <ObjectId>25207</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>708</StateNumber>
     </table>
