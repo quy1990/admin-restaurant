@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Api\v1;
 
+use App\Events\CustomerReserveEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\Reservation;
@@ -67,6 +68,8 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation): JsonResponse
     {
+        event(new CustomerReserveEvent($reservation));
+
         return response()
             ->json(ReservationRepository::update($request, $reservation->id), HttpStatus::HTTP_OK);
     }

@@ -82,7 +82,7 @@ class PeopleRepository
      */
     public static function update($request, $id): array
     {
-        return self::get($id)->format();
+        return self::get($id)->update($request->all())->format();
     }
 
     /**

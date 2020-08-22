@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Events\CustomerInviteEvent;
+use App\Events\CustomerReserveEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Repositories\InvitationRepository;
@@ -34,7 +36,11 @@ class InvitationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(InvitationRepository::store($request)->format(), HttpStatus::HTTP_CREATED);
+        $invitation = InvitationRepository::store($request);
+
+        event(new CustomerInviteEvent($invitation));
+
+        return response()->json($invitation->format(), HttpStatus::HTTP_CREATED);
     }
 
     /**

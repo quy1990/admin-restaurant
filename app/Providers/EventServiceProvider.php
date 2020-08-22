@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\CustomerInviteEvent;
+use App\Events\CustomerReserveEvent;
+use App\Listeners\SendMailConfirmInvitationListener;
+use App\Listeners\SendMailConfirmReservationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        CustomerReserveEvent::class => [
+            SendMailConfirmReservationListener::class,
+        ],
+        CustomerInviteEvent::class => [
+            SendMailConfirmInvitationListener::class,
+        ]
     ];
 
     /**

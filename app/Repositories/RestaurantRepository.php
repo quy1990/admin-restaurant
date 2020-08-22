@@ -63,8 +63,7 @@ class RestaurantRepository
      */
     public static function update($request, int $id): Restaurant
     {
-        self::get($id)->update($request->all());
-        return self::get($id);
+        return self::get($id)->update($request->all())->format();
     }
 
     /**
