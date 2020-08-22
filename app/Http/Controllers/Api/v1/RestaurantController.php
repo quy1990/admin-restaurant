@@ -3,11 +3,10 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
-use App\Models\User;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Lukasoppermann\Httpstatus\Httpstatuscodes as Httpstatus;
+use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class RestaurantController extends Controller
 {
@@ -26,7 +25,7 @@ class RestaurantController extends Controller
     public function index(Request $request): JsonResponse
     {
         return response()
-            ->json(RestaurantRepository::getAll($request), Httpstatus::HTTP_OK);
+            ->json(RestaurantRepository::getAll($request), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -36,7 +35,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(RestaurantRepository::store($request, $this->user)->format(), Httpstatus::HTTP_CREATED);
+        return response()->json(RestaurantRepository::store($request, $this->user)->format(), HttpStatus::HTTP_CREATED);
     }
 
     /**
@@ -47,7 +46,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::show($restaurant->id), Httpstatus::HTTP_OK);
+        return response()->json(RestaurantRepository::show($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -60,7 +59,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant): JsonResponse
     {
         return response()
-            ->json(RestaurantRepository::update($request, $restaurant->id), Httpstatus::HTTP_OK);
+            ->json(RestaurantRepository::update($request, $restaurant->id), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -68,10 +67,11 @@ class RestaurantController extends Controller
      *
      * @param Restaurant $restaurant
      * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::delete($restaurant), Httpstatus::HTTP_NO_CONTENT);
+        return response()->json(RestaurantRepository::delete($restaurant), HttpStatus::HTTP_NO_CONTENT);
     }
 
     /**
@@ -82,7 +82,7 @@ class RestaurantController extends Controller
      */
     public function getReservations(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getReservations($restaurant), Httpstatus::HTTP_OK);
+        return response()->json(RestaurantRepository::getReservations($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -93,7 +93,7 @@ class RestaurantController extends Controller
      */
     public function getInvitations(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getReservations($restaurant), Httpstatus::HTTP_OK);
+        return response()->json(RestaurantRepository::getReservations($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -104,7 +104,7 @@ class RestaurantController extends Controller
      */
     public function getOwners(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getOwners($restaurant), Httpstatus::HTTP_OK);
+        return response()->json(RestaurantRepository::getOwners($restaurant), HttpStatus::HTTP_OK);
     }
 
 }

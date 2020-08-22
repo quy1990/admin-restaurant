@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
-use App\Models\People;
 use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
@@ -12,8 +11,7 @@ use App\Repositories\RestaurantRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Lukasoppermann\Httpstatus\Httpstatuscodes as Httpstatus;
+use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class InvitationController extends Controller
 {
@@ -26,7 +24,7 @@ class InvitationController extends Controller
 
     public function index(): JsonResponse
     {
-        return response()->json(InvitationRepository::getAll(), Httpstatus::HTTP_OK);
+        return response()->json(InvitationRepository::getAll(), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -36,7 +34,7 @@ class InvitationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(InvitationRepository::store($request)->format(), Httpstatus::HTTP_CREATED);
+        return response()->json(InvitationRepository::store($request)->format(), HttpStatus::HTTP_CREATED);
     }
 
     /**
@@ -47,7 +45,7 @@ class InvitationController extends Controller
      */
     public function show(Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::show($invitation->id), Httpstatus::HTTP_OK);
+        return response()->json(InvitationRepository::show($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -59,7 +57,7 @@ class InvitationController extends Controller
      */
     public function update(Request $request, Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::update($request, $invitation->id), Httpstatus::HTTP_OK);
+        return response()->json(InvitationRepository::update($request, $invitation->id), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -70,7 +68,7 @@ class InvitationController extends Controller
      */
     public function destroy(Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::delete($invitation), Httpstatus::HTTP_NO_CONTENT);
+        return response()->json(InvitationRepository::delete($invitation), HttpStatus::HTTP_NO_CONTENT);
     }
 
     /**
@@ -79,7 +77,7 @@ class InvitationController extends Controller
      */
     public function getRestaurant(Invitation $invitation)
     {
-        return response()->json(RestaurantRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+        return response()->json(RestaurantRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
 
     }
 
@@ -89,7 +87,7 @@ class InvitationController extends Controller
      */
     public function getReservation(Invitation $invitation)
     {
-        return response()->json(ReservationRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+        return response()->json(ReservationRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -98,7 +96,7 @@ class InvitationController extends Controller
      */
     public function getUser(Invitation $invitation)
     {
-        return response()->json(UserRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+        return response()->json(UserRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -107,6 +105,6 @@ class InvitationController extends Controller
      */
     public function getPeoples(Invitation $invitation)
     {
-        return response()->json(PeopleRepository::getByInvitation($invitation), Httpstatus::HTTP_OK);
+        return response()->json(PeopleRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 }

@@ -6,11 +6,12 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Redis;
+
 //use Your Model
 
 /**
@@ -22,7 +23,7 @@ class ReservationRepository
      * get a list of Restaurants
      * @return LengthAwarePaginator
      */
-    public static function getAll(): LengthAwarePaginator
+    public static function getAll(): paginate
     {
         return Reservation::paginate();
     }
@@ -39,12 +40,16 @@ class ReservationRepository
 
     /**
      * get a format Reservation with id
-     * @param $id
+     * @param Reservation $reservation
      * @return array
      */
-    public static function show($id): array
+    public static function show(Reservation $reservation): array
     {
-        return self::get($id)->format();
+        $key = "ReservationRepository_Show_" . $reservation->id;
+        if (!Redis::hgetall($key)) {
+            Redis::hmset($key, $reservation->format());
+        }
+        return Redis::hgetall($key);
     }
 
     /**
@@ -67,8 +72,9 @@ class ReservationRepository
     public static function update(Request $request, int $id): array
     {
         self::get($id)->update($request->all());
-
-        return self::show($id);
+        $key = "ReservationRepository_Show_" . $id;
+        Redis::hmset($key, self::get($id)->format());
+        return Redis::hgetall($key);
     }
 
     /**
@@ -78,6 +84,8 @@ class ReservationRepository
      */
     public static function delete(Reservation $reservation)
     {
+        $key = 'ReservationRepository_Show_' . $reservation->id;
+        Redis::del($key);
         return $reservation->delete();
     }
 

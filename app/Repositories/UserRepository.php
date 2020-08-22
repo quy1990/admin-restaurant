@@ -6,11 +6,8 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
-use Highlight\Mode;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Redis;
 
 //use Your Model
 
@@ -21,9 +18,9 @@ class UserRepository
 {
     /**
      * get a list of Users
-     * @return LengthAwarePaginator
+     * @return paginate
      */
-    public static function getAll():LengthAwarePaginator
+    public static function getAll(): paginate
     {
         return User::paginate();
     }
@@ -43,9 +40,13 @@ class UserRepository
      * @param $id
      * @return array
      */
-    public static function show($id):array
+    public static function show($id): array
     {
-        return self::get($id)->format();
+        $key = "UserRepository_Show_" . $id;
+        if (!Redis::hgetall($key)) {
+            Redis::hmset($key, self::get($id)->format());
+        }
+        return Redis::hgetall($key);
     }
 
     /**

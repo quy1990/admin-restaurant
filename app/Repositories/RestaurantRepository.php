@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 //use Your Model
 
@@ -38,12 +39,16 @@ class RestaurantRepository
     }
 
     /**
-     * @param $id
+     * @param Restaurant $restaurant
      * @return array
      */
-    public static function show($id): array
+    public static function show(Restaurant $restaurant): array
     {
-        return self::get($id)->format();
+        $key = "RestaurantRepository_Show_" . $restaurant->id;
+        if (!Redis::hgetall($key)) {
+            Redis::hmset($key, $restaurant->format());
+        }
+        return Redis::hgetall($key);
     }
 
     /**
@@ -64,7 +69,9 @@ class RestaurantRepository
     public static function update($request, int $id): Model
     {
         self::get($id)->update($request->all());
-        return self::get($id);
+        $key = "RestaurantRepository_Show_" . $id;
+        Redis::hmset($key, self::get($id)->format());
+        return Redis::hgetall($key);
     }
 
     /**
@@ -74,6 +81,8 @@ class RestaurantRepository
      */
     public static function delete(Restaurant $restaurant)
     {
+        $key = 'RestaurantRepository_Show_' . $restaurant->id;
+        Redis::del($key);
         return $restaurant->delete();
     }
 

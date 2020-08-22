@@ -44,7 +44,8 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
-        "lukasoppermann/http-status": "^2.0"
+        "lukasoppermann/http-status": "^2.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",

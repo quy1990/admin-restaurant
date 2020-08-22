@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\Restaurant;
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator as paginate;
+use Illuminate\Support\Facades\Redis;
 
 //use Your Model
 
@@ -17,9 +17,9 @@ class InvitationRepository
 {
     /**
      * get a list of Restaurants
-     * @return LengthAwarePaginator
+     * @return paginate
      */
-    public static function getAll():LengthAwarePaginator
+    public static function getAll(): paginate
     {
         return Invitation::paginate();
     }
@@ -36,12 +36,16 @@ class InvitationRepository
 
     /**
      * get a format Invitation with id
-     * @param $id
+     * @param Invitation $invitation
      * @return array
      */
-    public static function show($id):array
+    public static function show(Invitation $invitation): array
     {
-        return self::get($id)->format();
+        $key = "InvitationRepository_Show_" . $invitation->id;
+        if (!Redis::hgetall($key)) {
+            Redis::hmset($key, $invitation->format());
+        }
+        return Redis::hgetall($key);
     }
 
     /**
@@ -51,7 +55,6 @@ class InvitationRepository
      */
     public static function store($request): Invitation
     {
-        //dd($request);
         return Invitation::create($request->all());
     }
 
@@ -64,7 +67,9 @@ class InvitationRepository
     public static function update($request, $id): array
     {
         self::get($id)->update($request->all());
-        return self::show($id);
+        $key = "InvitationRepository_Show_" . $id;
+        Redis::hmset($key, self::get($id)->format());
+        return Redis::hgetall($key);
     }
 
     /**
@@ -75,6 +80,8 @@ class InvitationRepository
      */
     public static function delete(Invitation $invitation)
     {
+        $key = 'InvitationRepository_Show_' . $invitation->id;
+        Redis::del($key);
         return $invitation->delete();
     }
 
