@@ -33,7 +33,9 @@ class PeopleSeeder extends Seeder
         $user = factory(User::class)->create([
                 "name" => "abc",
                 "email" => "asdskj@dsd.com",
-                "password" => "password"]);
+                "role_id" => 1,
+                "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"]);
+
         $restaurant = factory(Restaurant::class)->create();
 
         $reservation = factory(Reservation::class)->create([
