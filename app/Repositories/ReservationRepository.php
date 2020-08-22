@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Events\CustomerReserveEvent;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
@@ -60,7 +61,11 @@ class ReservationRepository
      */
     public static function store(Request $request, User $user): Model
     {
-        return $user->reservations()->create($request->all());
+        $reservation = $user->reservations()->create($request->all());
+
+        event(new CustomerReserveEvent($reservation));
+
+        return $reservation;
     }
 
     /**

@@ -38,6 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function truncate()
+    {
+    }
+
     public function getAvatar()
     {
         return $this->avatar??"/images/img.jpg";

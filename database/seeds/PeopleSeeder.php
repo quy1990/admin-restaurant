@@ -4,7 +4,7 @@ use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class PeopleSeeder extends Seeder
@@ -18,13 +18,41 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
-        People::truncate();
         User::truncate();
+        People::truncate();
         Restaurant::truncate();
-        Reservation::truncate();
         Invitation::truncate();
+        Reservation::truncate();
 
+        $this->generateSuperAdmin();
         $this->generateRealData();
+    }
+
+    protected function generateSuperAdmin()
+    {
+        $user = factory(User::class)->create([
+                "name" => "abc",
+                "email" => "asdskj@dsd.com",
+                "password" => "password"]);
+        $restaurant = factory(Restaurant::class)->create();
+
+        $reservation = factory(Reservation::class)->create([
+            'user_id'       => $user->id,
+            'restaurant_id' => $restaurant->id
+        ]);
+
+        $invitation = factory(Invitation::class)->create([
+            'user_id'        => $user->id,
+            'reservation_id' => $reservation->id,
+            'restaurant_id'  => $restaurant->id,
+        ]);
+
+        $people = factory(People::class)->create([
+            'user_id'        => $user->id,
+            'restaurant_id'  => $restaurant->id,
+            'reservation_id' => $reservation->id,
+            'invitation_id'  => $invitation->id,
+        ]);
     }
 
     protected function generateObjects()
