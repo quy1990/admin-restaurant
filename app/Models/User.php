@@ -48,49 +48,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function getFullName()
-    {
-        return $this->name;
-    }
-
-    public function getFullNameWithLink()
-    {
-        return "<a href='". route('customers.show', ['customer' => $this->id])."'>".$this->name."</a>";
-    }
-
-    public function user_type()
-    {
-        return $this->belongsTo(UserType::class);
-    }
-
-    public function roles()
-    {
-        return $this->hasMany(Role::class);
-    }
-
-    public function restaurants()
-    {
-        return $this->belongsToMany(Restaurant::class, 'reservations' )
-            ->withPivot('number_people','booking_time');
-    }
-
-    public function ownedRestaurants()
-    {
-        return $this->belongsToMany(Restaurant::class, 'restaurant_owner');
-    }
-
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class );
-    }
-
-    public function peoples()
-    {
-        return $this->hasMany(People::class );
-    }
-
-    public function invitations()
-    {
-        return $this->hasMany(Invitation::class );
-    }
 }

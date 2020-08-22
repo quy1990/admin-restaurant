@@ -12,10 +12,6 @@ class Restaurant extends Model
     protected $fillable = ["name", "address", "email", "phone", "seat_number"];
 
     protected $hidden = array('created_at', 'updated_at');
-    /**
-     * @var mixed
-     */
-    private $id;
 
     public function format(){
         return [

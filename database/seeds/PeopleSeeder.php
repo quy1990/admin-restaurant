@@ -39,6 +39,8 @@ class PeopleSeeder extends Seeder
 
         $restaurant = factory(Restaurant::class)->create();
 
+        $user->restaurants()->attach($restaurant);
+
         $reservation = factory(Reservation::class)->create([
             'user_id'       => $user->id,
             'restaurant_id' => $restaurant->id

@@ -44,11 +44,7 @@ class RestaurantRepository
      */
     public static function show(Restaurant $restaurant): array
     {
-        $key = "RestaurantRepository_Show_" . $restaurant->id;
-        if (!Redis::hgetall($key)) {
-            Redis::hmset($key, $restaurant->format());
-        }
-        return Redis::hgetall($key);
+        return $restaurant->format();
     }
 
     /**
@@ -64,14 +60,12 @@ class RestaurantRepository
     /**
      * @param $request
      * @param $id
-     * @return Model
+     * @return Restaurant
      */
-    public static function update($request, int $id): Model
+    public static function update($request, int $id): Restaurant
     {
         self::get($id)->update($request->all());
-        $key = "RestaurantRepository_Show_" . $id;
-        Redis::hmset($key, self::get($id)->format());
-        return Redis::hgetall($key);
+        return self::get($id);
     }
 
     /**
@@ -81,8 +75,6 @@ class RestaurantRepository
      */
     public static function delete(Restaurant $restaurant)
     {
-        $key = 'RestaurantRepository_Show_' . $restaurant->id;
-        Redis::del($key);
         return $restaurant->delete();
     }
 

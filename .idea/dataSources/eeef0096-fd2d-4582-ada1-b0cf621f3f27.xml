@@ -1036,6 +1036,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="45" parent="15" name="jobs">
       <ObjectId>25138</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>694</StateNumber>
     </table>
@@ -1076,6 +1077,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="53" parent="15" name="peoples">
       <ObjectId>25215</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>712</StateNumber>
     </table>
@@ -1097,6 +1099,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="57" parent="15" name="restaurants">
       <ObjectId>25150</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>714</StateNumber>
     </table>
