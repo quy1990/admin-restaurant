@@ -31,10 +31,11 @@ class PeopleSeeder extends Seeder
     protected function generateSuperAdmin()
     {
         $user = factory(User::class)->create([
-                "name" => "abc",
-                "email" => "asdskj@dsd.com",
-                "role_id" => 1,
-                "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"]);
+            "name"     => "abc",
+            "email"    => "asdskj@dsd.com",
+            "role_id"  => 1,
+            "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"
+        ]);
 
         $restaurant = factory(Restaurant::class)->create();
 
