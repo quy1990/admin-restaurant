@@ -41,11 +41,7 @@ class InvitationRepository
      */
     public static function show(Invitation $invitation): array
     {
-        $key = "InvitationRepository_Show_" . $invitation->id;
-        if (!Redis::hgetall($key)) {
-            Redis::hmset($key, $invitation->format());
-        }
-        return Redis::hgetall($key);
+        return $invitation->format();
     }
 
     /**
@@ -66,10 +62,7 @@ class InvitationRepository
      */
     public static function update($request, $id): array
     {
-        self::get($id)->update($request->all());
-        $key = "InvitationRepository_Show_" . $id;
-        Redis::hmset($key, self::get($id)->format());
-        return Redis::hgetall($key);
+        return self::get($id)->format();
     }
 
     /**
@@ -80,8 +73,6 @@ class InvitationRepository
      */
     public static function delete(Invitation $invitation)
     {
-        $key = 'InvitationRepository_Show_' . $invitation->id;
-        Redis::del($key);
         return $invitation->delete();
     }
 

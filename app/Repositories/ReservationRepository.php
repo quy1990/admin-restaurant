@@ -11,7 +11,6 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Redis;
 
 //use Your Model
 
@@ -46,11 +45,7 @@ class ReservationRepository
      */
     public static function show(Reservation $reservation): array
     {
-        $key = "ReservationRepository_Show_" . $reservation->id;
-        if (!Redis::hgetall($key)) {
-            Redis::hmset($key, $reservation->format());
-        }
-        return Redis::hgetall($key);
+        return $reservation->format();
     }
 
     /**
@@ -76,21 +71,17 @@ class ReservationRepository
      */
     public static function update(Request $request, int $id): array
     {
-        self::get($id)->update($request->all());
-        $key = "ReservationRepository_Show_" . $id;
-        Redis::hmset($key, self::get($id)->format());
-        return Redis::hgetall($key);
+        return self::get($id)->format();
     }
 
     /**
      * delete a row in Database
      * @param Reservation $reservation
      * @return bool|null
+     * @throws \Exception
      */
     public static function delete(Reservation $reservation)
     {
-        $key = 'ReservationRepository_Show_' . $reservation->id;
-        Redis::del($key);
         return $reservation->delete();
     }
 

@@ -32,7 +32,7 @@ class UserRepository
      */
     public static function get($id): User
     {
-        return User::findOrfail($id);
+        return User::findOrFail($id);
     }
 
     /**
@@ -42,11 +42,7 @@ class UserRepository
      */
     public static function show($id): array
     {
-        $key = "UserRepository_Show_" . $id;
-        if (!Redis::hgetall($key)) {
-            Redis::hmset($key, self::get($id)->format());
-        }
-        return Redis::hgetall($key);
+        return self::get($id)->format();
     }
 
     /**

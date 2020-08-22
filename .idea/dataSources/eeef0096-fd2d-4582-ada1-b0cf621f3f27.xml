@@ -1031,6 +1031,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="44" parent="15" name="invitations">
       <ObjectId>25196</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>716</StateNumber>
     </table>
@@ -1088,6 +1089,7 @@ sequence|table|25213|25215|1
     </table>
     <table id="55" parent="15" name="reservations">
       <ObjectId>25161</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>715</StateNumber>
     </table>

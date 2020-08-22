@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 //use Your Model
 

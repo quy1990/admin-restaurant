@@ -6,9 +6,9 @@ use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\User;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator as paginate;
-use Illuminate\Support\Facades\Redis;
 
 /**
  * Class RestaurantResource.
@@ -43,11 +43,7 @@ class PeopleRepository
      */
     public static function show(People $people): array
     {
-        $key = "PeopleRepository_Show_" . $people->id;
-        if (!Redis::hgetall($key)) {
-            Redis::hmset($key, $people->format());
-        }
-        return Redis::hgetall($key);
+        return $people->format();
     }
 
     /**
@@ -86,10 +82,7 @@ class PeopleRepository
      */
     public static function update($request, $id): array
     {
-        self::get($id)->update($request->all());
-        $key = "PeopleRepository_Show_" . $id;
-        Redis::hmset($key, self::get($id)->format());
-        return Redis::hgetall($key);
+        return self::get($id)->format();
     }
 
     /**
@@ -100,25 +93,23 @@ class PeopleRepository
      */
     public static function delete(People $people)
     {
-        $key = 'PeopleRepository_Show_' . $people->id;
-        Redis::del($key);
         return $people->delete();
     }
 
     /**
      * @param Invitation $invitation
-     * @return
+     * @return LengthAwarePaginator|paginate
      */
-    public static function getByInvitation(Invitation $invitation)
+    public static function getByInvitation(Invitation $invitation): paginate
     {
         return $invitation->peoples()->paginate();
     }
 
     /**
      * @param Reservation $reservation
-     * @return
+     * @return LengthAwarePaginator|paginate
      */
-    public static function getByReservation(Reservation $reservation)
+    public static function getByReservation(Reservation $reservation): paginate
     {
         return $reservation->peoples()->paginate();
     }

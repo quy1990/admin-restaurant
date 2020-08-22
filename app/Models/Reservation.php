@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static truncate()
+ * @method static findOrFail($id)
+ * @method static paginate()
  */
 class Reservation extends Model
 {
