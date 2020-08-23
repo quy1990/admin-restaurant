@@ -38,8 +38,7 @@ class SendMailConfirmInvitationListener implements ShouldQueue
                 'to' => $people->email??$people->phone,
                 'messages' => $people->messages
             ];
-
-            Mail::to('nguyentuquy2008@gmail.com')->send(new SendConfirmMail($details));
         }
+        Mail::to('nguyentuquy2008@gmail.com')->send(new SendConfirmMail($details));
     }
 }

@@ -1038,6 +1038,7 @@ sequence|table|34105|34107|1
     </table>
     <table id="45" parent="15" name="invitations">
       <ObjectId>34077</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>200203</StateNumber>
     </table>
