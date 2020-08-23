@@ -5,6 +5,7 @@ use App\Events\CustomerReserveEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\Reservation;
+use App\Models\User as Customer;
 use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
@@ -20,7 +21,6 @@ class ReservationController extends Controller
 
     public function __construct()
     {
-//      $this->user = Auth::user();
         $this->authorizeResource(Reservation::class);
     }
 
@@ -43,7 +43,8 @@ class ReservationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(ReservationRepository::store($request, $this->user)->format(),
+        $customer = Customer::find(auth()->user()->id);
+        return response()->json(ReservationRepository::store($request, $customer)->format(),
             HttpStatus::HTTP_CREATED);
     }
 

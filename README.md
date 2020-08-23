@@ -11,12 +11,12 @@
 
 Start laradock in laradock:
 
-    docker-compose up -d nginx postgres pgadmin  redis workspace
+    docker-compose up -d nginx postgres pgadmin redis workspace
 
 Seeder Database:
 
     docker exec -it laradock_workspace_1 php artisan migrate:refresh --seed
 
-generate key for passport
+generate key for passportdatabase
 
     docker exec -it laradock_workspace_1 php artisan passport:install --force

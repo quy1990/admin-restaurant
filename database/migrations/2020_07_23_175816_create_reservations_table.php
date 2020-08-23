@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->foreignId('restaurant_id');
             $table->foreignId('user_id');
             $table->integer('number_people')->default(1);;
-            $table->dateTime('booking_time', 0);
+            $table->dateTime('booking_time', 0)->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

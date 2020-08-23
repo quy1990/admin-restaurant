@@ -28,7 +28,7 @@ class SendMailConfirmReservationListener implements ShouldQueue
      */
     public function handle(CustomerReserveEvent $customerReserveEvent)
     {
-        Mail::to("nguyentuquy2008@gmail.com")->send("sended mail");
+        mail("nguyentuquy2008@gmail.com","My subject", "messages");
 //
 //        $owners = $customerReserveEvent->reservation->restaurant()->owners();
 //        foreach ($owners as $owner) {

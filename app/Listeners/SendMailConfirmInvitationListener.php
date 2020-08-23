@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\CustomerInviteEvent;
 use App\Events\customerOrder;
 use App\Mail\Mailer;
+use App\Mail\SendConfirmMail;
 use App\Mail\SubmitOrderMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
@@ -29,12 +30,16 @@ class SendMailConfirmInvitationListener implements ShouldQueue
      */
     public function handle(CustomerInviteEvent $customerInviteEvent)
     {
-        mail("nguyentuquy2008@gmail.com","My subject", "messages");
+        $peoples = $customerInviteEvent->invitation->peoples();
+        foreach ($peoples as $people){
+            $details = [
+                'title' => 'You were invited in a Restaurant',
+                'from' => $people->user()->email,
+                'to' => $people->email??$people->phone,
+                'messages' => $people->messages
+            ];
 
-//        $owners = $customerReserveEvent->reservation->restaurant()->owners();
-//        foreach ($owners as $owner) {
-//            Mail::to("nguyentuquy2008@gmail.com")->send("sended mail");
-//        }
-
+            Mail::to('nguyentuquy2008@gmail.com')->send(new SendConfirmMail($details));
+        }
     }
 }
