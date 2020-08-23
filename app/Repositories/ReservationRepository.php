@@ -7,10 +7,12 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Repositories\Traits\FormatPaginationTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 //use Your Model
 
@@ -19,13 +21,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
  */
 class ReservationRepository
 {
+    use FormatPaginationTrait;
     /**
      * get a list of Restaurants
-     * @return LengthAwarePaginator
+     * @return Collection
      */
-    public static function getAll(): paginate
+    public static function getAll(): Collection
     {
-        return Reservation::paginate();
+        $reservations = Reservation::paginate();
+
+        return self::formatPagination($reservations);
     }
 
     /**
@@ -88,21 +93,25 @@ class ReservationRepository
     /**
      * get all Reservation by User
      * @param User $user
-     * @return paginate
+     * @return Collection
      */
-    public static function getByUser(User $user): paginate
+    public static function getByUser(User $user): Collection
     {
-        return $user->reservations()->paginate();
+        $reservations = $user->reservations()->paginate();
+
+        return self::formatPagination($reservations);
     }
 
     /**
      * get all reservations by Restaurant
      * @param Restaurant $restaurant
-     * @return paginate
+     * @return Collection
      */
-    public static function getByRestaurant(Restaurant $restaurant): paginate
+    public static function getByRestaurant(Restaurant $restaurant): Collection
     {
-        return $restaurant->reservations()->paginate();
+        $reservations = $restaurant->reservations()->paginate();
+
+        return self::formatPagination($reservations);
     }
 
     /**

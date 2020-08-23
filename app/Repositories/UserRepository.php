@@ -6,7 +6,9 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Repositories\Traits\FormatPaginationTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redis;
 
 //use Your Model
@@ -16,13 +18,16 @@ use Illuminate\Support\Facades\Redis;
  */
 class UserRepository
 {
+    use FormatPaginationTrait;
     /**
      * get a list of Users
-     * @return paginate
+     * @return Collection
      */
-    public static function getAll(): paginate
+    public static function getAll(): Collection
     {
-        return User::paginate();
+        $users = User::paginate();
+
+        return self::formatPagination($users);
     }
 
     /**
@@ -47,20 +52,24 @@ class UserRepository
 
     /**
      * @param User $user
-     * @return paginate
+     * @return Collection
      */
-    public static function getReservations(User $user): paginate
+    public static function getReservations(User $user): Collection
     {
-        return $user->reservations()->paginate();
+        $users = $user->reservations()->paginate();
+
+        return self::formatPagination($users);
     }
 
     /**
      * @param Restaurant $restaurant
-     * @return paginate
+     * @return Collection
      */
-    public static function getByRestaurant(Restaurant $restaurant): paginate
+    public static function getByRestaurant(Restaurant $restaurant): Collection
     {
-        return $restaurant->owners()->paginate();
+        $users = $restaurant->owners()->paginate();
+
+        return self::formatPagination($users);
     }
 
     /**

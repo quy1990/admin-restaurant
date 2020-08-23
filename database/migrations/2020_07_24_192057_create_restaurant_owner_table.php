@@ -17,7 +17,6 @@ class CreateRestaurantOwnerTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('restaurant_id');
-            $table->timestamps();
         });
     }
 

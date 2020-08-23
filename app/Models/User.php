@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static truncate()
  * @method static paginate()
  * @method static findOrFail($id)
+ * @method static find($id)
  */
 class User extends Authenticatable
 {

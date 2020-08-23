@@ -5,11 +5,12 @@ use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\User;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class PeopleSeeder extends Seeder
 {
-    private $quantity = 10;
+    private $quantity = 5;
 
     /**
      * Run the database seeds.
@@ -33,13 +34,11 @@ class PeopleSeeder extends Seeder
         $user = factory(User::class)->create([
             "name"     => "abc",
             "email"    => "asdskj@dsd.com",
-            "role_id"  => 1,
             "password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"
         ]);
 
         $restaurant = factory(Restaurant::class)->create();
 
-        $user->restaurants()->attach($restaurant);
 
         $reservation = factory(Reservation::class)->create([
             'user_id'       => $user->id,
@@ -58,38 +57,33 @@ class PeopleSeeder extends Seeder
             'reservation_id' => $reservation->id,
             'invitation_id'  => $invitation->id,
         ]);
+        $this->generateRoles();
+
+        $user->roles()->attach(1);
+
+        $user->ownedRestaurants()->attach(1);
     }
 
-    protected function generateObjects()
+    protected function generateRoles()
     {
-        factory(User::class, $this->quantity)->create();
+        $role1 = factory(Role::class)->create([
+            'id' => '1',
+            'name' => 'admin',
+            'description' => 'something will be here'
+        ]);
 
-        factory(Restaurant::class, $this->quantity)->create();
 
-        for ($i = 0; $i < $this->quantity; $i++) {
-            factory(Reservation::class)->create([
-                'user_id'       => random_int(1, $this->quantity),
-                'restaurant_id' => random_int(1, $this->quantity)
-            ]);
-        }
+        $role2 = factory(Role::class)->create([
+            'id' => '2',
+            'name' => 'mod',
+            'description' => 'something will be here'
+        ]);
 
-        for ($i = 0; $i < $this->quantity; $i++) {
-            factory(Invitation::class)->create([
-                'user_id'        => random_int(1, $this->quantity),
-                'reservation_id' => random_int(1, $this->quantity),
-                'restaurant_id'  => random_int(1, $this->quantity),
-            ]);
-        }
-
-        for ($i = 0; $i < $this->quantity; $i++) {
-            factory(People::class)->create([
-                'reservation_id' => random_int(1, $this->quantity),
-                'invitation_id'  => random_int(1, $this->quantity),
-                'restaurant_id'  => random_int(1, $this->quantity),
-                'user_id'        => random_int(1, $this->quantity),
-            ]);
-        }
-
+        $role3 = factory(Role::class)->create([
+            'id' => '3',
+            'name' => 'Restaurant Manager',
+            'description' => 'something will be here'
+        ]);
     }
 
     public function generateRealData()
@@ -99,20 +93,20 @@ class PeopleSeeder extends Seeder
 
             $restaurant = factory(Restaurant::class)->create();
 
-            for ($i = 0; $i < 5; $i++) {
+            for ($i = 0; $i < 3; $i++) {
                 $reservation = factory(Reservation::class)->create([
                     'user_id'       => $user->id,
                     'restaurant_id' => $restaurant->id
                 ]);
 
-                for ($i = 0; $i < 5; $i++) {
+                for ($i = 0; $i < 3; $i++) {
                     $invitation = factory(Invitation::class)->create([
                         'user_id'        => $user->id,
                         'restaurant_id'  => $restaurant->id,
                         'reservation_id' => $reservation->id
                     ]);
 
-                    for ($i = 0; $i < 5; $i++) {
+                    for ($i = 0; $i < 3; $i++) {
                         factory(People::class)->create([
                             'user_id'        => $user->id,
                             'restaurant_id'  => $restaurant->id,
