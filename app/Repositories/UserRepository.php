@@ -7,7 +7,7 @@ use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
-use Illuminate\Http\Request;
+use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Support\Collection;
 
 //use Your Model
@@ -17,17 +17,17 @@ use Illuminate\Support\Collection;
  */
 class UserRepository
 {
-    use FormatPaginationTrait;
+    use FormatPaginationTrait, GeneralFunctionTrait;
+
+    protected $user;
+
     /**
-     * get a list of Users
-     * @param Request $request
+     * get a list of Restaurants
      * @return Collection
      */
-    public static function getAll(Request $request): Collection
+    public function getAll(): Collection
     {
-
-        $user = User::find($request->user()->id);
-        $users = $user->isSuperAdmin() ? User::paginate() : null;
+        $users = $this->user->isSuperAdmin() ? User::paginate() : null;
         return self::formatPagination($users);
     }
 
@@ -36,7 +36,7 @@ class UserRepository
      * @param $id
      * @return User
      */
-    public static function get($id): User
+    public function get($id): User
     {
         return User::findOrFail($id);
     }
@@ -46,7 +46,7 @@ class UserRepository
      * @param User $user
      * @return array
      */
-    public static function show(User $user): array
+    public function show(User $user): array
     {
         return $user->format();
     }
@@ -55,29 +55,25 @@ class UserRepository
      * @param User $user
      * @return Collection
      */
-    public static function getReservations(User $user): Collection
+    public function getReservations(User $user): Collection
     {
-        $reservations = $user->reservations()->paginate();
-
-        return self::formatPagination($reservations);
+        return self::formatPagination($user->reservations()->paginate());
     }
 
     /**
      * @param Restaurant $restaurant
      * @return Collection
      */
-    public static function getByRestaurant(Restaurant $restaurant): Collection
+    public function getByRestaurant(Restaurant $restaurant): Collection
     {
-        $users = $restaurant->owners()->paginate();
-
-        return self::formatPagination($users);
+        return self::formatPagination($restaurant->owners()->paginate());
     }
 
     /**
      * @param Invitation $invitation
      * @return array
      */
-    public static function getByInvitation(Invitation $invitation): array
+    public function getByInvitation(Invitation $invitation): array
     {
         return $invitation->user()->get()->first()->format();
     }
@@ -86,7 +82,7 @@ class UserRepository
      * @param Reservation $reservation
      * @return array
      */
-    public static function getByReservation(Reservation $reservation): array
+    public function getByReservation(Reservation $reservation): array
     {
         return $reservation->user()->get()->first()->format();
     }

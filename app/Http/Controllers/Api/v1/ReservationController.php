@@ -32,7 +32,7 @@ class ReservationController extends Controller
     public function index(): JsonResponse
     {
         return response()
-            ->json(ReservationRepository::getAll(), HttpStatus::HTTP_OK);
+            ->json(app(ReservationRepository::class)->getAll(), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -44,7 +44,7 @@ class ReservationController extends Controller
     public function store(Request $request): JsonResponse
     {
         $customer = Customer::find(auth()->user()->id);
-        return response()->json(ReservationRepository::store($request, $customer)->format(),
+        return response()->json(app(ReservationRepository::class)->store($request, $customer),
             HttpStatus::HTTP_CREATED);
     }
 
@@ -57,7 +57,7 @@ class ReservationController extends Controller
     public function show(Reservation $reservation): JsonResponse
     {
         return response()
-            ->json(ReservationRepository::show($reservation), HttpStatus::HTTP_OK);
+            ->json(app(ReservationRepository::class)->show($reservation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -72,7 +72,7 @@ class ReservationController extends Controller
         event(new CustomerReserveEvent($reservation));
 
         return response()
-            ->json(ReservationRepository::update($request, $reservation->id), HttpStatus::HTTP_OK);
+            ->json(app(ReservationRepository::class)->update($request, $reservation->id), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -83,7 +83,7 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation): JsonResponse
     {
-        ReservationRepository::delete($reservation);
+        app(ReservationRepository::class)->delete($reservation);
 
         return response()->json([], HttpStatus::HTTP_NO_CONTENT);
     }
@@ -95,7 +95,7 @@ class ReservationController extends Controller
      */
     public function getByInvitation(Invitation $invitation): JsonResponse
     {
-        return response()->json(ReservationRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(ReservationRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -105,7 +105,7 @@ class ReservationController extends Controller
      */
     public function getRestaurant(Reservation $reservation): JsonResponse
     {
-        return response()->json(RestaurantRepository::getByReservation($reservation), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getByReservation($reservation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -115,7 +115,7 @@ class ReservationController extends Controller
      */
     public function getUser(Reservation $reservation): JsonResponse
     {
-        return response()->json(UserRepository::getByReservation($reservation), HttpStatus::HTTP_OK);
+        return response()->json(app(UserRepository::class)->getByReservation($reservation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -125,7 +125,7 @@ class ReservationController extends Controller
      */
     public function getInvitations(Reservation $reservation): JsonResponse
     {
-        return response()->json(InvitationRepository::getByReservation($reservation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getByReservation($reservation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -135,6 +135,6 @@ class ReservationController extends Controller
      */
     public function getPeoples(Reservation $reservation): JsonResponse
     {
-        return response()->json(PeopleRepository::getByReservation($reservation), HttpStatus::HTTP_OK);
+        return response()->json(app(PeopleRepository::class)->getByReservation($reservation), HttpStatus::HTTP_OK);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Events\CustomerInviteEvent;
-use App\Events\CustomerReserveEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Repositories\InvitationRepository;
@@ -26,7 +24,7 @@ class InvitationController extends Controller
 
     public function index(): JsonResponse
     {
-        return response()->json(InvitationRepository::getAll(), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getAll(), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -36,11 +34,7 @@ class InvitationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $invitation = InvitationRepository::store($request);
-
-        event(new CustomerInviteEvent($invitation));
-
-        return response()->json($invitation->format(), HttpStatus::HTTP_CREATED);
+        return response()->json(app(InvitationRepository::class)->store($request)->format(), HttpStatus::HTTP_CREATED);
     }
 
     /**
@@ -51,7 +45,7 @@ class InvitationController extends Controller
      */
     public function show(Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::show($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->show($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -63,7 +57,8 @@ class InvitationController extends Controller
      */
     public function update(Request $request, Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::update($request, $invitation->id), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->update($request, $invitation->id),
+            HttpStatus::HTTP_OK);
     }
 
     /**
@@ -74,7 +69,7 @@ class InvitationController extends Controller
      */
     public function destroy(Invitation $invitation): JsonResponse
     {
-        return response()->json(InvitationRepository::delete($invitation), HttpStatus::HTTP_NO_CONTENT);
+        return response()->json(app(InvitationRepository::class)->delete($invitation), HttpStatus::HTTP_NO_CONTENT);
     }
 
     /**
@@ -83,7 +78,7 @@ class InvitationController extends Controller
      */
     public function getRestaurant(Invitation $invitation)
     {
-        return response()->json(RestaurantRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
 
     }
 
@@ -93,7 +88,7 @@ class InvitationController extends Controller
      */
     public function getReservation(Invitation $invitation)
     {
-        return response()->json(ReservationRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(ReservationRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -102,7 +97,7 @@ class InvitationController extends Controller
      */
     public function getUser(Invitation $invitation)
     {
-        return response()->json(UserRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(UserRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -111,6 +106,6 @@ class InvitationController extends Controller
      */
     public function getPeoples(Invitation $invitation)
     {
-        return response()->json(PeopleRepository::getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(PeopleRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 }

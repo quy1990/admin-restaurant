@@ -6,7 +6,7 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
-use Illuminate\Http\Request;
+use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Support\Collection;
 
@@ -17,17 +17,17 @@ use Illuminate\Support\Collection;
  */
 class InvitationRepository
 {
-    use FormatPaginationTrait;
+    use FormatPaginationTrait, GeneralFunctionTrait;
+
+    protected $user;
 
     /**
      * get a list of Restaurants
-     * @param Request $request
      * @return Collection
      */
-    public static function getAll(Request $request): Collection
+    public function getAll(): Collection
     {
-        $user = User::find($request->user()->id);
-        $invitations = $user->isSuperAdmin() ? Invitation::paginate() : self::getByUser($user);
+        $invitations = $this->user->isSuperAdmin() ? Invitation::paginate() : self::getByUser($this->user);
         return self::formatPagination($invitations);
     }
 
@@ -36,7 +36,7 @@ class InvitationRepository
      * @param $id
      * @return Invitation
      */
-    public static function get($id): Invitation
+    public function get($id): Invitation
     {
         return Invitation::findOrfail($id);
     }
@@ -46,7 +46,7 @@ class InvitationRepository
      * @param Invitation $invitation
      * @return array
      */
-    public static function show(Invitation $invitation): array
+    public function show(Invitation $invitation): array
     {
         return $invitation->format();
     }
@@ -56,20 +56,9 @@ class InvitationRepository
      * @param $request
      * @return Invitation
      */
-    public static function store($request): Invitation
+    public function store($request): Invitation
     {
         return Invitation::create($request->all());
-    }
-
-    /**
-     * update a Invitation
-     * @param $request
-     * @param $id
-     * @return array
-     */
-    public static function update($request, $id): array
-    {
-        return self::get($id)->update($request->all())->format();
     }
 
     /**
@@ -78,7 +67,7 @@ class InvitationRepository
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete(Invitation $invitation)
+    public function delete(Invitation $invitation)
     {
         return $invitation->delete();
     }
@@ -87,18 +76,16 @@ class InvitationRepository
      * @param Reservation $reservation
      * @return Collection
      */
-    public static function getByReservation(Reservation $reservation): Collection
+    public function getByReservation(Reservation $reservation): Collection
     {
-        $invitations =  $reservation->invitations()->paginate();
-
-        return self::formatPagination($invitations);
+        return self::formatPagination($reservation->invitations()->paginate());
     }
 
     /**
      * @param User $user
      * @return paginate
      */
-    public static function getByUser(User $user): paginate
+    public function getByUser(User $user): paginate
     {
         return $user->invitations()->paginate();
     }

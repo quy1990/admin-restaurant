@@ -7,6 +7,7 @@ use App\Models\People;
 use App\Models\Reservation;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
+use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -16,18 +17,18 @@ use Illuminate\Support\Collection;
  */
 class PeopleRepository
 {
-    use FormatPaginationTrait;
+    use FormatPaginationTrait, GeneralFunctionTrait;
+
+    protected $user;
 
     /**
      * get a list of Restaurants
      *
-     * @param Request $request
      * @return Collection
      */
-    public static function getAll(Request $request): Collection
+    public function getAll(): Collection
     {
-        $user = User::find($request->user()->id);
-        $peoples = $user->isSuperAdmin() ? People::paginate() : self::getByUser($user);
+        $peoples = $this->user->isSuperAdmin() ? People::paginate() : self::getByUser($this->user);
         return self::formatPagination($peoples);
     }
 
@@ -36,7 +37,7 @@ class PeopleRepository
      * @param $id
      * @return People
      */
-    public static function get($id): People
+    public function get($id): People
     {
         return People::findOrfail($id);
     }
@@ -46,7 +47,7 @@ class PeopleRepository
      * @param People $people
      * @return array
      */
-    public static function show(People $people): array
+    public function show(People $people): array
     {
         return $people->format();
     }
@@ -56,7 +57,7 @@ class PeopleRepository
      * @param $request
      * @return array
      */
-    public static function store(Request $request): array
+    public function store(Request $request): array
     {
         $people = People::create($request->all());
         return self::show($people->id);
@@ -66,7 +67,7 @@ class PeopleRepository
      * @param array $item
      * @return array
      */
-    public static function storeAnItem(array $item): array
+    public function storeAnItem(array $item): array
     {
         $people = new People();
         $people->email = $item['email'];
@@ -80,23 +81,12 @@ class PeopleRepository
     }
 
     /**
-     * update a People
-     * @param $request
-     * @param $id
-     * @return array
-     */
-    public static function update($request, $id): array
-    {
-        return self::get($id)->update($request->all())->format();
-    }
-
-    /**
      * delete a row in Database
      * @param People $people
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete(People $people)
+    public function delete(People $people)
     {
         return $people->delete();
     }
@@ -105,22 +95,18 @@ class PeopleRepository
      * @param Invitation $invitation
      * @return Collection
      */
-    public static function getByInvitation(Invitation $invitation): Collection
+    public function getByInvitation(Invitation $invitation): Collection
     {
-        $peoples = $invitation->peoples()->paginate();
-
-        return self::formatPagination($peoples);
+        return self::formatPagination($invitation->peoples()->paginate());
     }
 
     /**
      * @param Reservation $reservation
      * @return Collection
      */
-    public static function getByReservation(Reservation $reservation): Collection
+    public function getByReservation(Reservation $reservation): Collection
     {
-        $peoples = $reservation->peoples()->paginate();
-
-        return self::formatPagination($peoples);
+        return self::formatPagination($reservation->peoples()->paginate());
     }
 
 
@@ -128,7 +114,7 @@ class PeopleRepository
      * @param User $user
      * @return paginate
      */
-    public static function getByUser(User $user): paginate
+    public function getByUser(User $user): paginate
     {
         return $user->peoples()->paginate();
     }

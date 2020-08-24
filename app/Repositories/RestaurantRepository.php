@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
+use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -17,17 +18,17 @@ use Illuminate\Support\Collection;
  */
 class RestaurantRepository
 {
-    use FormatPaginationTrait;
+    use FormatPaginationTrait, GeneralFunctionTrait;
+
+    protected $user;
 
     /**
      * get a list of Restaurants
-     * @param Request $request
      * @return Collection
      */
-    public static function getAll(Request $request): Collection
+    public function getAll(): Collection
     {
-        $user = User::find($request->user()->id);
-        $restaurants = $user->isSuperAdmin() ? Restaurant::paginate() : self::getByUser($user);
+        $restaurants = $this->user->isSuperAdmin() ? Restaurant::paginate() : self::getByUser($this->user);
         return self::formatPagination($restaurants);
     }
 
@@ -35,7 +36,7 @@ class RestaurantRepository
      * @param $id
      * @return Restaurant | null
      */
-    public static function get($id): Restaurant
+    public function get($id): Restaurant
     {
         return Restaurant::findOrFail($id);
     }
@@ -44,29 +45,18 @@ class RestaurantRepository
      * @param Restaurant $restaurant
      * @return array
      */
-    public static function show(Restaurant $restaurant): array
+    public function show(Restaurant $restaurant): array
     {
         return $restaurant->format();
     }
 
     /**
      * @param Request $request
-     * @param User $user
      * @return array
      */
-    public static function store(Request $request, User $user): array
+    public function store(Request $request): array
     {
-        return $user->ownedRestaurants()->create($request->all())->format();
-    }
-
-    /**
-     * @param $request
-     * @param $id
-     * @return array
-     */
-    public static function update($request, int $id): array
-    {
-        return self::get($id)->update($request->all())->format();
+        return $this->user->ownedRestaurants()->create($request->all())->format();
     }
 
     /**
@@ -74,7 +64,7 @@ class RestaurantRepository
      * @return bool|null
      * @throws \Exception
      */
-    public static function delete(Restaurant $restaurant)
+    public function delete(Restaurant $restaurant)
     {
         return $restaurant->delete();
     }
@@ -83,37 +73,34 @@ class RestaurantRepository
      * @param Restaurant $restaurant
      * @return Collection
      */
-    public static function getReservations(Restaurant $restaurant): Collection
+    public function getReservations(Restaurant $restaurant): Collection
     {
-        $restaurants = $restaurant->reservations()->paginate();
-        return self::formatPagination($restaurants);
+        return self::formatPagination($restaurant->reservations()->paginate());
     }
 
     /**
      * @param Restaurant $restaurant
      * @return Collection
      */
-    public static function getInvitations(Restaurant $restaurant): Collection
+    public function getInvitations(Restaurant $restaurant): Collection
     {
-        $restaurants = $restaurant->invitations()->paginate();
-        return self::formatPagination($restaurants);
+        return self::formatPagination($restaurant->invitations()->paginate());
     }
 
     /**
      * @param Restaurant $restaurant
      * @return Collection
      */
-    public static function getOwners(Restaurant $restaurant): Collection
+    public function getOwners(Restaurant $restaurant): Collection
     {
-        $restaurants = $restaurant->owners()->paginate();
-        return self::formatPagination($restaurants);
+        return self::formatPagination($restaurant->owners()->paginate());
     }
 
     /**
      * @param User $user
      * @return paginate
      */
-    public static function getByUser(User $user): paginate
+    public function getByUser(User $user): paginate
     {
         return $user->ownedRestaurants()->paginate();
     }
@@ -122,7 +109,7 @@ class RestaurantRepository
      * @param Invitation $invitation
      * @return array
      */
-    public static function getByInvitation(Invitation $invitation): array
+    public function getByInvitation(Invitation $invitation): array
     {
         return $invitation->restaurant()->get()->first()->format();
     }
@@ -131,7 +118,7 @@ class RestaurantRepository
      * @param Reservation $reservation
      * @return array
      */
-    public static function getByReservation(Reservation $reservation): array
+    public function getByReservation(Reservation $reservation): array
     {
         return $reservation->restaurant()->get()->first()->format();
     }

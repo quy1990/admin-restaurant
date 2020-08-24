@@ -19,13 +19,11 @@ class RestaurantController extends Controller
 
     /**
      * get a list of Restaurants
-     * @param Request $request
      * @return JsonResponse
      */
-    public function index(Request $request): JsonResponse
+    public function index(): JsonResponse
     {
-        return response()
-            ->json(RestaurantRepository::getAll($request), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getAll(), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -35,7 +33,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(RestaurantRepository::store($request, $this->user)->format(), HttpStatus::HTTP_CREATED);
+        return response()->json(app(RestaurantRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
 
     /**
@@ -46,7 +44,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::show($restaurant), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->show($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -59,7 +57,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant): JsonResponse
     {
         return response()
-            ->json(RestaurantRepository::update($request, $restaurant->id), HttpStatus::HTTP_OK);
+            ->json(app(RestaurantRepository::class)->update($request, $restaurant->id), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -71,7 +69,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::delete($restaurant), HttpStatus::HTTP_NO_CONTENT);
+        return response()->json(app(RestaurantRepository::class)->delete($restaurant), HttpStatus::HTTP_NO_CONTENT);
     }
 
     /**
@@ -82,7 +80,7 @@ class RestaurantController extends Controller
      */
     public function getReservations(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getReservations($restaurant), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getReservations($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -93,7 +91,7 @@ class RestaurantController extends Controller
      */
     public function getInvitations(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getReservations($restaurant), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getReservations($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -104,7 +102,7 @@ class RestaurantController extends Controller
      */
     public function getOwners(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(RestaurantRepository::getOwners($restaurant), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getOwners($restaurant), HttpStatus::HTTP_OK);
     }
 
 }

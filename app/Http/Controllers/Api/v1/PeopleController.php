@@ -16,13 +16,15 @@ class PeopleController extends Controller
 
     public function __construct()
     {
-//        $this->user = Auth::user();
         $this->authorizeResource(People::class);
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function index(): JsonResponse
     {
-        return response()->json(PeopleRepository::getAll($this->user), Httpstatus::HTTP_OK);
+        return response()->json(app(PeopleRepository::class)->getAll(), Httpstatus::HTTP_OK);
     }
 
     /**
@@ -37,12 +39,13 @@ class PeopleController extends Controller
         foreach ($invitedInformations as $invitedInformation) {
             $invitedInformation['invitation_id'] = $request->invitation_id;
             $invitedInformation['user_id'] = $request->user_id;
-            $peoples[] = PeopleRepository::storeAnItem($invitedInformation);
+            $peoples[] = app(PeopleRepository::class)->storeAnItem($invitedInformation);
         }
         $reservation = InvitationRepository::get($request->invitation_id)->reservation;
         if ($this->user->id == $reservation->user_id) {
             return response()->json(
-                ['data' => PeopleRepository::getByInvitationId($request->invitation_id)], Httpstatus::HTTP_CREATED);
+                ['data' => app(PeopleRepository::class)->getByInvitationId($request->invitation_id)],
+                Httpstatus::HTTP_CREATED);
         } else {
             return Response()->json('Error', 200);
         }
@@ -57,19 +60,19 @@ class PeopleController extends Controller
      */
     public function show(People $people): JsonResponse
     {
-        return response()->json(PeopleRepository::show($people), Httpstatus::HTTP_OK);
+        return response()->json(app(PeopleRepository::class)->show($people), Httpstatus::HTTP_OK);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param People $people
+     * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, People $people): JsonResponse
+    public function update(Request $request, int $id): JsonResponse
     {
-        return response()->json(PeopleRepository::update($request, $people->id), Httpstatus::HTTP_OK);
+        return response()->json(app(PeopleRepository::class)->update($request, $id), Httpstatus::HTTP_OK);
     }
 
     /**
@@ -79,6 +82,6 @@ class PeopleController extends Controller
      */
     public function destroy(People $people): JsonResponse
     {
-        return response()->json(PeopleRepository::delete($people->id), Httpstatus::HTTP_NO_CONTENT);
+        return response()->json(app(PeopleRepository::class)->delete($people), Httpstatus::HTTP_NO_CONTENT);
     }
 }
