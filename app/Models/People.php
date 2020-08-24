@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static truncate()
  * @method static paginate()
  * @method static findOrFail($id)
+ * @method static create(array $all)
  */
 class People extends Model
 {

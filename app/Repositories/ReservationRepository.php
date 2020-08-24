@@ -2,16 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Events\CustomerReserveEvent;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 //use Your Model
@@ -24,13 +21,15 @@ class ReservationRepository
     use FormatPaginationTrait;
     /**
      * get a list of Restaurants
+     * @param Request $request
      * @return Collection
      */
-    public static function getAll(): Collection
+    public static function getAll(Request $request): Collection
     {
-        $reservations = Reservation::paginate();
-
+        $user = User::find($request->user()->id);
+        $reservations = $user->isSuperAdmin() ? Reservation::paginate() : self::getByUser($user);
         return self::formatPagination($reservations);
+
     }
 
     /**
@@ -57,15 +56,11 @@ class ReservationRepository
      * Create a new Reservation
      * @param Request $request
      * @param User $user
-     * @return Model
+     * @return array
      */
-    public static function store(Request $request, User $user): Model
+    public static function store(Request $request, User $user): array
     {
-        $reservation = $user->reservations()->create($request->all());
-
-        event(new CustomerReserveEvent($reservation));
-
-        return $reservation;
+        return $user->reservations()->create($request->all())->format();
     }
 
     /**
@@ -76,7 +71,7 @@ class ReservationRepository
      */
     public static function update(Request $request, int $id): array
     {
-        return self::get($id)->format();
+        return self::get($id)->update($request->all())->format();
     }
 
     /**
@@ -93,13 +88,11 @@ class ReservationRepository
     /**
      * get all Reservation by User
      * @param User $user
-     * @return Collection
+     * @return paginate
      */
-    public static function getByUser(User $user): Collection
+    public static function getByUser(User $user): paginate
     {
-        $reservations = $user->reservations()->paginate();
-
-        return self::formatPagination($reservations);
+        return $user->reservations()->paginate();
     }
 
     /**

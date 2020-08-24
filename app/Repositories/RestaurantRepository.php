@@ -8,7 +8,6 @@ use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -34,11 +33,11 @@ class RestaurantRepository
 
     /**
      * @param $id
-     * @return Restaurant
+     * @return Restaurant | null
      */
     public static function get($id): Restaurant
     {
-        return Restaurant::findOrfail($id);
+        return Restaurant::findOrFail($id);
     }
 
     /**
@@ -53,19 +52,19 @@ class RestaurantRepository
     /**
      * @param Request $request
      * @param User $user
-     * @return Model
+     * @return array
      */
-    public static function store(Request $request, User $user): Model
+    public static function store(Request $request, User $user): array
     {
-        return $user->ownedRestaurants()->create($request->all());
+        return $user->ownedRestaurants()->create($request->all())->format();
     }
 
     /**
      * @param $request
      * @param $id
-     * @return Restaurant
+     * @return array
      */
-    public static function update($request, int $id): Restaurant
+    public static function update($request, int $id): array
     {
         return self::get($id)->update($request->all())->format();
     }
@@ -117,7 +116,6 @@ class RestaurantRepository
     public static function getByUser(User $user): paginate
     {
         return $user->ownedRestaurants()->paginate();
-
     }
 
     /**

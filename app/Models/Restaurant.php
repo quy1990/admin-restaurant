@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method static truncate()
  * @method static paginate()
+ * @method static findOrFail($id)
  */
 class Restaurant extends Model
 {

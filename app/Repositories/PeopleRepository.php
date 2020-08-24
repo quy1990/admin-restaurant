@@ -7,6 +7,7 @@ use App\Models\People;
 use App\Models\Reservation;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -20,14 +21,14 @@ class PeopleRepository
     /**
      * get a list of Restaurants
      *
-     * @param User|null $user
+     * @param Request $request
      * @return Collection
      */
-    public static function getAll(?User $user): Collection
+    public static function getAll(Request $request): Collection
     {
-        $peoples = People::paginate();
+        $user = User::find($request->user()->id);
+        $peoples = $user->isSuperAdmin() ? People::paginate() : self::getByUser($user);
         return self::formatPagination($peoples);
-
     }
 
     /**
@@ -120,5 +121,15 @@ class PeopleRepository
         $peoples = $reservation->peoples()->paginate();
 
         return self::formatPagination($peoples);
+    }
+
+
+    /**
+     * @param User $user
+     * @return paginate
+     */
+    public static function getByUser(User $user): paginate
+    {
+        return $user->peoples()->paginate();
     }
 }

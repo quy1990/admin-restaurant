@@ -8,21 +8,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static truncate()
  * @method static paginate()
  * @method static findOrFail($id)
+ * @method static create($all)
  */
 class Invitation extends Model
 {
     protected $fillable = ['user_id', 'reservation_id', 'restaurant_id', 'message'];
-
-    public function format()
-    {
-        return [
-            'id'             => $this->id,
-            'user_id'        => (string)$this->user_id,
-            'restaurant_id'  => (string)$this->restaurant_id,
-            'reservation_id' => (string)$this->reservation_id,
-            'message'        => $this->message,
-        ];
-    }
 
     public function peoples()
     {
@@ -52,5 +42,16 @@ class Invitation extends Model
                 $item->delete();
             });
         });
+    }
+
+    public function format()
+    {
+        return [
+            'id'             => $this->id,
+            'user_id'        => (string)$this->user_id,
+            'restaurant_id'  => (string)$this->restaurant_id,
+            'reservation_id' => (string)$this->reservation_id,
+            'message'        => $this->message,
+        ];
     }
 }
