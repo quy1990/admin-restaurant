@@ -3,13 +3,22 @@
 namespace App\Providers;
 
 use App\Events\CustomerInviteEvent;
+use App\Events\CustomerRemoveInviteEvent;
+use App\Events\CustomerRemoveReserveEvent;
 use App\Events\CustomerReserveEvent;
 use App\Listeners\SendMailConfirmInvitationListener;
 use App\Listeners\SendMailConfirmReservationListener;
+use App\Listeners\SendMailRemoveInvitationListener;
+use App\Listeners\SendMailRemoveReservationListener;
+use App\Models\Invitation;
+use App\Models\ModelObservers\InvitationObserver;
+use App\Models\ModelObservers\ReservationObserver;
+use App\Models\ModelObservers\UserObserver;
+use App\Models\Reservation;
+use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -19,14 +28,20 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
+        Registered::class                 => [
             SendEmailVerificationNotification::class,
         ],
-        CustomerReserveEvent::class => [
+        CustomerReserveEvent::class       => [
             SendMailConfirmReservationListener::class,
         ],
-        CustomerInviteEvent::class => [
+        CustomerInviteEvent::class        => [
             SendMailConfirmInvitationListener::class,
+        ],
+        CustomerRemoveReserveEvent::class => [
+            SendMailRemoveReservationListener::class,
+        ],
+        CustomerRemoveInviteEvent::class  => [
+            SendMailRemoveInvitationListener::class,
         ]
     ];
 
@@ -39,6 +54,9 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        User::observe(new UserObserver);
+        Reservation::observe(new ReservationObserver);
+        Invitation::observe(new InvitationObserver);
         //
     }
 }
