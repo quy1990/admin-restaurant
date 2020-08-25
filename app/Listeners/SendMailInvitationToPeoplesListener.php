@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CustomerInvitedEvent;
+use App\Jobs\sendMailJob;
 use App\Mail\SendConfirmMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
@@ -35,7 +36,7 @@ class SendMailInvitationToPeoplesListener implements ShouldQueue
                 'to' => $people->email??$people->phone,
                 'messages' => $people->messages
             ];
-            Mail::to( $people->email)->send(new SendConfirmMail($details));
+            sendMailJob::dispatch($people, $details)->delay(now()->addSeconds(1));;
         }
     }
 }
