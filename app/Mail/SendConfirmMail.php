@@ -14,10 +14,10 @@ class SendConfirmMail extends Mailable
 
     /**
      * Create a new message instance.
-     *
+     * @param array $details
      * @return void
      */
-    public function __construct($details)
+    public function __construct(array $details)
     {
         $this->details = $details;
     }

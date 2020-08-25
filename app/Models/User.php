@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static paginate()
  * @method static findOrFail($id)
  * @method static find($id)
+ * @property string email
  */
 class User extends Authenticatable
 {

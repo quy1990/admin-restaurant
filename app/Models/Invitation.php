@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static paginate()
  * @method static findOrFail($id)
  * @method static create($all)
+ * @property string message
  */
 class Invitation extends Model
 {

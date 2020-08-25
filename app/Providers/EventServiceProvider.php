@@ -3,19 +3,15 @@
 namespace App\Providers;
 
 use App\Events\CustomerInvitedEvent;
+use App\Events\CustomerInvitedPeopleEvent;
 use App\Events\CustomerRemovedInvitationEvent;
 use App\Events\CustomerRemovedReservationEvent;
 use App\Events\CustomerReservedEvent;
-use App\Listeners\SendMailInvitationToPeoplesListener;
 use App\Listeners\SendMailConfirmReservationListener;
+use App\Listeners\SendMailInvitationToInvitorListener;
+use App\Listeners\SendMailToInvitedPeopleListener;
 use App\Listeners\SendMailRemoveInvitationListener;
 use App\Listeners\SendMailRemoveReservationListener;
-use App\Models\Invitation;
-use App\Models\ModelObservers\InvitationObserver;
-use App\Models\ModelObservers\ReservationObserver;
-use App\Models\ModelObservers\UserObserver;
-use App\Models\Reservation;
-use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -28,20 +24,23 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class                 => [
+        Registered::class                      => [
             SendEmailVerificationNotification::class,
         ],
-        CustomerReservedEvent::class => [
+        CustomerReservedEvent::class           => [
             SendMailConfirmReservationListener::class,
         ],
-        CustomerInvitedEvent::class => [
-            SendMailInvitationToPeoplesListener::class,
+        CustomerInvitedEvent::class            => [
+            SendMailInvitationToInvitorListener::class,
         ],
         CustomerRemovedReservationEvent::class => [
             SendMailRemoveReservationListener::class,
         ],
-        CustomerRemovedInvitationEvent::class => [
+        CustomerRemovedInvitationEvent::class  => [
             SendMailRemoveInvitationListener::class,
+        ],
+        CustomerInvitedPeopleEvent::class      => [
+            SendMailToInvitedPeopleListener::class,
         ]
     ];
 
@@ -54,9 +53,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        User::observe(new UserObserver);
-        Reservation::observe(new ReservationObserver);
-        Invitation::observe(new InvitationObserver);
         //
     }
 }

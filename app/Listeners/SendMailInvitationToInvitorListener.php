@@ -4,11 +4,9 @@ namespace App\Listeners;
 
 use App\Events\CustomerInvitedEvent;
 use App\Jobs\sendMailJob;
-use App\Mail\SendConfirmMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Mail;
 
-class SendMailInvitationToPeoplesListener implements ShouldQueue
+class SendMailInvitationToInvitorListener implements ShouldQueue
 {
     /**
      * Create the event listener.
