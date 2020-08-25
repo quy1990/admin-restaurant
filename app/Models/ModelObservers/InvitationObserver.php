@@ -2,8 +2,8 @@
 
 namespace App\Models\ModelObservers;
 
-use App\Events\CustomerInviteEvent;
-use App\Events\CustomerRemoveInviteEvent;
+use App\Events\CustomerInvitedEvent;
+use App\Events\CustomerRemovedInvitationEvent;
 use App\Models\Invitation;
 
 class InvitationObserver
@@ -16,12 +16,12 @@ class InvitationObserver
      */
     public function deleting(Invitation $invitation)
     {
-        event(new CustomerRemoveInviteEvent($invitation));
+        event(new CustomerRemovedInvitationEvent($invitation));
     }
 
     public function created(Invitation $invitation)
     {
-        event(new CustomerInviteEvent($invitation));
+        event(new CustomerInvitedEvent($invitation));
     }
 
     public function restoring(Invitation $invitation)

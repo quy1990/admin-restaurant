@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendConfirmMail extends Mailable
 {
@@ -30,7 +29,7 @@ class SendConfirmMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Confirm Reservation")
-            ->view('email.ConfirmEmail');
+        return $this->subject("You have a invitation")
+            ->view('email.InvitationEmail');
     }
 }

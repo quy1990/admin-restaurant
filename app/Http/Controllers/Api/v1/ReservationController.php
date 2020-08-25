@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Api\v1;
 
-use App\Events\CustomerReserveEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\Reservation;

@@ -2,29 +2,29 @@
 
 namespace App\Events;
 
-use App\Models\Reservation;
+use App\Models\Invitation;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerReserveEvent
+class CustomerInvitedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $reservation;
+    public $invitation;
 
     /**
      * Create a new event instance.
      *
      * @return void
      *
-     * @param Reservation $reservation
+     * @param Invitation $invitation
      */
-    public function __construct(Reservation $reservation)
+    public function __construct(Invitation $invitation)
     {
-        $this->reservation = $reservation;
+        $this->invitation = $invitation;
     }
 
     /**

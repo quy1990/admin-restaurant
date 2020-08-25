@@ -2,11 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\customerOrder;
-use App\Events\CustomerReserveEvent;
-use App\Mail\SubmitOrderMail;
+use App\Events\CustomerReservedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
 
 class SendMailConfirmReservationListener implements ShouldQueue
 {
@@ -23,17 +20,11 @@ class SendMailConfirmReservationListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CustomerReserveEvent $customerReserveEvent
+     * @param CustomerReservedEvent $customerReserveEvent
      * @return void
      */
-    public function handle(CustomerReserveEvent $customerReserveEvent)
+    public function handle(CustomerReservedEvent $customerReserveEvent)
     {
-        mail("nguyentuquy2008@gmail.com","My subject", "messages");
-//
-//        $owners = $customerReserveEvent->reservation->restaurant()->owners();
-//        foreach ($owners as $owner) {
-//            Mail::to("nguyentuquy2008@gmail.com")->send("sended mail");
-//        }
-
+        mail("nguyentuquy2008@gmail.com", "My subject", "messages");
     }
 }

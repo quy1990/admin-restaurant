@@ -2,8 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\CustomerInviteEvent;
-//use App\Mail\Mailer;
+use App\Events\CustomerInvitedEvent;
 use App\Mail\SendConfirmMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
@@ -23,17 +22,17 @@ class SendMailRemoveInvitationListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CustomerInviteEvent $customerInviteEvent
+     * @param CustomerInvitedEvent $customerInviteEvent
      * @return void
      */
-    public function handle(CustomerInviteEvent $customerInviteEvent)
+    public function handle(CustomerInvitedEvent $customerInviteEvent)
     {
         $peoples = $customerInviteEvent->invitation->peoples();
-        foreach ($peoples as $people){
+        foreach ($peoples as $people) {
             $details = [
-                'title' => 'You were invited in a Restaurant',
-                'from' => $people->user()->email,
-                'to' => $people->email??$people->phone,
+                'title'    => 'You were invited in a Restaurant',
+                'from'     => $people->user()->email,
+                'to'       => $people->email ?? $people->phone,
                 'messages' => $people->messages
             ];
         }

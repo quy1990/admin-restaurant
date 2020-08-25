@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\People;
-use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -37,15 +36,15 @@ class PeopleController extends Controller
         $data = array();
         $peoples = $request->get("peoples");
         foreach ($peoples as $people) {
-            $people['user_id']          = $request->get("user_id");
-            $people['restaurant_id']    = $request->get("restaurant_id");
-            $people['invitation_id']    = $request->get("invitation_id");
-            $people['reservation_id']   = $request->get("reservation_id");
+            $people['user_id'] = $request->get("user_id");
+            $people['restaurant_id'] = $request->get("restaurant_id");
+            $people['invitation_id'] = $request->get("invitation_id");
+            $people['reservation_id'] = $request->get("reservation_id");
             $data[] = app(PeopleRepository::class)->store($people);
         }
-        if(is_null($data)){
+        if (is_null($data)) {
             return response()->json($data, Httpstatus::HTTP_INTERNAL_SERVER_ERROR);
-        }else{
+        } else {
             return response()->json($data, Httpstatus::HTTP_CREATED);
         }
 
