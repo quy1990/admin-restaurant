@@ -7,7 +7,7 @@ use App\Mail\SendConfirmMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 
-class SendMailConfirmInvitationListener implements ShouldQueue
+class SendMailInvitationToPeoplesListener implements ShouldQueue
 {
     /**
      * Create the event listener.

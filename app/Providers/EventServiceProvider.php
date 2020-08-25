@@ -6,7 +6,7 @@ use App\Events\CustomerInvitedEvent;
 use App\Events\CustomerRemovedInvitationEvent;
 use App\Events\CustomerRemovedReservationEvent;
 use App\Events\CustomerReservedEvent;
-use App\Listeners\SendMailConfirmInvitationListener;
+use App\Listeners\SendMailInvitationToPeoplesListener;
 use App\Listeners\SendMailConfirmReservationListener;
 use App\Listeners\SendMailRemoveInvitationListener;
 use App\Listeners\SendMailRemoveReservationListener;
@@ -35,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
             SendMailConfirmReservationListener::class,
         ],
         CustomerInvitedEvent::class => [
-            SendMailConfirmInvitationListener::class,
+            SendMailInvitationToPeoplesListener::class,
         ],
         CustomerRemovedReservationEvent::class => [
             SendMailRemoveReservationListener::class,
