@@ -79,11 +79,11 @@ class ReservationRepository
     /**
      * get all Reservation by User
      * @param User $user
-     * @return paginate
+     * @return Collection
      */
-    public function getByUser(User $user): paginate
+    public function getByUser(User $user): Collection
     {
-        return $user->reservations()->paginate();
+        return self::formatPagination($user->reservations()->paginate());
     }
 
     /**

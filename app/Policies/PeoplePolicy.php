@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\People;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Http\Request;
 
 class PeoplePolicy
 {
@@ -52,7 +53,7 @@ class PeoplePolicy
      * @param User $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(User $user )
     {
         return $user->hasVerifiedEmail();
     }

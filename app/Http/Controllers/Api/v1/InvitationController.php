@@ -34,7 +34,7 @@ class InvitationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        return response()->json(app(InvitationRepository::class)->store($request)->format(), HttpStatus::HTTP_CREATED);
+        return response()->json(app(InvitationRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
 
     /**

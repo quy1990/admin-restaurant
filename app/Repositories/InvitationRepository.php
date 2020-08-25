@@ -54,11 +54,11 @@ class InvitationRepository
     /**
      * Create a new Invitation
      * @param $request
-     * @return Invitation
+     * @return array
      */
-    public function store($request): Invitation
+    public function store($request): array
     {
-        return Invitation::create($request->all());
+        return $this->user->invitations()->create($request->all())->format();
     }
 
     /**

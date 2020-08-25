@@ -69,10 +69,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation): JsonResponse
     {
-        event(new CustomerReserveEvent($reservation));
-
-        return response()
-            ->json(app(ReservationRepository::class)->update($request, $reservation->id), HttpStatus::HTTP_OK);
+        return response()->json(app(ReservationRepository::class)->update($request, $reservation->id), HttpStatus::HTTP_OK);
     }
 
     /**

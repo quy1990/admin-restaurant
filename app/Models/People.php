@@ -15,7 +15,7 @@ class People extends Model
 
     protected $table = "peoples";
 
-    protected $fillable = ['invitation_id', 'user_id', 'restaurant_id', 'email', 'phone'];
+    protected $fillable = ['invitation_id', 'user_id', 'restaurant_id', 'reservation_id', 'email', 'phone'];
     /**
      * @return array
      */

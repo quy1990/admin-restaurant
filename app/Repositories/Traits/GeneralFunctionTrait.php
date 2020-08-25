@@ -7,6 +7,9 @@ namespace App\Repositories\Traits;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * @property  user
+ */
 trait GeneralFunctionTrait
 {
     public function __construct(Request $request)

@@ -54,13 +54,12 @@ class PeopleRepository
 
     /**
      * Create a new People
-     * @param $request
+     * @param array $item
      * @return array
      */
-    public function store(Request $request): array
+    public function store(array $item): array
     {
-        $people = People::create($request->all());
-        return self::show($people->id);
+        return $this->user->peoples()->create($item)->format();
     }
 
     /**
@@ -69,6 +68,7 @@ class PeopleRepository
      */
     public function storeAnItem(array $item): array
     {
+        dd($item);
         $people = new People();
         $people->email = $item['email'];
         $people->phone = $item['phone'];

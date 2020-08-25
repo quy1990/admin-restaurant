@@ -34,20 +34,19 @@ class PeopleController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $invitedInformations = $request->invitedInformations;
-        $peoples = [];
-        foreach ($invitedInformations as $invitedInformation) {
-            $invitedInformation['invitation_id'] = $request->invitation_id;
-            $invitedInformation['user_id'] = $request->user_id;
-            $peoples[] = app(PeopleRepository::class)->storeAnItem($invitedInformation);
+        $data = array();
+        $peoples = $request->get("peoples");
+        foreach ($peoples as $people) {
+            $people['user_id']          = $request->get("user_id");
+            $people['restaurant_id']    = $request->get("restaurant_id");
+            $people['invitation_id']    = $request->get("invitation_id");
+            $people['reservation_id']   = $request->get("reservation_id");
+            $data[] = app(PeopleRepository::class)->store($people);
         }
-        $reservation = InvitationRepository::get($request->invitation_id)->reservation;
-        if ($this->user->id == $reservation->user_id) {
-            return response()->json(
-                ['data' => app(PeopleRepository::class)->getByInvitationId($request->invitation_id)],
-                Httpstatus::HTTP_CREATED);
-        } else {
-            return Response()->json('Error', 200);
+        if(is_null($data)){
+            return response()->json($data, Httpstatus::HTTP_INTERNAL_SERVER_ERROR);
+        }else{
+            return response()->json($data, Httpstatus::HTTP_CREATED);
         }
 
     }

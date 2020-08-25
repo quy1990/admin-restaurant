@@ -98,11 +98,11 @@ class RestaurantRepository
 
     /**
      * @param User $user
-     * @return paginate
+     * @return Collection
      */
-    public function getByUser(User $user): paginate
+    public function getByUser(User $user): Collection
     {
-        return $user->ownedRestaurants()->paginate();
+        return self::formatPagination($user->ownedRestaurants()->paginate());
     }
 
     /**

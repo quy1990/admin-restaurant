@@ -1084,6 +1084,7 @@ sequence|table|34105|34107|1
     </table>
     <table id="54" parent="15" name="peoples">
       <ObjectId>34096</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>200196</StateNumber>
     </table>
