@@ -2,7 +2,7 @@
 
 namespace App\Models\ModelObservers;
 
-use App\Events\CustomerReservedEvent;
+use App\Events\CreateAReservationEvent;
 use App\Models\Reservation;
 
 class ReservationObserver
@@ -20,7 +20,7 @@ class ReservationObserver
 
     public function created(Reservation $reservation)
     {
-        event(new CustomerReservedEvent($reservation));
+        event(new CreateAReservationEvent($reservation));
     }
 
     public function restoring(Reservation $reservation)

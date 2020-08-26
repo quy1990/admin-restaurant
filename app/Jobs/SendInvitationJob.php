@@ -2,24 +2,27 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendConfirmMail;
+use App\Mail\SendInvitationMail;
+use App\Models\People;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
-class sendMailJob implements ShouldQueue
+class SendInvitationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $people, $details;
     /**
      * Create a new job instance.
-     *
+     * @param People $people
+     * @param array $details
      * @return void
      */
-    public function __construct($people, $details)
+    public function __construct(People $people, array $details)
     {
         $this->people = $people;
         $this->details = $details;
@@ -32,6 +35,6 @@ class sendMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to( $this->people->email)->send(new SendConfirmMail($this->details));
+        Mail::to( $this->people->email)->send(new SendInvitationMail($this->details));
     }
 }

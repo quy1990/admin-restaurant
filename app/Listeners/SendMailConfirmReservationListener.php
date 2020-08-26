@@ -2,7 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\CustomerReservedEvent;
+use App\Events\CreateAReservationEvent;
+use App\Jobs\SendConfirmReservationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendMailConfirmReservationListener implements ShouldQueue
@@ -20,11 +21,18 @@ class SendMailConfirmReservationListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CustomerReservedEvent $customerReserveEvent
+     * @param CreateAReservationEvent $customerCreateAReservationEvent
      * @return void
      */
-    public function handle(CustomerReservedEvent $customerReserveEvent)
+    public function handle(CreateAReservationEvent $customerCreateAReservationEvent)
     {
-        mail("nguyentuquy2008@gmail.com", "My subject", "messages");
+        $customerCreateAReservationEvent->reservation->restaurant();
+        $details = [
+            'title'    => 'Your Restaurant have a new Reservation',
+            'from'     => $customerCreateAReservationEvent->reservation->user->email,
+            'to'       => 10,
+            'messages' => "Your Restaurant have a new Reservation"
+        ];
+        SendConfirmReservationJob::dispatch($customerCreateAReservationEvent->reservation, $details)->delay(now());
     }
 }

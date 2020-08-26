@@ -2,29 +2,29 @@
 
 namespace App\Events;
 
-use App\Models\Reservation;
+use App\Models\People;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerReservedEvent
+class CreateAPeopleEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $reservation;
+    public $people;
 
     /**
      * Create a new event instance.
      *
+     * @param People $people
      * @return void
      *
-     * @param Reservation $reservation
      */
-    public function __construct(Reservation $reservation)
+    public function __construct(People $people)
     {
-        $this->reservation = $reservation;
+        $this->people = $people;
     }
 
     /**

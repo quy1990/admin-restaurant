@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CustomerInvitedPeopleEvent;
-use App\Mail\SendConfirmMail;
+use App\Mail\SendInvitationMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 
@@ -33,6 +33,6 @@ class SendMailToInvitedPeopleListener implements ShouldQueue
             'to'       => $customerInvitedPeopleEvent->people->email ?? $customerInvitedPeopleEvent->people->phone,
             'messages' => $customerInvitedPeopleEvent->people->invitation->message
         ];
-        Mail::to($customerInvitedPeopleEvent->people->email)->send(new SendConfirmMail($details));
+        Mail::to($customerInvitedPeopleEvent->people->email)->send(new SendInvitationMail($details));
     }
 }
