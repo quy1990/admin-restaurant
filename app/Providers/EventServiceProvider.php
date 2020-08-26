@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Events\CreateAnInvitationEvent;
+use App\Events\CreateAPeopleEvent;
+use App\Events\CreateAReservationEvent;
+use App\Events\CustomerRemovedInvitationEvent;
+use App\Events\CustomerRemovedReservationEvent;
+use App\Listeners\SendMailConfirmInvitationListener;
+use App\Listeners\SendMailConfirmPeopleListener;
+use App\Listeners\SendMailConfirmReservationListener;
+use App\Listeners\SendMailRemoveInvitationListener;
+use App\Listeners\SendMailRemoveReservationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -14,24 +24,24 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
+        Registered::class                      => [
             SendEmailVerificationNotification::class,
         ],
-        //        CreateAReservationEvent::class => [
-        //            SendMailConfirmReservationListener::class,
-        //        ],
-        //        CreateAnInvitationEvent::class => [
-        //            SendMailConfirmInvitationListener::class,
-        //        ],
-        //        CustomerRemovedReservationEvent::class => [
-        //            SendMailRemoveReservationListener::class,
-        //        ],
-        //        CustomerRemovedInvitationEvent::class  => [
-        //            SendMailRemoveInvitationListener::class,
-        //        ],
-        //        CustomerInvitedPeopleEvent::class      => [
-        //            SendMailToInvitedPeopleListener::class,
-        //        ]
+        CreateAReservationEvent::class         => [
+            SendMailConfirmReservationListener::class,
+        ],
+        CreateAnInvitationEvent::class         => [
+            SendMailConfirmInvitationListener::class,
+        ],
+        CustomerRemovedReservationEvent::class => [
+            SendMailRemoveReservationListener::class,
+        ],
+        CustomerRemovedInvitationEvent::class  => [
+            SendMailRemoveInvitationListener::class,
+        ],
+        CreateAPeopleEvent::class              => [
+            SendMailConfirmPeopleListener::class,
+        ]
     ];
 
     /**
