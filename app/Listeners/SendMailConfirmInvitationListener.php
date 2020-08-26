@@ -26,18 +26,6 @@ class SendMailConfirmInvitationListener implements ShouldQueue
      */
     public function handle(CreateAnInvitationEvent $customerInviteEvent)
     {
-        //send email to someone
-//        $peoples = $customerInviteEvent->invitation->peoples();
-//        foreach ($peoples as $people){
-//            $details = [
-//                'title' => 'You were invited to go a Restaurant',
-//                'from' => $people->user()->email,
-//                'to' => $people->email??$people->phone,
-//                'messages' => $people->messages
-//            ];
-//            sendInvitationJob::dispatch($people, $details)->delay(now());;
-//        }
-
         //send email to customer, who invited someone
         $invitation = $customerInviteEvent->invitation;
         $details = [

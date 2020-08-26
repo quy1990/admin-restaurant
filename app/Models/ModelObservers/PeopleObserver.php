@@ -2,7 +2,7 @@
 
 namespace App\Models\ModelObservers;
 
-use App\Events\CustomerInvitedPeopleEvent;
+use App\Events\CreateAPeopleEvent;
 use App\Models\People;
 
 class PeopleObserver
@@ -20,7 +20,7 @@ class PeopleObserver
 
     public function created(People $people)
     {
-        event(new CustomerInvitedPeopleEvent($people));
+        event(new CreateAPeopleEvent($people));
     }
 
     public function restoring(People $people)
