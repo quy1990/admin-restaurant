@@ -14,7 +14,7 @@ trait GeneralFunctionTrait
 {
     public function __construct(Request $request)
     {
-        $this->user = User::find($request->user()->id);
+        $this->user = $request->user();
     }
 
     /**

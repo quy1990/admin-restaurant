@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\User;
+use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Pagination\LengthAwarePaginator as paginate;

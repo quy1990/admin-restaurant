@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
@@ -98,11 +98,11 @@ class RestaurantRepository
 
     /**
      * @param User $user
-     * @return Collection
+     * @return paginate
      */
-    public function getByUser(User $user): Collection
+    public function getByUser(User $user): paginate
     {
-        return self::formatPagination($user->ownedRestaurants()->paginate());
+        return $user->ownedRestaurants()->paginate();
     }
 
     /**

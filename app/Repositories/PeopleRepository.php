@@ -5,11 +5,10 @@ namespace App\Repositories;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
-use App\Models\User;
+use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 /**
@@ -60,24 +59,6 @@ class PeopleRepository
     public function store(array $item): array
     {
         return $this->user->peoples()->create($item)->format();
-    }
-
-    /**
-     * @param array $item
-     * @return array
-     */
-    public function storeAnItem(array $item): array
-    {
-        dd($item);
-        $people = new People();
-        $people->email = $item['email'];
-        $people->phone = $item['phone'];
-        $people->invitation_id = $item['invitation_id'];
-        $people->user_id = $item['user_id'];
-        $people->restaurant_id = $item['restaurant_id'];
-        $people->reservation_id = $item['reservation_id'];
-        $people->save();
-        return self::show($people->id);
     }
 
     /**
