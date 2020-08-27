@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\CreateAnInvitationEvent;
-use App\Events\CreateAPeopleEvent;
-use App\Events\CreateAReservationEvent;
+use App\Events\Created\CreateAnInvitationEvent;
+use App\Events\Created\CreateAPeopleEvent;
+use App\Events\Created\CreateAReservationEvent;
 use App\Events\CustomerRemovedInvitationEvent;
 use App\Events\CustomerRemovedReservationEvent;
 use App\Listeners\SendMailConfirmInvitationListener;

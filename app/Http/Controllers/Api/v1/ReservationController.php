@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\Models\User as Customer;
 use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
@@ -42,8 +41,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $customer = Customer::find(auth()->user()->id);
-        return response()->json(app(ReservationRepository::class)->store($request, $customer),
+        return response()->json(app(ReservationRepository::class)->store($request, auth()->user()),
             HttpStatus::HTTP_CREATED);
     }
 

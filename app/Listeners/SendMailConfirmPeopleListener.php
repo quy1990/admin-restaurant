@@ -2,7 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\CreateAPeopleEvent;
+
+use App\Events\Created\CreateAPeopleEvent;
 use App\Jobs\SendConfirmPeopleJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

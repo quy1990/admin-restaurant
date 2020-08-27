@@ -18,12 +18,12 @@ trait GeneralFunctionTrait
     }
 
     /**
-     * @param $request
+     * @param Request $request
      * @param $id
      * @return array
      */
-    public function update($request, int $id): array
+    public function update(Request $request, int $id): array
     {
-        return self::get($id)->update($request->all())->format();
+        return tap(self::get($id))->update($request->all())->format();
     }
 }

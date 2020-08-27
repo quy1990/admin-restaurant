@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\CreateAReservationEvent;
+use App\Events\Created\CreateAReservationEvent;
 use App\Jobs\SendConfirmReservationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\CreateAnInvitationEvent;
+use App\Events\Created\CreateAnInvitationEvent;
 use App\Jobs\SendConfirmInvitationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

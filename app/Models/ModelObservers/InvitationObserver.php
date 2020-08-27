@@ -2,7 +2,7 @@
 
 namespace App\Models\ModelObservers;
 
-use App\Events\CreateAnInvitationEvent;
+use App\Events\Created\CreateAnInvitationEvent;
 use App\Events\CustomerRemovedInvitationEvent;
 use App\Models\Invitation;
 

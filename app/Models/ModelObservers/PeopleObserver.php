@@ -2,7 +2,8 @@
 
 namespace App\Models\ModelObservers;
 
-use App\Events\CreateAPeopleEvent;
+
+use App\Events\Created\CreateAPeopleEvent;
 use App\Models\People;
 
 class PeopleObserver
