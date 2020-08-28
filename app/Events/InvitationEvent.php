@@ -1,29 +1,34 @@
 <?php
 
-namespace App\Events\Created;
-use App\Models\People;
+namespace App\Events;
+use App\Models\Invitation;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CreateAPeopleEvent
+class InvitationEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $people;
+    public $invitation, $action;
+
+    public function __construct()
+    {
+
+    }
 
     /**
-     * Create a new event instance.
-     *
-     * @param People $people
-     * @return void
-     *
+     * @param Invitation $invitation
+     * @param int $action
+     * @return InvitationEvent
      */
-    public function __construct(People $people)
+    public function setParams(Invitation $invitation, int $action)
     {
-        $this->people = $people;
+        $this->invitation = $invitation;
+        $this->action = $action;
+        return $this;
     }
 
     /**

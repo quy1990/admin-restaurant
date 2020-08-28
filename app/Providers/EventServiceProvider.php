@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\Created\CreateAnInvitationEvent;
-use App\Events\Created\CreateAPeopleEvent;
-use App\Events\Created\CreateAReservationEvent;
-use App\Events\CustomerRemovedInvitationEvent;
-use App\Events\CustomerRemovedReservationEvent;
+use App\Events\InvitationEvent;
+use App\Events\PeopleEvent;
+use App\Events\ReservationEvent;
 use App\Listeners\SendMailConfirmInvitationListener;
 use App\Listeners\SendMailConfirmPeopleListener;
 use App\Listeners\SendMailConfirmReservationListener;
@@ -27,19 +25,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class                      => [
             SendEmailVerificationNotification::class,
         ],
-        CreateAReservationEvent::class         => [
+        ReservationEvent::class => [
             SendMailConfirmReservationListener::class,
         ],
-        CreateAnInvitationEvent::class         => [
+        InvitationEvent::class => [
             SendMailConfirmInvitationListener::class,
         ],
-        CustomerRemovedReservationEvent::class => [
-            SendMailRemoveReservationListener::class,
-        ],
-        CustomerRemovedInvitationEvent::class  => [
-            SendMailRemoveInvitationListener::class,
-        ],
-        CreateAPeopleEvent::class              => [
+        PeopleEvent::class => [
             SendMailConfirmPeopleListener::class,
         ]
     ];

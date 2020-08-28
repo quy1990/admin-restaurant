@@ -1033,6 +1033,7 @@ sequence|table|34105|34107|1
     </sequence>
     <table id="44" parent="15" name="failed_jobs">
       <ObjectId>34004</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>default</Owner>
       <StateNumber>200171</StateNumber>
     </table>
