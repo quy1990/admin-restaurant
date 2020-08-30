@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\generalFunction;
 use Tests\TestCase;
 
 /**
@@ -19,7 +20,7 @@ use Tests\TestCase;
  */
 class RestaurantControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, generalFunction;
 
     /*
      * Run All TestCase
@@ -29,28 +30,6 @@ class RestaurantControllerTest extends TestCase
     protected $endPoint = "/api/v1/restaurants";
     protected $table = "restaurants";
     protected $rowToCheck = 10;
-
-    /**
-     * docker exec -it app ./vendor/bin/phpunit --filter non_authenticated_users_cannot_access_the_following_endpoint_for_restaurants
-     * @test
-     */
-    public function non_authenticated_users_cannot_access_the_following_endpoint_for_restaurants()
-    {
-        $index = $this->json("GET", $this->endPoint);
-        $index->assertStatus(401);
-
-        $store = $this->json("POST", $this->endPoint);
-        $store->assertStatus(401);
-
-        $show = $this->json("GET", $this->endPoint . "/-1");
-        $show->assertStatus(401);
-
-        $update = $this->json("PUT", $this->endPoint . "/-1");
-        $update->assertStatus(401);
-
-        $destroy = $this->json("DELETE", $this->endPoint . "/-1");
-        $destroy->assertStatus(401);
-    }
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_restaurants
@@ -243,12 +222,12 @@ class RestaurantControllerTest extends TestCase
     public function can_delete_a_restaurant()
     {
         $this->withoutExceptionHandling();
-        $Restaurant = factory(Restaurant::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
         $user = factory(User::class)->create();
-        $user->ownedRestaurants()->sync($Restaurant->id);
+        $user->ownedRestaurants()->sync($restaurant->id);
 
         $response = $this->actingAs($user, 'api')
-            ->json("DELETE", $this->endPoint . '/' . $Restaurant->id);
+            ->json("DELETE", $this->endPoint . '/' . $restaurant->id);
 
         $response
             ->assertStatus(204)
@@ -256,7 +235,7 @@ class RestaurantControllerTest extends TestCase
 
         $this
             ->assertDatabaseMissing($this->table, [
-                'id' => $Restaurant->id
+                'id' => $restaurant->id
             ]);
     }
 

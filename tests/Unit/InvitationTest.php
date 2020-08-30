@@ -6,7 +6,7 @@ use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\People;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -57,6 +57,7 @@ class InvitationTest extends TestCase
     {
         $user = factory(User::class)->create();
         $restaurant = factory(Restaurant::class)->create();
+        $user->ownedRestaurants()->sync($restaurant->id);
 
         $reservation = factory(Reservation::class)->create([
             'restaurant_id' => $restaurant->id,

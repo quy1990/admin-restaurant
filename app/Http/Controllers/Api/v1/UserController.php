@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\User;
 use App\Repositories\InvitationRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\RestaurantRepository;

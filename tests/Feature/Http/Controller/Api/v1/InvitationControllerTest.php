@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\generalFunction;
 use Tests\TestCase;
 
 /**
@@ -19,7 +20,7 @@ use Tests\TestCase;
  */
 class InvitationControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, generalFunction;
 
     /*
      * Run All TestCase
@@ -28,28 +29,6 @@ class InvitationControllerTest extends TestCase
 
     protected $endPoint = "/api/v1/invitations";
     protected $table = "invitations";
-
-    /**
-     * docker exec -it app ./vendor/bin/phpunit --filter non_authenticated_users_cannot_access_the_following_endpoint_for_invitations
-     * @test
-     */
-    public function non_authenticated_users_cannot_access_the_following_endpoint_for_invitations()
-    {
-        $index = $this->json("GET", $this->endPoint);
-        $index->assertStatus(401);
-
-        $store = $this->json("POST", $this->endPoint);
-        $store->assertStatus(401);
-
-        $show = $this->json("GET", $this->endPoint . "/-1");
-        $show->assertStatus(401);
-
-        $update = $this->json("PUT", $this->endPoint . "/-1");
-        $update->assertStatus(401);
-
-        $destroy = $this->json("DELETE", $this->endPoint . "/-1");
-        $destroy->assertStatus(401);
-    }
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_invitations
