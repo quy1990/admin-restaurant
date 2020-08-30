@@ -26,9 +26,7 @@ class UserControllerTest extends TestCase
      * */
 
     protected $endPoint = "/api/v1/users";
-
     protected $table = "invitations";
-
     protected $rowToCheck = 100;
 
     /**

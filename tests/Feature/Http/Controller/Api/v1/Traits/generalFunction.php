@@ -1,10 +1,10 @@
 <?php
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controller\Api\v1\Traits;
+
 trait generalFunction {
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter non_authenticated_users_cannot_access_the_following_endpoint_for_restaurants
-     * @test
      */
     public function non_authenticated_users_cannot_access_the_following_endpoint()
     {

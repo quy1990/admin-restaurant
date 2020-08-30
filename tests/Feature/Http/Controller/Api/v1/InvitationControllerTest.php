@@ -8,7 +8,7 @@ use App\Models\Restaurant;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Feature\generalFunction;
+use Tests\Feature\Http\Controller\Api\v1\Traits\generalFunction;
 use Tests\TestCase;
 
 /**
