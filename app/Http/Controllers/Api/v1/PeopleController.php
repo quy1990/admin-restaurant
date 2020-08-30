@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePeopleRequest;
 use App\Models\People;
 use App\Repositories\PeopleRepository;
 use Illuminate\Http\JsonResponse;
@@ -64,11 +65,11 @@ class PeopleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdatePeopleRequest $request
      * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(UpdatePeopleRequest $request, int $id): JsonResponse
     {
         return response()->json(app(PeopleRepository::class)->update($request, $id), Httpstatus::HTTP_OK);
     }
@@ -77,6 +78,7 @@ class PeopleController extends Controller
      * Remove the specified resource from storage.
      * @param People $people
      * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy(People $people): JsonResponse
     {
