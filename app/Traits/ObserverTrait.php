@@ -46,12 +46,11 @@ trait ObserverTrait
 //    {
 //        event($this->event->setParams($object,  Action::DELETING));
 //    }
-
-    public function deleted($object)
-    {
-        event($this->event->setParams($object, Action::DELETED));
-    }
-
+//
+//    public function deleted($object)
+//    {
+//        event($this->event->setParams($object, Action::DELETED));
+//    }
 //    public function restoring($object)
 //    {
 //        event($this->event->setParams($object,  Action::RESTORING));
