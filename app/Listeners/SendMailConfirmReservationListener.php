@@ -29,7 +29,8 @@ class SendMailConfirmReservationListener implements ShouldQueue
     {
         $details = [
             'title'    => 'Your Restaurant have a new Reservation',
-            'from'     => $event->reservation->user->email,
+            //'from'     => $event->reservation->user->email,
+            'from'     => 'nguyentuquy2008@gmail.com',
             'to'       => 10,
             'messages' => "Your Restaurant have a new Reservation"
         ];

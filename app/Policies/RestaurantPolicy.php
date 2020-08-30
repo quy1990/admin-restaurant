@@ -80,6 +80,7 @@ class RestaurantPolicy
     public function delete(User $user, Restaurant $restaurant)
     {
         return $this->haveRightOn($user, $restaurant);
+        //return true;
     }
 
     /**
@@ -115,7 +116,6 @@ class RestaurantPolicy
      */
     public function haveRightOn(User $user, Restaurant $restaurant)
     {
-        return in_array($restaurant->id,
-            Customer::find($user->id)->ownedRestaurants()->pluck('restaurant_id')->toArray());
+        return in_array($restaurant->id, $user->ownedRestaurants()->pluck('restaurant_id')->toArray());
     }
 }
