@@ -9,7 +9,7 @@ on:
 jobs:
   laravel-tests:
 
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     container: quynt/laradock_workspace
   
     steps:
