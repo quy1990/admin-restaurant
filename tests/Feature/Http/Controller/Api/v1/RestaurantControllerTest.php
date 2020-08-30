@@ -243,12 +243,12 @@ class RestaurantControllerTest extends TestCase
     public function can_delete_a_restaurant()
     {
         $this->withoutExceptionHandling();
-        $Restaurant = factory(Restaurant::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
         $user = factory(User::class)->create();
-        $user->ownedRestaurants()->sync($Restaurant->id);
+        $user->ownedRestaurants()->sync($restaurant->id);
 
         $response = $this->actingAs($user, 'api')
-            ->json("DELETE", $this->endPoint . '/' . $Restaurant->id);
+            ->json("DELETE", $this->endPoint . '/' . $restaurant->id);
 
         $response
             ->assertStatus(204)
@@ -256,7 +256,7 @@ class RestaurantControllerTest extends TestCase
 
         $this
             ->assertDatabaseMissing($this->table, [
-                'id' => $Restaurant->id
+                'id' => $restaurant->id
             ]);
     }
 
