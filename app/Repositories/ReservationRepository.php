@@ -5,10 +5,9 @@ namespace App\Repositories;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator as paginate;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -29,7 +28,7 @@ class ReservationRepository
      */
     public function getAll(): Collection
     {
-        $reservations = $this->user->isSuperAdmin() ? Reservation::paginate() : self::getByUser($this->user);
+        $reservations = $this->user->isSuperAdmin() ? Reservation::paginate() : $this->user->reservations()->paginate();
         return self::formatPagination($reservations);
 
     }
@@ -79,11 +78,11 @@ class ReservationRepository
     /**
      * get all Reservation by User
      * @param User $user
-     * @return paginate
+     * @return Collection
      */
-    public function getByUser(User $user): paginate
+    public function getByUser(User $user): Collection
     {
-        return $user->reservations()->paginate();
+        return self::formatPagination($user->reservations()->paginate());
     }
 
     /**

@@ -4,7 +4,8 @@ namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -37,39 +38,26 @@ class UserControllerTest extends TestCase
     public function user_cans_get_his_restaurants()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
         $restaurants = factory(Restaurant::class, $this->rowToCheck)->create();
         $user->ownedRestaurants()->sync($restaurants->pluck('id'));
 
         $response = $this->actingAs($user, 'api')
-            ->json("GET", $this->endPoint . '/restaurants');
+            ->getJson($this->endPoint . '/' . $user->id . '/restaurants');
 
         $response
             ->assertStatus(200);
 
         $response
             ->assertJsonStructure([
-                'data' => [
-                    '*' => [
-                        'id',
-                        'name',
-                        'address',
-                        'email',
-                        'phone',
-                        'seat_number'
-                    ]
-                ],
-                "first_page_url",
-                "from",
-                "last_page",
-                "last_page_url",
-                "next_page_url",
-                "path",
-                "per_page",
-                "prev_page_url",
-                "to",
-                "total"
+                '*' => [
+                    'id',
+                    'name',
+                    'address',
+                    'email',
+                    'phone',
+                    'seat_number'
+                ]
             ]);
         for ($i = 0; $i < $this->rowToCheck; $i++) {
             $this->assertDatabaseHas("restaurants", [
@@ -90,37 +78,24 @@ class UserControllerTest extends TestCase
     public function user_cans_get_his_reservations()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
-        $reservations = factory(Reservation::class, $this->rowToCheck)->create(['user_id' => $user->id]);
+        $reservations = factory(Reservation::class, $this->rowToCheck)->create($this->generateObject($user));
 
         $response = $this->actingAs($user, 'api')
-            ->json("GET", $this->endPoint . '/reservations');
+            ->json("GET", $this->endPoint . '/' . $user->id . '/reservations');
 
         $response
             ->assertStatus(200);
 
         $response
             ->assertJsonStructure([
-                'data' => [
-                    '*' => [
-                        'id',
-                        'restaurant_id',
-                        'user_id',
-                        'number_people',
-                        'booking_time',
-                    ]
-                ],
-                "first_page_url",
-                "from",
-                "last_page",
-                "last_page_url",
-                "next_page_url",
-                "path",
-                "per_page",
-                "prev_page_url",
-                "to",
-                "total"
+                '*' => [
+                    'id',
+                    'restaurant_id',
+                    'user_id',
+                    'number_people',
+                    'booking_time',
+                ]
             ]);
         for ($i = 0; $i < $this->rowToCheck; $i++) {
             $this->assertDatabaseHas("reservations", [
@@ -131,5 +106,16 @@ class UserControllerTest extends TestCase
                 'booking_time'  => $reservations[$i]['booking_time'],
             ]);
         }
+    }
+
+    protected function generateObject(User $user)
+    {
+        $restaurant = factory(Restaurant::class)->create();
+        return [
+            'restaurant_id' => $restaurant->id,
+            'user_id'       => $user->id,
+            'booking_time'  => Carbon::now()->format('Y-m-d H:i:s'),
+            'number_people' => random_int(30, 40),
+        ];
     }
 }
