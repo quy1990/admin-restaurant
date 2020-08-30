@@ -2,7 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\CustomerInvitedPeopleEvent;
+
+use App\Events\PeopleEvent;
 use App\Mail\SendInvitationMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
@@ -22,17 +23,17 @@ class SendMailToInvitedPeopleListener implements ShouldQueue
 
     /**
      * Handle the event.
-     * @param CustomerInvitedPeopleEvent $customerInvitedPeopleEvent
+     * @param PeopleEvent $event
      * @return void
      */
-    public function handle(CustomerInvitedPeopleEvent $customerInvitedPeopleEvent)
+    public function handle(PeopleEvent $event)
     {
         $details = [
             'title'    => 'You were invited to go a Restaurant',
-            'from'     => $customerInvitedPeopleEvent->people->user->email,
-            'to'       => $customerInvitedPeopleEvent->people->email ?? $customerInvitedPeopleEvent->people->phone,
-            'messages' => $customerInvitedPeopleEvent->people->invitation->message
+            'from'     => $event->people->user->email,
+            'to'       => $event->people->email ?? $event->people->phone,
+            'messages' => $event->people->invitation->message
         ];
-        Mail::to($customerInvitedPeopleEvent->people->email)->send(new SendInvitationMail($details));
+        Mail::to($event->people->email)->send(new SendInvitationMail($details));
     }
 }

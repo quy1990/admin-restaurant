@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\ModelObservers;
+namespace App\Observers;
 
-use App\Models\User;
+use App\User;
 
 class UserObserver
 {

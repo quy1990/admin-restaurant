@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\Created\CreateAnInvitationEvent;
+use App\Events\InvitationEvent;
 use App\Jobs\SendConfirmInvitationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -21,13 +21,13 @@ class SendMailConfirmInvitationListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CreateAnInvitationEvent $customerInviteEvent
+     * @param InvitationEvent $event
      * @return void
      */
-    public function handle(CreateAnInvitationEvent $customerInviteEvent)
+    public function handle(InvitationEvent $event)
     {
         //send email to customer, who invited someone
-        $invitation = $customerInviteEvent->invitation;
+        $invitation = $event->invitation;
         $details = [
             'title'    => 'You made an Invitation to go a Restaurant',
             'from'     => $invitation->user->email,

@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 
-use App\Events\Created\CreateAPeopleEvent;
+use App\Events\PeopleEvent;
 use App\Jobs\SendConfirmPeopleJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -22,18 +22,18 @@ class SendMailConfirmPeopleListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CreateAPeopleEvent $createAPeopleEvent
+     * @param PeopleEvent $peopleEvent
      * @return void
      */
-    public function handle(CreateAPeopleEvent $createAPeopleEvent)
+    public function handle(PeopleEvent $peopleEvent)
     {
         $details = [
             'title'    => 'You made an Invitation to go a Restaurant',
-            'from'     => $createAPeopleEvent->people->user->email,
+            'from'     => $peopleEvent->people->user->email,
             'to'       => 10,
-            'messages' => $createAPeopleEvent->people->invitation->message
+            'messages' => $peopleEvent->people->invitation->message
         ];
 
-        SendConfirmPeopleJob::dispatch($createAPeopleEvent->people, $details)->delay(now());;
+        SendConfirmPeopleJob::dispatch($peopleEvent->people, $details)->delay(now());;
     }
 }

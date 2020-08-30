@@ -5,7 +5,7 @@ use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -67,18 +67,14 @@ class RestaurantControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [
-                    '*' => [
-                        'id',
-                        'name',
-                        'address',
-                        'email',
-                        'phone',
-                        'seat_number',
-                    ]
-                ],
-                "first_page_url", "from", "last_page", "last_page_url", "next_page_url",
-                "path", "per_page", "prev_page_url", "to", "total"
+                '*' => [
+                    'id',
+                    'name',
+                    'address',
+                    'email',
+                    'phone',
+                    'seat_number',
+                ]
             ]);
 
     }
@@ -146,18 +142,18 @@ class RestaurantControllerTest extends TestCase
     public function can_return_a_restaurant()
     {
         $user = factory(User::class)->create();
-        $object = factory(Restaurant::class)->create();
-
-        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $object->id);
+        $restaurant = factory(Restaurant::class)->create();
+        $user->ownedRestaurants()->attach($restaurant->id);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id);
 
         $response->assertStatus(200)
             ->assertExactJson([
-                'id'          => $object->id,
-                'name'        => $object->name,
-                'address'     => $object->address,
-                'email'       => $object->email,
-                'phone'       => $object->phone,
-                'seat_number' => (string)$object->seat_number,
+                'id'          => $restaurant->id,
+                'name'        => $restaurant->name,
+                'address'     => $restaurant->address,
+                'email'       => $restaurant->email,
+                'phone'       => $restaurant->phone,
+                'seat_number' => (string)$restaurant->seat_number,
             ]);
     }
 
@@ -246,17 +242,21 @@ class RestaurantControllerTest extends TestCase
      */
     public function can_delete_a_restaurant()
     {
-        $object = factory(Restaurant::class)->create();
+        $this->withoutExceptionHandling();
+        $Restaurant = factory(Restaurant::class)->create();
         $user = factory(User::class)->create();
+        $user->ownedRestaurants()->sync($Restaurant->id);
+
         $response = $this->actingAs($user, 'api')
-            ->json("DELETE", $this->endPoint . '/' . $object->id);
+            ->json("DELETE", $this->endPoint . '/' . $Restaurant->id);
 
         $response
             ->assertStatus(204)
             ->assertSee(null);
+
         $this
             ->assertDatabaseMissing($this->table, [
-                'id' => $object->id
+                'id' => $Restaurant->id
             ]);
     }
 
@@ -278,17 +278,13 @@ class RestaurantControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [
-                    '*' => [
-                        'id',
-                        'restaurant_id',
-                        'user_id',
-                        'number_people',
-                        'booking_time',
-                    ]
-                ],
-                "first_page_url", "from", "last_page", "last_page_url", "next_page_url",
-                "path", "per_page", "prev_page_url", "to", "total"
+                '*' => [
+                    'id',
+                    'restaurant_id',
+                    'user_id',
+                    'number_people',
+                    'booking_time',
+                ]
             ]);
     }
 

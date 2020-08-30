@@ -66,24 +66,14 @@ class InvitationControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [
                     '*' => [
                         'id',
+                        "user_id",
+                        "restaurant_id",
                         'reservation_id',
                         'message',
                     ]
-                ],
-                "first_page_url",
-                "from",
-                "last_page",
-                "last_page_url",
-                "next_page_url",
-                "path",
-                "per_page",
-                "prev_page_url",
-                "to",
-                "total"
-            ]);
+                ]);
 
     }
 
@@ -97,7 +87,7 @@ class InvitationControllerTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $object = $this->generateObject($user);
+        $object = $this->generateInvitation($user);
 
         $response = $this->actingAs($user, 'api')
             ->json('POST', $this->endPoint, $object);
@@ -105,9 +95,11 @@ class InvitationControllerTest extends TestCase
         $response
             ->assertStatus(201)
             ->assertJsonStructure([
-                'id',
-                'reservation_id',
-                'message',
+                    'id',
+                    "user_id",
+                    "restaurant_id",
+                    'reservation_id',
+                    'message',
             ]);
 
         $this->assertDatabaseHas($this->table, [
@@ -217,10 +209,10 @@ class InvitationControllerTest extends TestCase
         $this->withoutExceptionHandling();
 
         $user = factory(User::class)->create();
-        $object = factory(Invitation::class)->create($this->generateObject($user));
+        $object = $this->generateInvitation($user);
+        $object = factory(Invitation::class)->create($object);
 
-        $response = $this->actingAs($user, 'api')
-            ->json("DELETE", $this->endPoint . '/' . $object->id);
+        $response = $this->actingAs($user, 'api')->json("DELETE", $this->endPoint . '/' . $object->id);
 
         $response
             ->assertStatus(204)
@@ -230,6 +222,23 @@ class InvitationControllerTest extends TestCase
                 'id' => $object->id
             ]);
     }
+
+    private function generateInvitation(User $user): array
+    {
+        $restaurant = factory(Restaurant::class)->create();
+        $reservation = factory(Reservation::class)->create([
+            'user_id'       => $user->id,
+            'restaurant_id' => $restaurant->id,
+        ]);
+
+        return [
+            "restaurant_id" => $restaurant->id,
+            "user_id" => $user->id,
+            "reservation_id" => $reservation->id,
+            "message" => "Invitation test"
+        ];
+    }
+
 
     protected function generateObject(User $user): array
     {

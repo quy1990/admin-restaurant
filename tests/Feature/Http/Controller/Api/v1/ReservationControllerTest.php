@@ -4,7 +4,7 @@ namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -71,7 +71,6 @@ class ReservationControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [
                     '*' => [
                         'id',
                         'restaurant_id',
@@ -79,9 +78,6 @@ class ReservationControllerTest extends TestCase
                         'number_people',
                         'booking_time',
                     ]
-                ],
-                "first_page_url", "from", "last_page", "last_page_url", "next_page_url",
-                "path", "per_page", "prev_page_url", "to", "total"
             ]);
 
     }

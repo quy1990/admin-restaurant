@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events\Created;
+namespace App\Events;
 
 use App\Models\Reservation;
 use Illuminate\Broadcasting\Channel;
@@ -9,22 +9,27 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CreateAReservationEvent
+class ReservationEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $reservation;
+    public $reservation, $action;
+
+    public function __construct()
+    {
+
+    }
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
-     *
      * @param Reservation $reservation
+     * @param int $action
+     * @return ReservationEvent
      */
-    public function __construct(Reservation $reservation)
+    public function setParams(Reservation $reservation, int $action)
     {
         $this->reservation = $reservation;
+        $this->action = $action;
+        return $this;
     }
 
     /**

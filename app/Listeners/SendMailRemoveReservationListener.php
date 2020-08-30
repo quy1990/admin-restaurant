@@ -2,7 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\CreateAReservationEvent;
+
+use App\Events\ReservationEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendMailRemoveReservationListener implements ShouldQueue
@@ -20,10 +21,10 @@ class SendMailRemoveReservationListener implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param CreateAReservationEvent $customerReserveEvent
+     * @param ReservationEvent $event
      * @return void
      */
-    public function handle(CreateAReservationEvent $customerReserveEvent)
+    public function handle(ReservationEvent $event)
     {
         //mail("nguyentuquy2008@gmail.com", "My subject", "messages");
     }
