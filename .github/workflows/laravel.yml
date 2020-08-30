@@ -9,8 +9,9 @@ on:
 jobs:
   laravel-tests:
 
-    runs-on: quynt/laradock_workspace
-
+    runs-on: ubuntu-lastest
+    container: quynt/laradock_workspace
+  
     steps:
     - uses: actions/checkout@v2
     - name: Copy .env
