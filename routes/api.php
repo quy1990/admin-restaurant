@@ -14,6 +14,9 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
         'reservations' => 'ReservationController',
         'invitations'  => 'InvitationController',
         'peoples'      => 'PeopleController',
+        'categories'   => 'CategoryController',
+        'tags'         => 'TagController',
+        'images'       => 'imageController',
     ]);
 
     Route::group(['prefix' => 'users'], function () {
@@ -36,6 +39,15 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
 
         Route::get('{restaurant}/invitations',
             'RestaurantController@getInvitations');
+
+        Route::get('{restaurant}/categories',
+            'RestaurantController@getCategories');
+
+        Route::get('{restaurant}/tags',
+            'RestaurantController@getTags');
+
+        Route::get('{restaurant}/images',
+            'RestaurantController@getImages');
     });
 
     Route::group(['prefix' => 'reservations'], function () {
@@ -64,5 +76,20 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
 
         Route::get('{invitation}/peoples',
             'InvitationController@getPeoples');
+    });
+
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('{category}/restaurants',
+            'CategoryController@getRestaurants');
+    });
+
+    Route::group(['prefix' => 'tags'], function () {
+        Route::get('{tag}/restaurants',
+            'TagController@getRestaurants');
+    });
+
+    Route::group(['prefix' => 'images'], function () {
+        Route::get('{image}/restaurants',
+            'ImageController@getRestaurants');
     });
 });

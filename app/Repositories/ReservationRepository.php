@@ -44,16 +44,6 @@ class ReservationRepository
     }
 
     /**
-     * get a format Reservation with id
-     * @param Reservation $reservation
-     * @return array
-     */
-    public function show(Reservation $reservation): array
-    {
-        return $reservation->format();
-    }
-
-    /**
      * Create a new Reservation
      * @param Request $request
      * @param User $user
@@ -62,17 +52,6 @@ class ReservationRepository
     public function store(Request $request, User $user): array
     {
         return $user->reservations()->create($request->all())->format();
-    }
-
-    /**
-     * delete a row in Database
-     * @param Reservation $reservation
-     * @return bool|null
-     * @throws \Exception
-     */
-    public function delete(Reservation $reservation)
-    {
-        return $reservation->delete();
     }
 
     /**

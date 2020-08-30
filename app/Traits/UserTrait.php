@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits;
 
+use App\Models\Comment;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
@@ -70,6 +71,11 @@ trait UserTrait
     public function invitations()
     {
         return $this->hasMany(Invitation::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

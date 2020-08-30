@@ -42,16 +42,6 @@ class PeopleRepository
     }
 
     /**
-     * get a format People by id
-     * @param People $people
-     * @return array
-     */
-    public function show(People $people): array
-    {
-        return $people->format();
-    }
-
-    /**
      * Create a new People
      * @param array $item
      * @return array
@@ -59,17 +49,6 @@ class PeopleRepository
     public function store(array $item): array
     {
         return $this->user->peoples()->create($item)->format();
-    }
-
-    /**
-     * delete a row in Database
-     * @param People $people
-     * @return bool|null
-     * @throws \Exception
-     */
-    public function delete(People $people)
-    {
-        return $people->delete();
     }
 
     /**

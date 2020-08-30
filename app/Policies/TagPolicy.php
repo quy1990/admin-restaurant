@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Restaurant;
-use App\User;
+use App\Models\Tag;
 use App\Policies\Traits\GeneralPolicy;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RestaurantPolicy
+class TagPolicy
 {
     use HandlesAuthorization, GeneralPolicy;
 
@@ -15,11 +15,12 @@ class RestaurantPolicy
      * Check right on a object
      *
      * @param User $user
-     * @param Restaurant $restaurant
+     * @param Tag $tag
      * @return bool
      */
-    public function haveRightOn(User $user, Restaurant $restaurant)
+    public function haveRightOn(User $user, Tag $tag)
     {
-        return in_array($restaurant->id, $user->ownedRestaurants()->pluck('restaurant_id')->toArray());
+        return $user->hasVerifiedEmail();
     }
 }
+

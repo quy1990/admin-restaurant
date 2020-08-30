@@ -7,7 +7,6 @@ use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Repositories\Traits\FormatPaginationTrait;
-use App\Repositories\Traits\GeneralFunctionTrait;
 use Illuminate\Support\Collection;
 
 //use Your Model
@@ -17,7 +16,7 @@ use Illuminate\Support\Collection;
  */
 class UserRepository
 {
-    use FormatPaginationTrait, GeneralFunctionTrait;
+    use FormatPaginationTrait;
 
     protected $user;
 
@@ -39,16 +38,6 @@ class UserRepository
     public function get($id): User
     {
         return User::findOrFail($id);
-    }
-
-    /**
-     * get a format User with id
-     * @param User $user
-     * @return array
-     */
-    public function show(User $user): array
-    {
-        return $user->format();
     }
 
     /**

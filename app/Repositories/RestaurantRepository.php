@@ -41,31 +41,12 @@ class RestaurantRepository
     }
 
     /**
-     * @param Restaurant $restaurant
-     * @return array
-     */
-    public function show(Restaurant $restaurant): array
-    {
-        return $restaurant->format();
-    }
-
-    /**
      * @param Request $request
      * @return array
      */
     public function store(Request $request): array
     {
         return $this->user->ownedRestaurants()->create($request->all())->format();
-    }
-
-    /**
-     * @param Restaurant $restaurant
-     * @return bool|null
-     * @throws \Exception
-     */
-    public function delete(Restaurant $restaurant)
-    {
-        return $restaurant->delete();
     }
 
     /**
@@ -99,6 +80,15 @@ class RestaurantRepository
      * @param User $user
      * @return Collection
      */
+    public function getByOwner(User $user): Collection
+    {
+        return self::formatPagination($user->restaurants()->paginate());
+    }
+
+    /**
+     * @param User $user
+     * @return Collection
+     */
     public function getByUser(User $user): Collection
     {
         return self::formatPagination($user->ownedRestaurants()->paginate());
@@ -122,4 +112,31 @@ class RestaurantRepository
         return $reservation->restaurant()->get()->first()->format();
     }
 
+    /**
+     * @param Restaurant $restaurant
+     * @return Collection
+     */
+    public function getImages(Restaurant $restaurant): Collection
+    {
+        return self::formatPagination($restaurant->images()->paginate());
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @return Collection
+     */
+    public function getTags(Restaurant $restaurant): Collection
+    {
+        return self::formatPagination($restaurant->tags()->paginate());
+    }
+
+
+    /**
+     * @param Restaurant $restaurant
+     * @return Collection
+     */
+    public function getCategory(Restaurant $restaurant): Collection
+    {
+        return self::formatPagination($restaurant->categories()->paginate());
+    }
 }

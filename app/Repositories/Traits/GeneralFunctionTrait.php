@@ -26,4 +26,22 @@ trait GeneralFunctionTrait
     {
         return tap(self::get($id))->update($request->all())->format();
     }
+
+    /**
+     * @param $object
+     * @return array
+     */
+    public function show($object): array
+    {
+        return $object->format();
+    }
+
+    /**
+     * @param $object
+     * @return bool|null
+     */
+    public function delete($object)
+    {
+        return $object->delete();
+    }
 }

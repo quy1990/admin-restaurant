@@ -25,6 +25,32 @@ class Restaurant extends Model
             'seat_number' => (string)$this->seat_number ?? 0,
         ];
     }
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_restaurant');
+    }
+
+    /**
+     * Get the post's image.
+     */
+    public function images()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * Get all of the video's comments.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 
     public function getShortName()
     {

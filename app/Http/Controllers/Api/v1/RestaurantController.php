@@ -105,4 +105,32 @@ class RestaurantController extends Controller
         return response()->json(app(RestaurantRepository::class)->getOwners($restaurant), HttpStatus::HTTP_OK);
     }
 
+    /**
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getCategories(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(app(RestaurantRepository::class)->getCategory($restaurant), HttpStatus::HTTP_OK);
+    }
+
+    /**
+     * get all Reservations of this restaurant
+     *
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getImages(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(app(RestaurantRepository::class)->getImages($restaurant), HttpStatus::HTTP_OK);
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getTags(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(app(RestaurantRepository::class)->getTags($restaurant), HttpStatus::HTTP_OK);
+    }
 }

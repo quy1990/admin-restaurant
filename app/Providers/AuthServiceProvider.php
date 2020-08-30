@@ -2,14 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
+use App\Models\Tag;
+use App\Policies\CommentPolicy;
 use App\Policies\InvitationPolicy;
 use App\Policies\PeoplePolicy;
 use App\Policies\ReservationPolicy;
 use App\Policies\RestaurantPolicy;
+use App\Policies\TagPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -26,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
         Invitation::class  => InvitationPolicy::class,
         Reservation::class => ReservationPolicy::class,
         People::class      => PeoplePolicy::class,
+        Tag::class         => TagPolicy::class,
+        Comment::class     => CommentPolicy::class,
     ];
 
     /**

@@ -42,16 +42,6 @@ class InvitationRepository
     }
 
     /**
-     * get a format Invitation with id
-     * @param Invitation $invitation
-     * @return array
-     */
-    public function show(Invitation $invitation): array
-    {
-        return $invitation->format();
-    }
-
-    /**
      * Create a new Invitation
      * @param $request
      * @return array
@@ -59,17 +49,6 @@ class InvitationRepository
     public function store($request): array
     {
         return $this->user->invitations()->create($request->all())->format();
-    }
-
-    /**
-     * delete a row in Database
-     * @param Invitation $invitation
-     * @return bool|null
-     * @throws \Exception
-     */
-    public function delete(Invitation $invitation)
-    {
-        return $invitation->delete();
     }
 
     /**
