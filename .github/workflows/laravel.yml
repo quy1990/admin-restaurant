@@ -9,7 +9,7 @@ on:
 jobs:
   laravel-tests:
 
-    runs-on: ubuntu-latest
+    runs-on: quynt/laradock_workspace
 
     steps:
     - uses: actions/checkout@v2
