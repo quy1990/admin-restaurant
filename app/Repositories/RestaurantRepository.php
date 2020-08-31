@@ -135,8 +135,17 @@ class RestaurantRepository
      * @param Restaurant $restaurant
      * @return Collection
      */
-    public function getCategory(Restaurant $restaurant): Collection
+    public function getCategories(Restaurant $restaurant): Collection
     {
         return self::formatPagination($restaurant->categories()->paginate());
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @return Collection
+     */
+    public function getComments(Restaurant $restaurant): Collection
+    {
+        return self::formatPagination($restaurant->Comments()->paginate());
     }
 }

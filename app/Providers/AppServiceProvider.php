@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
+use App\Observers\CommentObserver;
 use App\Observers\InvitationObserver;
 use App\Observers\PeopleObserver;
 use App\Observers\ReservationObserver;
@@ -38,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         User::observe($this->app->make(UserObserver::class));
         Invitation::observe($this->app->make(InvitationObserver::class));
         People::observe($this->app->make(PeopleObserver::class));
+        Comment::observe($this->app->make(CommentObserver::class));
     }
 }

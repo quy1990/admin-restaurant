@@ -17,7 +17,6 @@ class CreateCategoryRestaurantTable extends Migration
             $table->id();
             $table->foreignId("category_id");
             $table->foreignId("restaurant_id");
-            $table->timestamps();
         });
     }
 

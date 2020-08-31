@@ -23,6 +23,15 @@ class ImageRepository
     {
         return self::formatPagination(Image::paginate());
     }
+    /**
+     * Create a new Invitation
+     * @param $request
+     * @return array
+     */
+    public function store($request): array
+    {
+        return Image::create($request->all())->format();
+    }
 
     /**
      * get A User with id

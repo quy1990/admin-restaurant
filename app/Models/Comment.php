@@ -10,11 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    protected $fillable = ['user_id', 'body', 'commentable_id', 'commentable_type'];
+
     public function format()
     {
         return [
             'id' => $this->id,
             'body' => $this->body,
+            'user_id' => $this->user_id,
         ];
     }
 

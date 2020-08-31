@@ -111,7 +111,7 @@ class RestaurantController extends Controller
      */
     public function getCategories(Restaurant $restaurant): JsonResponse
     {
-        return response()->json(app(RestaurantRepository::class)->getCategory($restaurant), HttpStatus::HTTP_OK);
+        return response()->json(app(RestaurantRepository::class)->getCategories($restaurant), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -132,5 +132,14 @@ class RestaurantController extends Controller
     public function getTags(Restaurant $restaurant): JsonResponse
     {
         return response()->json(app(RestaurantRepository::class)->getTags($restaurant), HttpStatus::HTTP_OK);
+    }
+
+    /**
+     * @param Restaurant $restaurant
+     * @return JsonResponse
+     */
+    public function getComments(Restaurant $restaurant): JsonResponse
+    {
+        return response()->json(app(RestaurantRepository::class)->getComments($restaurant), HttpStatus::HTTP_OK);
     }
 }

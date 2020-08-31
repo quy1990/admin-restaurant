@@ -2,13 +2,17 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Image;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\Tag;
+use App\Policies\CategoryPolicy;
 use App\Policies\CommentPolicy;
+use App\Policies\ImagePolicy;
 use App\Policies\InvitationPolicy;
 use App\Policies\PeoplePolicy;
 use App\Policies\ReservationPolicy;
@@ -32,6 +36,8 @@ class AuthServiceProvider extends ServiceProvider
         People::class      => PeoplePolicy::class,
         Tag::class         => TagPolicy::class,
         Comment::class     => CommentPolicy::class,
+        Category::class    => CategoryPolicy::class,
+        Image::class       => ImagePolicy::class,
     ];
 
     /**

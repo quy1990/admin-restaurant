@@ -15,8 +15,9 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
         'invitations'  => 'InvitationController',
         'peoples'      => 'PeopleController',
         'categories'   => 'CategoryController',
+        'comments'     => 'CommentController',
         'tags'         => 'TagController',
-        'images'       => 'imageController',
+        'images'       => 'ImageController',
     ]);
 
     Route::group(['prefix' => 'users'], function () {
@@ -48,6 +49,9 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
 
         Route::get('{restaurant}/images',
             'RestaurantController@getImages');
+
+        Route::get('{restaurant}/comments',
+            'RestaurantController@getComments');
     });
 
     Route::group(['prefix' => 'reservations'], function () {
