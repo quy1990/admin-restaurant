@@ -12,6 +12,15 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
+    }
+
+
     public function restaurants()
     {
         return $this->belongsToMany(Restaurant::class, 'category_restaurant');

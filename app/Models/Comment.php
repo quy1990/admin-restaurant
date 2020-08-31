@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'body' => $this->body,
+        ];
+    }
+
     /**
      * Get the owning commentable model.
      */

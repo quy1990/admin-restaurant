@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Image extends Model
 {
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'url' => $this->url,
+        ];
+    }
+
     /**
      * Get the owning imageable model.
      */

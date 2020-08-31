@@ -12,6 +12,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
+    public function format()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
+    }
     public function restaurants()
     {
         return $this->morphedByMany(Restaurant::class, 'taggable');
