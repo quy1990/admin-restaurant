@@ -27,7 +27,7 @@ class CommentEvent
      */
     public function setParams(Comment $comment, int $action)
     {
-        $this->$comment = $comment;
+        $this->comment = $comment;
         $this->action = $action;
         return $this;
     }

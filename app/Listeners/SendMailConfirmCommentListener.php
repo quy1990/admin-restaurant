@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CommentEvent;
-use App\Jobs\SendConfirmInvitationJob;
+use App\Jobs\SendConfirmCommentJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendMailConfirmCommentListener implements ShouldQueue
@@ -26,15 +26,14 @@ class SendMailConfirmCommentListener implements ShouldQueue
      */
     public function handle(CommentEvent $event)
     {
-        //send email to customer, who invited someone
         $comment = $event->comment;
         $details = [
-            'title'    => 'You made an Invitation to go a Restaurant',
-            'from'     => $comment->user->email,
+            'title'    => 'You have some comments on your Page',
+            'from'     => $comment->user->getFullName(),
             'to'       => 10,
             'messages' => $comment->body
         ];
 
-        SendConfirmInvitationJob::dispatch($comment, $details)->delay(now());;
+        SendConfirmCommentJob::dispatch($comment, $details)->delay(now());;
     }
 }

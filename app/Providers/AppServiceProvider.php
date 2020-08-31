@@ -12,6 +12,7 @@ use App\Observers\PeopleObserver;
 use App\Observers\ReservationObserver;
 use App\Observers\UserObserver;
 use App\User;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      *
      * @return void
+     * @throws BindingResolutionException
      */
     public function boot()
     {
