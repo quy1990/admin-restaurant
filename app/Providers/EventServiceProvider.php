@@ -6,7 +6,6 @@ use App\Events\CommentEvent;
 use App\Events\InvitationEvent;
 use App\Events\PeopleEvent;
 use App\Events\ReservationEvent;
-use App\Listeners\SendMailConfirmCommentListener;
 use App\Listeners\SendMailConfirmInvitationListener;
 use App\Listeners\SendMailConfirmPeopleListener;
 use App\Listeners\SendMailConfirmReservationListener;
@@ -35,7 +34,7 @@ class EventServiceProvider extends ServiceProvider
             SendMailConfirmPeopleListener::class,
         ],
         CommentEvent::class     => [
-            SendMailConfirmCommentListener::class,
+            //SendMailConfirmCommentListener::class,
         ]
     ];
 

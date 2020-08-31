@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controller\Api\v1;
 
-use App\Models\Category;
+use App\Models\Tag;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,13 +10,13 @@ use Tests\Feature\Http\Controller\Api\v1\Traits\generalFunction;
 use Tests\TestCase;
 
 /**
- * Class CategoryControllerTest
- * docker exec -it app ./vendor/bin/phpunit --filter CategoryControllerTest
+ * Class TagControllerTest
+ * docker exec -it app ./vendor/bin/phpunit --filter TagControllerTest
  *
  * debug:
  * $this->withoutExceptionHandling();
  */
-class CategoryControllerTest extends TestCase
+class TagControllerTest extends TestCase
 {
     use RefreshDatabase, generalFunction;
 
@@ -25,17 +25,17 @@ class CategoryControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit
      * */
 
-    protected $endPoint = "/api/v1/categories";
-    protected $table = "categories";
+    protected $endPoint = "/api/v1/tags";
+    protected $table = "tags";
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_categories
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_Categories
      * @test
      */
-    public function can_return_a_collection_of_paginated_categories()
+    public function can_return_a_collection_of_paginated_Categories()
     {
         //$this->withoutExceptionHandling();
-        factory(Category::class, 50)->create();
+        factory(Tag::class, 50)->create();
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user, 'api')
@@ -52,14 +52,14 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_create_a_category
+     * docker exec -it app ./vendor/bin/phpunit --filter can_create_a_tag
      * @test
      */
-    public function can_create_a_category()
+    public function can_create_a_tag()
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $object = $this->generateCategory();
+        $object = $this->generateTag();
         $response = $this->actingAs($user, 'api')
             ->json('POST', $this->endPoint, $object);
 
@@ -76,28 +76,28 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_tag
      * @test
      */
-    public function can_return_a_category()
+    public function can_return_a_tag()
     {
         $user = factory(User::class)->create();
-        $category = $this->generateCategory();
-        $object = factory(Category::class)->create($category);
+        $tag = $this->generateTag();
+        $object = factory(Tag::class)->create($tag);
 
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $object->id);
         $response->assertStatus(200)
             ->assertExactJson([
                 'id'   => $object->id,
-                'name' => $category['name'],
+                'name' => $tag['name'],
             ]);
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_category_not_found
+     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_tag_not_found
      * @test
      */
-    public function will_fail_with_a_404_if_category_not_found()
+    public function will_fail_with_a_404_if_tag_not_found()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/1");
@@ -105,10 +105,10 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_update_category_not_found
+     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_update_tag_not_found
      * @test
      */
-    public function will_fail_with_a_404_if_we_want_to_update_category_not_found()
+    public function will_fail_with_a_404_if_we_want_to_update_tag_not_found()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user, 'api')->json("PUT", $this->endPoint . "/1");
@@ -116,38 +116,38 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_update_a_category
+     * docker exec -it app ./vendor/bin/phpunit --filter can_update_a_tag
      * @test
      */
-    public function can_update_a_category()
+    public function can_update_a_tag()
     {
         $user = factory(User::class)->create();
-        $category = $this->generateCategory();
-        $object = factory(Category::class)->create($category);
+        $tag = $this->generateTag();
+        $object = factory(Tag::class)->create($tag);
         $response = $this->actingAs($user, 'api')
             ->json("PUT", $this->endPoint . "/" . $object->id, [
                 'id'   => $object->id,
-                'name' => "update_" . $category['name'],
+                'name' => "update_" . $tag['name'],
             ]);
 
         $response
             ->assertStatus(200)
             ->assertExactJson([
                 'id'   => $object->id,
-                'name' => "update_" . $category['name'],
+                'name' => "update_" . $tag['name'],
             ]);
 
         $this->assertDatabaseHas($this->table, [
             'id'   => $object->id,
-            'name' => "update_" . $category['name'],
+            'name' => "update_" . $tag['name'],
         ]);
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_delete_category_not_found
+     * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_delete_tag_not_found
      * @test
      */
-    public function will_fail_with_a_404_if_we_want_to_delete_category_not_found()
+    public function will_fail_with_a_404_if_we_want_to_delete_tag_not_found()
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user, 'api')->json("DELETE", $this->endPoint . '/-1');
@@ -155,16 +155,16 @@ class CategoryControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_delete_a_category
+     * docker exec -it app ./vendor/bin/phpunit --filter can_delete_a_tag
      * @test
      */
-    public function can_delete_a_category()
+    public function can_delete_a_tag()
     {
         $this->withoutExceptionHandling();
 
         $user = factory(User::class)->create();
-        $object = $this->generateCategory();
-        $object = factory(Category::class)->create($object);
+        $object = $this->generateTag();
+        $object = factory(Tag::class)->create($object);
 
         $response = $this->actingAs($user, 'api')->json("DELETE", $this->endPoint . '/' . $object->id);
 
@@ -177,7 +177,7 @@ class CategoryControllerTest extends TestCase
             ]);
     }
 
-    private function generateCategory(): array
+    private function generateTag(): array
     {
         return ["name" => Factory::create()->name,];
     }
