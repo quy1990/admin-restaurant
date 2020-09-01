@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
 
         Route::get('{user}/invitations',
             'UserController@getInvitations');
+        Route::get('{user}/peoples',
+            'UserController@getPeoples');
     });
 
     Route::group(['prefix' => 'restaurants'], function () {
