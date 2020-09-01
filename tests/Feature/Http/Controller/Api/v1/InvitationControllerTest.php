@@ -251,6 +251,7 @@ class InvitationControllerTest extends TestCase
             ]);
     }
 
+
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_get_reservation_of_the_invitation
      * @test
@@ -261,7 +262,9 @@ class InvitationControllerTest extends TestCase
         $user = factory(User::class)->create();
         $object = $this->generateInvitation($user);
         $invitation = factory(Invitation::class)->create($object);
-        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . '/' . $invitation->id . '/user');
+        $user = $invitation->user;
+        $response = $this->actingAs($user, 'api')->json("GET",
+            $this->endPoint . '/' . $invitation->id . '/user');
         $response
             ->assertStatus(200)
             ->assertExactJson([

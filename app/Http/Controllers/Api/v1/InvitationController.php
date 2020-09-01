@@ -5,10 +5,6 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Repositories\InvitationRepository;
-use App\Repositories\PeopleRepository;
-use App\Repositories\ReservationRepository;
-use App\Repositories\RestaurantRepository;
-use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
@@ -78,7 +74,7 @@ class InvitationController extends Controller
      */
     public function getRestaurant(Invitation $invitation)
     {
-        return response()->json(app(RestaurantRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getRestaurant($invitation), HttpStatus::HTTP_OK);
 
     }
 
@@ -88,7 +84,7 @@ class InvitationController extends Controller
      */
     public function getReservation(Invitation $invitation)
     {
-        return response()->json(app(ReservationRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getReservation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -97,7 +93,7 @@ class InvitationController extends Controller
      */
     public function getUser(Invitation $invitation)
     {
-        return response()->json(app(UserRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getUser($invitation), HttpStatus::HTTP_OK);
     }
 
     /**
@@ -106,6 +102,6 @@ class InvitationController extends Controller
      */
     public function getPeoples(Invitation $invitation)
     {
-        return response()->json(app(PeopleRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
+        return response()->json(app(InvitationRepository::class)->getPeoples($invitation), HttpStatus::HTTP_OK);
     }
 }

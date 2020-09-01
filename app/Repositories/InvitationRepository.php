@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Invitation;
 use App\Models\Reservation;
-use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
+use App\User;
 use Illuminate\Pagination\LengthAwarePaginator as paginate;
 use Illuminate\Support\Collection;
 
@@ -67,5 +67,41 @@ class InvitationRepository
     public function getByUser(User $user): paginate
     {
         return $user->invitations()->paginate();
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return array
+     */
+    public function getReservation(Invitation $invitation): array
+    {
+        return $invitation->reservation->format();
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return array
+     */
+    public function getRestaurant(Invitation $invitation): array
+    {
+        return $invitation->restaurant->format();
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return array
+     */
+    public function getUser(Invitation $invitation): array
+    {
+        return $invitation->user->format();
+    }
+
+    /**
+     * @param Invitation $invitation
+     * @return Collection
+     */
+    public function getPeoples(Invitation $invitation): Collection
+    {
+        return self::formatPagination($invitation->peoples()->paginate());
     }
 }
