@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controller\Api\v1;
 
+use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\User;
@@ -104,6 +105,34 @@ class UserControllerTest extends TestCase
                 'booking_time'  => $reservations[$i]['booking_time'],
             ]);
         }
+    }
+
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter user_cans_get_his_reservations
+     * @test
+     */
+    public function user_cans_get_his_peoples()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        factory(People::class, $this->rowToCheck)->create(['user_id' => $user->id]);
+
+        $response = $this->actingAs($user, 'api')
+            ->json("GET", $this->endPoint . '/' . $user->id . '/peoples');
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+                '*' => [
+                    "id",
+                    "invitation_id",
+                    "user_id",
+                    "restaurant_id",
+                    "email",
+                    "phone",
+                ]
+            ]);
     }
 
     protected function generateObject(User $user)

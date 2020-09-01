@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
-use App\Models\User;
+use App\User;
 use App\Repositories\Traits\FormatPaginationTrait;
 use Illuminate\Support\Collection;
 
@@ -47,6 +47,15 @@ class UserRepository
     public function getReservations(User $user): Collection
     {
         return self::formatPagination($user->reservations()->paginate());
+    }
+
+    /**
+     * @param User $user
+     * @return Collection
+     */
+    public function getPeoples(User $user): Collection
+    {
+        return self::formatPagination($user->peoples()->paginate());
     }
 
     /**
