@@ -14,6 +14,7 @@ class Tag extends Model
 {
     protected $fillable = ['name'];
     public $timestamps = false;
+
     public function format()
     {
         return [
@@ -21,6 +22,7 @@ class Tag extends Model
             'name' => $this->name,
         ];
     }
+
     public function restaurants()
     {
         return $this->morphedByMany(Restaurant::class, 'taggable');

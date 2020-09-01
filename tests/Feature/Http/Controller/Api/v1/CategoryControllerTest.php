@@ -104,7 +104,7 @@ class CategoryControllerTest extends TestCase
         $object = $this->generateCategory();
         $category = factory(Category::class)->create($object);
         $restaurant = factory(Restaurant::class)->create();
-        $restaurant->categories()->sync($category->id);
+        $restaurant->categories->sync($category->id);
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $category->id."/restaurants");
         $response->assertStatus(200)
             ->assertJsonStructure([

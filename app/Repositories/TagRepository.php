@@ -59,6 +59,6 @@ class TagRepository
      */
     public function getRestaurants(Tag $tag): Collection
     {
-        return self::formatPagination($tag->restaurants->paginate());
+        return self::formatPagination($tag->restaurants()->paginate());
     }
 }

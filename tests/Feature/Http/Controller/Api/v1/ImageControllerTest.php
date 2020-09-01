@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Image;
+use App\Models\Restaurant;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -176,6 +177,31 @@ class ImageControllerTest extends TestCase
         $this
             ->assertDatabaseMissing($this->table, [
                 'id' => $object->id
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_restaurants_of_the_image
+     * @test
+     */
+    public function can_get_restaurants_of_the_image()
+    {
+        $user = factory(User::class)->create();
+        $object = $this->generateImage();
+        $image = factory(Image::class)->create($object);
+        $restaurant = factory(Restaurant::class)->create();
+        $image->imageable()->associate($restaurant)->save();
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $image->id."/restaurants");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    "id",
+                    "name",
+                    "address",
+                    "email",
+                    "phone",
+                    "seat_number",
+                ]
             ]);
     }
 

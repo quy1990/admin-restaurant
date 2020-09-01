@@ -48,7 +48,7 @@ class ImageRepository
      */
     public function getRestaurants(Image $image): Collection
     {
-        return self::formatPagination($image->restaurants->paginate());
+        return self::formatPagination($image->imageable->paginate());
     }
 
 }
