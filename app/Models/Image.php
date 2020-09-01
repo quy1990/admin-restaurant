@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method static paginate()
  * @method static create($all)
+ * @method static findOrFail($id)
  * @property mixed restaurants
  */
 class Image extends Model

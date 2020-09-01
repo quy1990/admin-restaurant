@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Comment;
 use App\Models\Image;
 use App\Repositories\Traits\FormatPaginationTrait;
 use App\Repositories\Traits\GeneralFunctionTrait;
@@ -36,11 +35,11 @@ class ImageRepository
     /**
      * get A User with id
      * @param $id
-     * @return Comment
+     * @return Image
      */
-    public function get($id): Comment
+    public function get($id): Image
     {
-        return Comment::findOrFail($id);
+        return Image::findOrFail($id);
     }
 
     /**

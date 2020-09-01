@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\Restaurant;
 use App\Repositories\CommentRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -67,14 +66,5 @@ class CommentController extends Controller
     public function destroy(Comment $comment): JsonResponse
     {
         return response()->json(app(CommentRepository::class)->delete($comment), HttpStatus::HTTP_NO_CONTENT);
-    }
-
-    /**
-     * @param Restaurant $restaurant
-     * @return JsonResponse
-     */
-    public function getByRestaurant(Restaurant $restaurant): JsonResponse
-    {
-        return response()->json(app(CommentRepository::class)->getByRestaurant($restaurant), HttpStatus::HTTP_OK);
     }
 }

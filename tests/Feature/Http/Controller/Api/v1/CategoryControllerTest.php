@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Category;
+use App\Models\Restaurant;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -90,6 +91,31 @@ class CategoryControllerTest extends TestCase
             ->assertExactJson([
                 'id'   => $object->id,
                 'name' => $category['name'],
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_restaurants_a_category()
+    {
+        $user = factory(User::class)->create();
+        $object = $this->generateCategory();
+        $category = factory(Category::class)->create($object);
+        $restaurant = factory(Restaurant::class)->create();
+        $restaurant->categories()->sync($category->id);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $category->id."/restaurants");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    "id",
+                    "name",
+                    "address",
+                    "email",
+                    "phone",
+                    "seat_number",
+                ]
             ]);
     }
 

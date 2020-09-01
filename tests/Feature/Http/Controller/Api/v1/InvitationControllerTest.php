@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controller\Api\v1;
 
 use App\Models\Invitation;
+use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\User;
@@ -186,7 +187,6 @@ class InvitationControllerTest extends TestCase
     public function can_delete_a_invitation()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
         $object = $this->generateInvitation($user);
         $object = factory(Invitation::class)->create($object);
@@ -199,6 +199,101 @@ class InvitationControllerTest extends TestCase
         $this
             ->assertDatabaseMissing($this->table, [
                 'id' => $object->id
+            ]);
+    }
+
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_restaurant_of_the_invitation
+     * @test
+     */
+    public function can_get_restaurant_of_the_invitation()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $object = $this->generateInvitation($user);
+        $invitation = factory(Invitation::class)->create($object);
+        $restaurant = $invitation->restaurant;
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . '/' . $invitation->id . '/restaurant');
+        $response
+            ->assertStatus(200)
+            ->assertExactJson([
+                'id'          => $restaurant->id,
+                'name'        => $restaurant->name,
+                'address'     => $restaurant->address,
+                'email'       => $restaurant->email,
+                'phone'       => $restaurant->phone,
+                'seat_number' => $restaurant->seat_number,
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_reservation_of_the_invitation
+     * @test
+     */
+    public function can_get_reservation_of_the_invitation()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $object = $this->generateInvitation($user);
+        $invitation = factory(Invitation::class)->create($object);
+        $reservation = $invitation->reservation;
+        $response = $this->actingAs($user, 'api')->json("GET",
+            $this->endPoint . '/' . $invitation->id . '/reservation');
+        $response
+            ->assertStatus(200)
+            ->assertExactJson([
+                'id'            => $reservation->id,
+                'user_id'       => $reservation->user_id,
+                'restaurant_id' => $reservation->restaurant_id,
+                'number_people' => $reservation->number_people,
+                'booking_time'  => $reservation->booking_time,
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_reservation_of_the_invitation
+     * @test
+     */
+    public function can_get_user_of_the_invitation()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $object = $this->generateInvitation($user);
+        $invitation = factory(Invitation::class)->create($object);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . '/' . $invitation->id . '/user');
+        $response
+            ->assertStatus(200)
+            ->assertExactJson([
+                'id'   => (string)$user->id,
+                'name' => $user->name,
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_reservation_of_the_invitation
+     * @test
+     */
+    public function can_get_peoples_of_the_invitation()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $object = $this->generateInvitation($user);
+        $invitation = factory(Invitation::class)->create($object);
+        factory(People::class)->create($this->generatePeople($user, $invitation));
+
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . '/' . $invitation->id . '/peoples');
+        $response
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    "id",
+                    "invitation_id",
+                    "user_id",
+                    "restaurant_id",
+                    "email",
+                    "phone",
+                ]
             ]);
     }
 
@@ -233,6 +328,29 @@ class InvitationControllerTest extends TestCase
             'user_id'        => $user->id,
             'restaurant_id'  => $restaurant->id,
             'message'        => $faker->paragraph,
+        ];
+    }
+
+    /**
+     * @param User $user
+     * @param Invitation $invitation
+     * @return array
+     */
+    protected function generatePeople(User $user, Invitation $invitation): array
+    {
+        $faker = Factory::create();
+        $peoples[] = [
+            'email' => $faker->email,
+            'phone' => $faker->phoneNumber,
+        ];
+
+        return [
+            "user_id"        => $user->id,
+            "invitation_id"  => $invitation->id,
+            "reservation_id" => $invitation->reservation->id,
+            "restaurant_id"  => $invitation->restaurant->id,
+            'email'          => $faker->email,
+            'phone'          => $faker->phoneNumber,
         ];
     }
 }

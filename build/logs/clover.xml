@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1598903816">
-  <project timestamp="1598903816">
+<coverage generated="1598969888">
+  <project timestamp="1598969888">
     <package name="App">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Action.php">
         <class name="App\Action" namespace="App">
@@ -24,10 +24,10 @@
         </class>
         <line num="25" type="method" name="schedule" visibility="protected" complexity="1" crap="2" count="0"/>
         <line num="28" type="stmt" count="0"/>
-        <line num="35" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="8"/>
-        <line num="37" type="stmt" count="8"/>
-        <line num="39" type="stmt" count="8"/>
-        <line num="40" type="stmt" count="8"/>
+        <line num="35" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="13"/>
+        <line num="37" type="stmt" count="13"/>
+        <line num="39" type="stmt" count="13"/>
+        <line num="40" type="stmt" count="13"/>
         <metrics loc="41" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="6" coveredelements="4"/>
       </file>
     </package>
@@ -36,8 +36,8 @@
         <class name="App\Events\CommentEvent" namespace="App\Events">
           <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
         </class>
-        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="21" type="stmt" count="8"/>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="21" type="stmt" count="13"/>
         <line num="28" type="method" name="setParams" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="30" type="stmt" count="0"/>
         <line num="31" type="stmt" count="0"/>
@@ -48,45 +48,45 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Events\InvitationEvent.php">
         <class name="App\Events\InvitationEvent" namespace="App\Events">
-          <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+          <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
         </class>
-        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="20" type="stmt" count="8"/>
-        <line num="27" type="method" name="setParams" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="20" type="stmt" count="13"/>
+        <line num="27" type="method" name="setParams" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
         <line num="39" type="method" name="broadcastOn" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <metrics loc="43" ncloc="33" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+        <metrics loc="43" ncloc="33" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Events\PeopleEvent.php">
         <class name="App\Events\PeopleEvent" namespace="App\Events">
-          <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+          <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
         </class>
-        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="20" type="stmt" count="8"/>
-        <line num="27" type="method" name="setParams" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="20" type="stmt" count="13"/>
+        <line num="27" type="method" name="setParams" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
         <line num="39" type="method" name="broadcastOn" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <metrics loc="43" ncloc="33" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+        <metrics loc="43" ncloc="33" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Events\ReservationEvent.php">
         <class name="App\Events\ReservationEvent" namespace="App\Events">
-          <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+          <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
         </class>
-        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="21" type="stmt" count="8"/>
-        <line num="28" type="method" name="setParams" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="21" type="stmt" count="13"/>
+        <line num="28" type="method" name="setParams" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="30" type="stmt" count="10"/>
+        <line num="31" type="stmt" count="10"/>
+        <line num="32" type="stmt" count="10"/>
         <line num="40" type="method" name="broadcastOn" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="42" type="stmt" count="0"/>
-        <metrics loc="44" ncloc="34" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="8" coveredelements="2"/>
+        <metrics loc="44" ncloc="34" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
       </file>
     </package>
     <package name="App\Exceptions">
@@ -443,29 +443,29 @@
     <package name="App\Http\Controllers\Api\v1">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Http\Controllers\Api\v1\CategoryController.php">
         <class name="App\Http\Controllers\Api\v1\CategoryController" namespace="App\Http\Controllers\Api\v1">
-          <metrics complexity="7" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="16" coveredelements="14"/>
+          <metrics complexity="7" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="16" coveredelements="0"/>
         </class>
-        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="18" type="stmt" count="8"/>
-        <line num="19" type="stmt" count="8"/>
-        <line num="24" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="34" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="36" type="stmt" count="1"/>
-        <line num="45" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="47" type="stmt" count="1"/>
-        <line num="57" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="59" type="stmt" count="1"/>
-        <line num="60" type="stmt" count="1"/>
-        <line num="69" type="method" name="destroy" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="71" type="stmt" count="1"/>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="24" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="34" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="45" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="57" type="method" name="update" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="69" type="method" name="destroy" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="71" type="stmt" count="0"/>
         <line num="79" type="method" name="getRestaurants" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="81" type="stmt" count="0"/>
-        <metrics loc="83" ncloc="52" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="16" coveredelements="14"/>
+        <metrics loc="83" ncloc="52" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="16" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Http\Controllers\Api\v1\CommentController.php">
         <class name="App\Http\Controllers\Api\v1\CommentController" namespace="App\Http\Controllers\Api\v1">
-          <metrics complexity="7" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="16" coveredelements="0"/>
+          <metrics complexity="6" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="14" coveredelements="0"/>
         </class>
         <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="19" type="stmt" count="0"/>
@@ -481,9 +481,7 @@
         <line num="58" type="stmt" count="0"/>
         <line num="67" type="method" name="destroy" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="69" type="stmt" count="0"/>
-        <line num="76" type="method" name="getByRestaurant" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="80" ncloc="52" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="16" coveredelements="0"/>
+        <metrics loc="71" ncloc="47" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="14" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Http\Controllers\Api\v1\ImageController.php">
         <class name="App\Http\Controllers\Api\v1\ImageController" namespace="App\Http\Controllers\Api\v1">
@@ -559,43 +557,41 @@
         <line num="60" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="62" type="stmt" count="0"/>
         <line num="72" type="method" name="update" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
         <line num="83" type="method" name="destroy" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="85" type="stmt" count="0"/>
-        <metrics loc="87" ncloc="60" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="23" coveredelements="0"/>
+        <metrics loc="87" ncloc="58" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="23" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Http\Controllers\Api\v1\ReservationController.php">
         <class name="App\Http\Controllers\Api\v1\ReservationController" namespace="App\Http\Controllers\Api\v1">
-          <metrics complexity="11" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="27" coveredelements="0"/>
+          <metrics complexity="10" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="25" coveredelements="25"/>
         </class>
-        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="30" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="42" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <line num="45" type="stmt" count="0"/>
-        <line num="54" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="67" type="method" name="update" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="69" type="stmt" count="0"/>
-        <line num="78" type="method" name="destroy" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="80" type="stmt" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="90" type="method" name="getByInvitation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="92" type="stmt" count="0"/>
-        <line num="100" type="method" name="getRestaurant" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="102" type="stmt" count="0"/>
-        <line num="110" type="method" name="getUser" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="112" type="stmt" count="0"/>
-        <line num="120" type="method" name="getInvitations" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="122" type="stmt" count="0"/>
-        <line num="130" type="method" name="getPeoples" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="132" type="stmt" count="0"/>
-        <metrics loc="134" ncloc="79" classes="1" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="27" coveredelements="0"/>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="22" type="stmt" count="13"/>
+        <line num="23" type="stmt" count="13"/>
+        <line num="30" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="42" type="method" name="store" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="44" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="54" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="67" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="78" type="method" name="destroy" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="90" type="method" name="getRestaurant" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="100" type="method" name="getUser" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="110" type="method" name="getInvitations" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="120" type="method" name="getPeoples" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <metrics loc="124" ncloc="74" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="25" coveredelements="25"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Http\Controllers\Api\v1\RestaurantController.php">
         <class name="App\Http\Controllers\Api\v1\RestaurantController" namespace="App\Http\Controllers\Api\v1">
@@ -899,46 +895,62 @@
       </file>
     </package>
     <package name="App\Jobs">
-      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmInvitationJob.php">
-        <class name="App\Jobs\SendConfirmInvitationJob" namespace="App\Jobs">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmCommentJob.php">
+        <class name="App\Jobs\SendConfirmCommentJob" namespace="App\Jobs">
+          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="25" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="27" type="stmt" count="0"/>
         <line num="28" type="stmt" count="0"/>
         <line num="29" type="stmt" count="0"/>
-        <line num="36" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="36" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="38" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="40" ncloc="29" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
-      </file>
-      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmPeopleJob.php">
-        <class name="App\Jobs\SendConfirmPeopleJob" namespace="App\Jobs">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
-        </class>
-        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="37" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <metrics loc="41" ncloc="30" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
-      </file>
-      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmReservationJob.php">
-        <class name="App\Jobs\SendConfirmReservationJob" namespace="App\Jobs">
-          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
-        </class>
-        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="37" type="method" name="handle" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="39" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
         <line num="43" type="stmt" count="0"/>
-        <metrics loc="44" ncloc="33" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+        <metrics loc="44" ncloc="34" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
+      </file>
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmInvitationJob.php">
+        <class name="App\Jobs\SendConfirmInvitationJob" namespace="App\Jobs">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+        </class>
+        <line num="25" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="36" type="method" name="handle" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <metrics loc="40" ncloc="29" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+      </file>
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmPeopleJob.php">
+        <class name="App\Jobs\SendConfirmPeopleJob" namespace="App\Jobs">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+        </class>
+        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="37" type="method" name="handle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <metrics loc="41" ncloc="30" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+      </file>
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendConfirmReservationJob.php">
+        <class name="App\Jobs\SendConfirmReservationJob" namespace="App\Jobs">
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        </class>
+        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="28" type="stmt" count="10"/>
+        <line num="29" type="stmt" count="10"/>
+        <line num="30" type="stmt" count="10"/>
+        <line num="37" type="method" name="handle" visibility="public" complexity="2" crap="2" count="10"/>
+        <line num="39" type="stmt" count="10"/>
+        <line num="40" type="stmt" count="10"/>
+        <line num="41" type="stmt" count="10"/>
+        <line num="43" type="stmt" count="10"/>
+        <metrics loc="44" ncloc="33" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Jobs\SendInvitationJob.php">
         <class name="App\Jobs\SendInvitationJob" namespace="App\Jobs">
@@ -962,57 +974,57 @@
         <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="19" type="stmt" count="0"/>
         <line num="27" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
         <line num="32" type="stmt" count="0"/>
         <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="40" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
+        <metrics loc="39" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Listeners\SendMailConfirmInvitationListener.php">
         <class name="App\Listeners\SendMailConfirmInvitationListener" namespace="App\Listeners">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
         </class>
-        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="27" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="40" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="10" coveredelements="0"/>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="19" type="stmt" count="2"/>
+        <line num="27" type="method" name="handle" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <metrics loc="40" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Listeners\SendMailConfirmPeopleListener.php">
         <class name="App\Listeners\SendMailConfirmPeopleListener" namespace="App\Listeners">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
         </class>
-        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="28" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <metrics loc="39" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="28" type="method" name="handle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <metrics loc="39" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Listeners\SendMailConfirmReservationListener.php">
         <class name="App\Listeners\SendMailConfirmReservationListener" namespace="App\Listeners">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
-        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="28" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <metrics loc="39" ncloc="24" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="20" type="stmt" count="10"/>
+        <line num="28" type="method" name="handle" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="31" type="stmt" count="10"/>
+        <line num="37" type="stmt" count="10"/>
+        <line num="38" type="stmt" count="10"/>
+        <metrics loc="39" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Listeners\SendMailRemoveInvitationListener.php">
         <class name="App\Listeners\SendMailRemoveInvitationListener" namespace="App\Listeners">
@@ -1058,8 +1070,8 @@
       </file>
     </package>
     <package name="App\Mail">
-      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmInvitationMail.php">
-        <class name="App\Mail\SendConfirmInvitationMail" namespace="App\Mail">
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmCommentMail.php">
+        <class name="App\Mail\SendConfirmCommentMail" namespace="App\Mail">
           <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
         </class>
         <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
@@ -1069,16 +1081,27 @@
         <line num="33" type="stmt" count="0"/>
         <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
       </file>
+      <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmInvitationMail.php">
+        <class name="App\Mail\SendConfirmInvitationMail" namespace="App\Mail">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+        </class>
+        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="31" type="method" name="build" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+      </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmPeopleMail.php">
         <class name="App\Mail\SendConfirmPeopleMail" namespace="App\Mail">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="31" type="method" name="build" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="31" type="method" name="build" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmReservationEmail.php">
         <class name="App\Mail\SendConfirmReservationEmail" namespace="App\Mail">
@@ -1092,14 +1115,14 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendConfirmReservationMail.php">
         <class name="App\Mail\SendConfirmReservationMail" namespace="App\Mail">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="31" type="method" name="build" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="23" type="stmt" count="10"/>
+        <line num="24" type="stmt" count="10"/>
+        <line num="31" type="method" name="build" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="33" type="stmt" count="10"/>
+        <metrics loc="35" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Mail\SendInvitationMail.php">
         <class name="App\Mail\SendInvitationMail" namespace="App\Mail">
@@ -1116,14 +1139,14 @@
     <package name="App\Models">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Category.php">
         <class name="App\Models\Category" namespace="App\Models">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
         </class>
-        <line num="18" type="method" name="format" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="21" type="stmt" count="4"/>
-        <line num="22" type="stmt" count="4"/>
+        <line num="18" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
         <line num="27" type="method" name="restaurants" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="29" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="26" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+        <metrics loc="31" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Comment.php">
         <class name="App\Models\Comment" namespace="App\Models">
@@ -1143,57 +1166,57 @@
         <class name="App\Models\Image" namespace="App\Models">
           <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
         </class>
-        <line num="18" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="21" type="stmt" count="0"/>
+        <line num="19" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="22" type="stmt" count="0"/>
-        <line num="29" type="method" name="imageable" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <metrics loc="33" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="30" type="method" name="imageable" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <metrics loc="34" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Invitation.php">
         <class name="App\Models\Invitation" namespace="App\Models">
-          <metrics complexity="6" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="20" coveredelements="3"/>
+          <metrics complexity="6" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="11" elements="20" coveredelements="15"/>
         </class>
         <line num="18" type="method" name="peoples" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="20" type="stmt" count="0"/>
-        <line num="23" type="method" name="reservation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="28" type="method" name="restaurant" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="33" type="method" name="user" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="38" type="method" name="boot" visibility="public" complexity="1" crap="1.06" count="8"/>
-        <line num="40" type="stmt" count="8"/>
+        <line num="23" type="method" name="reservation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="28" type="method" name="restaurant" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="33" type="method" name="user" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="38" type="method" name="boot" visibility="public" complexity="1" crap="1.06" count="13"/>
+        <line num="40" type="stmt" count="13"/>
         <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
-        <line num="45" type="stmt" count="8"/>
-        <line num="46" type="stmt" count="8"/>
-        <line num="48" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <line num="53" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <metrics loc="58" ncloc="51" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="20" coveredelements="3"/>
+        <line num="45" type="stmt" count="13"/>
+        <line num="46" type="stmt" count="13"/>
+        <line num="48" type="method" name="format" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <metrics loc="58" ncloc="51" classes="1" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="11" elements="20" coveredelements="15"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\People.php">
         <class name="App\Models\People" namespace="App\Models">
-          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
+          <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="13" coveredelements="11"/>
         </class>
-        <line num="27" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="39" type="method" name="invitation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="41" type="stmt" count="0"/>
+        <line num="27" type="method" name="format" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="39" type="method" name="invitation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="41" type="stmt" count="1"/>
         <line num="44" type="method" name="restaurant" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="46" type="stmt" count="0"/>
-        <line num="49" type="method" name="user" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <metrics loc="53" ncloc="40" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="13" coveredelements="0"/>
+        <line num="49" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <metrics loc="53" ncloc="40" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="8" elements="13" coveredelements="11"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Permission.php">
         <class name="App\Models\Permission" namespace="App\Models">
@@ -1203,41 +1226,41 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Reservation.php">
         <class name="App\Models\Reservation" namespace="App\Models">
-          <metrics complexity="6" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="20" coveredelements="3"/>
+          <metrics complexity="6" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="13" elements="20" coveredelements="18"/>
         </class>
-        <line num="16" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="18" type="stmt" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="26" type="method" name="restaurant" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="31" type="method" name="user" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="36" type="method" name="invitations" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="41" type="method" name="peoples" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="46" type="method" name="boot" visibility="public" complexity="1" crap="1.06" count="8"/>
-        <line num="48" type="stmt" count="8"/>
+        <line num="16" type="method" name="format" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="18" type="stmt" count="5"/>
+        <line num="19" type="stmt" count="5"/>
+        <line num="20" type="stmt" count="5"/>
+        <line num="21" type="stmt" count="5"/>
+        <line num="22" type="stmt" count="5"/>
+        <line num="26" type="method" name="restaurant" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="28" type="stmt" count="10"/>
+        <line num="31" type="method" name="user" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="36" type="method" name="invitations" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="41" type="method" name="peoples" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="46" type="method" name="boot" visibility="public" complexity="1" crap="1.01" count="13"/>
+        <line num="48" type="stmt" count="13"/>
         <line num="51" type="stmt" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <line num="53" type="stmt" count="8"/>
-        <line num="54" type="stmt" count="8"/>
-        <metrics loc="56" ncloc="51" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="20" coveredelements="3"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="13"/>
+        <line num="54" type="stmt" count="13"/>
+        <metrics loc="56" ncloc="51" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="13" elements="20" coveredelements="18"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Restaurant.php">
         <class name="App\Models\Restaurant" namespace="App\Models">
-          <metrics complexity="15" methods="15" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="44" coveredelements="0"/>
+          <metrics complexity="15" methods="15" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="11" elements="44" coveredelements="13"/>
         </class>
-        <line num="18" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
+        <line num="18" type="method" name="format" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
         <line num="28" type="method" name="tags" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="30" type="stmt" count="0"/>
         <line num="34" type="method" name="categories" visibility="public" complexity="1" crap="2" count="0"/>
@@ -1258,9 +1281,9 @@
         <line num="71" type="stmt" count="0"/>
         <line num="74" type="method" name="getPercentOfNumberBookedSeatsInNextWeek" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="76" type="stmt" count="0"/>
-        <line num="79" type="method" name="users" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="81" type="stmt" count="0"/>
-        <line num="82" type="stmt" count="0"/>
+        <line num="79" type="method" name="users" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="81" type="stmt" count="10"/>
+        <line num="82" type="stmt" count="10"/>
         <line num="85" type="method" name="owners" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="87" type="stmt" count="0"/>
         <line num="90" type="method" name="reservations" visibility="public" complexity="1" crap="2" count="0"/>
@@ -1269,13 +1292,13 @@
         <line num="97" type="stmt" count="0"/>
         <line num="100" type="method" name="peoples" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="102" type="stmt" count="0"/>
-        <line num="105" type="method" name="boot" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="107" type="stmt" count="0"/>
+        <line num="105" type="method" name="boot" visibility="public" complexity="1" crap="1.06" count="10"/>
+        <line num="107" type="stmt" count="10"/>
         <line num="111" type="stmt" count="0"/>
         <line num="112" type="stmt" count="0"/>
-        <line num="113" type="stmt" count="0"/>
-        <line num="114" type="stmt" count="0"/>
-        <metrics loc="116" ncloc="105" classes="1" methods="15" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="44" coveredelements="0"/>
+        <line num="113" type="stmt" count="10"/>
+        <line num="114" type="stmt" count="10"/>
+        <metrics loc="116" ncloc="105" classes="1" methods="15" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="11" elements="44" coveredelements="13"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\Role.php">
         <class name="App\Models\Role" namespace="App\Models">
@@ -1300,12 +1323,12 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\User.php">
         <class name="App\Models\User" namespace="App\Models">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="47" type="method" name="format" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="50" type="stmt" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <metrics loc="55" ncloc="33" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+        <line num="47" type="method" name="format" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <metrics loc="55" ncloc="33" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Models\UserType.php">
         <class name="App\Models\UserType" namespace="App\Models">
@@ -1321,36 +1344,36 @@
         <class name="App\Observers\CommentObserver" namespace="App\Observers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="16" type="stmt" count="8"/>
-        <line num="17" type="stmt" count="8"/>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="16" type="stmt" count="13"/>
+        <line num="17" type="stmt" count="13"/>
         <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Observers\InvitationObserver.php">
         <class name="App\Observers\InvitationObserver" namespace="App\Observers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="15" type="stmt" count="8"/>
-        <line num="16" type="stmt" count="8"/>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="15" type="stmt" count="13"/>
+        <line num="16" type="stmt" count="13"/>
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Observers\PeopleObserver.php">
         <class name="App\Observers\PeopleObserver" namespace="App\Observers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="15" type="stmt" count="8"/>
-        <line num="16" type="stmt" count="8"/>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="15" type="stmt" count="13"/>
+        <line num="16" type="stmt" count="13"/>
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Observers\ReservationObserver.php">
         <class name="App\Observers\ReservationObserver" namespace="App\Observers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="15" type="stmt" count="8"/>
-        <line num="16" type="stmt" count="8"/>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="15" type="stmt" count="13"/>
+        <line num="16" type="stmt" count="13"/>
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Observers\UserObserver.php">
@@ -1359,8 +1382,8 @@
         </class>
         <line num="15" type="method" name="deleting" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="18" type="stmt" count="0"/>
-        <line num="20" type="method" name="created" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="23" type="stmt" count="8"/>
+        <line num="20" type="method" name="created" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="23" type="stmt" count="13"/>
         <line num="25" type="method" name="restoring" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="28" type="stmt" count="0"/>
         <metrics loc="29" ncloc="19" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="1" elements="6" coveredelements="2"/>
@@ -1369,11 +1392,11 @@
     <package name="App\Policies">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Policies\CategoryPolicy.php">
         <class name="App\Policies\CategoryPolicy" namespace="App\Policies">
-          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
-        <line num="21" type="method" name="haveRightOn" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="23" type="stmt" count="3"/>
-        <metrics loc="26" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        <line num="21" type="method" name="haveRightOn" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <metrics loc="26" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Policies\CommentPolicy.php">
         <class name="App\Policies\CommentPolicy" namespace="App\Policies">
@@ -1409,12 +1432,12 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Policies\ReservationPolicy.php">
         <class name="App\Policies\ReservationPolicy" namespace="App\Policies">
-          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="22" type="method" name="haveRightOn" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <metrics loc="28" ncloc="21" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+        <line num="22" type="method" name="haveRightOn" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="25" type="stmt" count="3"/>
+        <metrics loc="28" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Policies\RestaurantPolicy.php">
         <class name="App\Policies\RestaurantPolicy" namespace="App\Policies">
@@ -1438,16 +1461,16 @@
         <class name="GeneralPolicy" namespace="App\Policies\Traits">
           <metrics complexity="9" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="7" elements="18" coveredelements="12"/>
         </class>
-        <line num="15" type="method" name="before" visibility="public" complexity="2" crap="2.15" count="5"/>
-        <line num="17" type="stmt" count="5"/>
+        <line num="15" type="method" name="before" visibility="public" complexity="2" crap="2.15" count="6"/>
+        <line num="17" type="stmt" count="6"/>
         <line num="18" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="5"/>
+        <line num="20" type="stmt" count="6"/>
         <line num="28" type="method" name="viewAny" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="30" type="stmt" count="1"/>
         <line num="40" type="method" name="view" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="42" type="stmt" count="1"/>
-        <line num="51" type="method" name="create" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="53" type="stmt" count="1"/>
+        <line num="51" type="method" name="create" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="53" type="stmt" count="2"/>
         <line num="63" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="65" type="stmt" count="1"/>
         <line num="76" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
@@ -1464,31 +1487,31 @@
         <class name="App\Providers\AppServiceProvider" namespace="App\Providers">
           <metrics complexity="3" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="12" coveredelements="9"/>
         </class>
-        <line num="24" type="method" name="register" visibility="public" complexity="2" crap="2.50" count="8"/>
-        <line num="26" type="stmt" count="8"/>
-        <line num="27" type="stmt" count="0"/>
+        <line num="25" type="method" name="register" visibility="public" complexity="2" crap="2.50" count="13"/>
+        <line num="27" type="stmt" count="13"/>
         <line num="28" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="8"/>
-        <line num="37" type="method" name="boot" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="39" type="stmt" count="8"/>
-        <line num="40" type="stmt" count="8"/>
-        <line num="41" type="stmt" count="8"/>
-        <line num="42" type="stmt" count="8"/>
-        <line num="43" type="stmt" count="8"/>
-        <line num="44" type="stmt" count="8"/>
-        <metrics loc="45" ncloc="35" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="12" coveredelements="9"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="13"/>
+        <line num="39" type="method" name="boot" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="41" type="stmt" count="13"/>
+        <line num="42" type="stmt" count="13"/>
+        <line num="43" type="stmt" count="13"/>
+        <line num="44" type="stmt" count="13"/>
+        <line num="45" type="stmt" count="13"/>
+        <line num="46" type="stmt" count="13"/>
+        <metrics loc="47" ncloc="36" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="12" coveredelements="9"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Providers\AuthServiceProvider.php">
         <class name="App\Providers\AuthServiceProvider" namespace="App\Providers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
         </class>
-        <line num="48" type="method" name="boot" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="50" type="stmt" count="8"/>
-        <line num="52" type="stmt" count="8"/>
-        <line num="54" type="stmt" count="8"/>
-        <line num="56" type="stmt" count="8"/>
-        <line num="58" type="stmt" count="8"/>
-        <line num="60" type="stmt" count="8"/>
+        <line num="48" type="method" name="boot" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="50" type="stmt" count="13"/>
+        <line num="52" type="stmt" count="13"/>
+        <line num="54" type="stmt" count="13"/>
+        <line num="56" type="stmt" count="13"/>
+        <line num="58" type="stmt" count="13"/>
+        <line num="60" type="stmt" count="13"/>
         <metrics loc="61" ncloc="49" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Providers\BroadcastServiceProvider.php">
@@ -1505,33 +1528,33 @@
         <class name="App\Providers\EventServiceProvider" namespace="App\Providers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="47" type="method" name="boot" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="49" type="stmt" count="8"/>
-        <line num="52" type="stmt" count="8"/>
-        <metrics loc="53" ncloc="39" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        <line num="47" type="method" name="boot" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="49" type="stmt" count="13"/>
+        <line num="52" type="stmt" count="13"/>
+        <metrics loc="53" ncloc="41" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Providers\RouteServiceProvider.php">
         <class name="App\Providers\RouteServiceProvider" namespace="App\Providers">
           <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="18" coveredelements="18"/>
         </class>
-        <line num="31" type="method" name="boot" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="35" type="stmt" count="8"/>
-        <line num="36" type="stmt" count="8"/>
-        <line num="43" type="method" name="map" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="45" type="stmt" count="8"/>
-        <line num="47" type="stmt" count="8"/>
-        <line num="50" type="stmt" count="8"/>
-        <line num="59" type="method" name="mapWebRoutes" visibility="protected" complexity="1" crap="1" count="8"/>
-        <line num="61" type="stmt" count="8"/>
-        <line num="62" type="stmt" count="8"/>
-        <line num="63" type="stmt" count="8"/>
-        <line num="64" type="stmt" count="8"/>
-        <line num="73" type="method" name="mapApiRoutes" visibility="protected" complexity="1" crap="1" count="8"/>
-        <line num="75" type="stmt" count="8"/>
-        <line num="76" type="stmt" count="8"/>
-        <line num="77" type="stmt" count="8"/>
-        <line num="78" type="stmt" count="8"/>
-        <line num="79" type="stmt" count="8"/>
+        <line num="31" type="method" name="boot" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="35" type="stmt" count="13"/>
+        <line num="36" type="stmt" count="13"/>
+        <line num="43" type="method" name="map" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="45" type="stmt" count="13"/>
+        <line num="47" type="stmt" count="13"/>
+        <line num="50" type="stmt" count="13"/>
+        <line num="59" type="method" name="mapWebRoutes" visibility="protected" complexity="1" crap="1" count="13"/>
+        <line num="61" type="stmt" count="13"/>
+        <line num="62" type="stmt" count="13"/>
+        <line num="63" type="stmt" count="13"/>
+        <line num="64" type="stmt" count="13"/>
+        <line num="73" type="method" name="mapApiRoutes" visibility="protected" complexity="1" crap="1" count="13"/>
+        <line num="75" type="stmt" count="13"/>
+        <line num="76" type="stmt" count="13"/>
+        <line num="77" type="stmt" count="13"/>
+        <line num="78" type="stmt" count="13"/>
+        <line num="79" type="stmt" count="13"/>
         <metrics loc="80" ncloc="40" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="18" coveredelements="18"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Providers\TelescopeServiceProvider.php">
@@ -1567,19 +1590,19 @@
     <package name="App\Repositories">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\CategoryRepository.php">
         <class name="App\Repositories\CategoryRepository" namespace="App\Repositories">
-          <metrics complexity="5" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="10" coveredelements="6"/>
+          <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
-        <line num="22" type="method" name="getAll" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <line num="32" type="method" name="get" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="34" type="stmt" count="1"/>
-        <line num="42" type="method" name="store" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="44" type="stmt" count="1"/>
+        <line num="22" type="method" name="getAll" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="32" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="42" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="44" type="stmt" count="0"/>
         <line num="51" type="method" name="getByRestaurant" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="53" type="stmt" count="0"/>
         <line num="60" type="method" name="getRestaurant" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="62" type="stmt" count="0"/>
-        <metrics loc="64" ncloc="39" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="3" elements="10" coveredelements="6"/>
+        <metrics loc="64" ncloc="39" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\CommentRepository.php">
         <class name="App\Repositories\CommentRepository" namespace="App\Repositories">
@@ -1599,19 +1622,19 @@
         <class name="App\Repositories\ImageRepository" namespace="App\Repositories">
           <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
         </class>
-        <line num="22" type="method" name="getAll" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="31" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="41" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="50" type="method" name="getRestaurants" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <metrics loc="55" ncloc="34" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+        <line num="21" type="method" name="getAll" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="30" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="40" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="49" type="method" name="getRestaurants" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <metrics loc="54" ncloc="33" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\InvitationRepository.php">
         <class name="App\Repositories\InvitationRepository" namespace="App\Repositories">
-          <metrics complexity="6" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="11" coveredelements="0"/>
+          <metrics complexity="6" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="11" coveredelements="2"/>
         </class>
         <line num="28" type="method" name="getAll" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="30" type="stmt" count="0"/>
@@ -1620,15 +1643,15 @@
         <line num="41" type="stmt" count="0"/>
         <line num="49" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="51" type="stmt" count="0"/>
-        <line num="58" type="method" name="getByReservation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="60" type="stmt" count="0"/>
+        <line num="58" type="method" name="getByReservation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="60" type="stmt" count="1"/>
         <line num="67" type="method" name="getByUser" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="69" type="stmt" count="0"/>
-        <metrics loc="71" ncloc="44" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="11" coveredelements="0"/>
+        <metrics loc="71" ncloc="44" classes="1" methods="5" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="11" coveredelements="2"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\PeopleRepository.php">
         <class name="App\Repositories\PeopleRepository" namespace="App\Repositories">
-          <metrics complexity="7" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+          <metrics complexity="7" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="13" coveredelements="2"/>
         </class>
         <line num="28" type="method" name="getAll" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="30" type="stmt" count="0"/>
@@ -1639,34 +1662,32 @@
         <line num="51" type="stmt" count="0"/>
         <line num="58" type="method" name="getByInvitation" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="60" type="stmt" count="0"/>
-        <line num="67" type="method" name="getByReservation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="69" type="stmt" count="0"/>
+        <line num="67" type="method" name="getByReservation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="69" type="stmt" count="1"/>
         <line num="77" type="method" name="getByUser" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="79" type="stmt" count="0"/>
-        <metrics loc="81" ncloc="51" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+        <metrics loc="81" ncloc="51" classes="1" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="13" coveredelements="2"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\ReservationRepository.php">
         <class name="App\Repositories\ReservationRepository" namespace="App\Repositories">
-          <metrics complexity="7" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+          <metrics complexity="6" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="4" elements="11" coveredelements="7"/>
         </class>
-        <line num="29" type="method" name="getAll" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="41" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="52" type="method" name="store" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="54" type="stmt" count="0"/>
+        <line num="29" type="method" name="getAll" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="41" type="method" name="get" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="52" type="method" name="store" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="54" type="stmt" count="2"/>
         <line num="62" type="method" name="getByUser" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="64" type="stmt" count="0"/>
         <line num="72" type="method" name="getByRestaurant" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="74" type="stmt" count="0"/>
-        <line num="82" type="method" name="getByInvitation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="84" type="stmt" count="0"/>
-        <metrics loc="86" ncloc="51" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+        <metrics loc="76" ncloc="46" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="4" elements="11" coveredelements="7"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\RestaurantRepository.php">
         <class name="App\Repositories\RestaurantRepository" namespace="App\Repositories">
-          <metrics complexity="15" methods="14" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="29" coveredelements="0"/>
+          <metrics complexity="15" methods="14" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="1" elements="29" coveredelements="2"/>
         </class>
         <line num="28" type="method" name="getAll" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="30" type="stmt" count="0"/>
@@ -1687,8 +1708,8 @@
         <line num="94" type="stmt" count="0"/>
         <line num="101" type="method" name="getByInvitation" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="103" type="stmt" count="0"/>
-        <line num="110" type="method" name="getByReservation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="112" type="stmt" count="0"/>
+        <line num="110" type="method" name="getByReservation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="112" type="stmt" count="1"/>
         <line num="119" type="method" name="getImages" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="121" type="stmt" count="0"/>
         <line num="128" type="method" name="getTags" visibility="public" complexity="1" crap="2" count="0"/>
@@ -1697,7 +1718,7 @@
         <line num="140" type="stmt" count="0"/>
         <line num="147" type="method" name="getComments" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="149" type="stmt" count="0"/>
-        <metrics loc="151" ncloc="92" classes="1" methods="14" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="29" coveredelements="0"/>
+        <metrics loc="151" ncloc="92" classes="1" methods="14" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="1" elements="29" coveredelements="2"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\TagRepository.php">
         <class name="App\Repositories\TagRepository" namespace="App\Repositories">
@@ -1723,7 +1744,7 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\UserRepository.php">
         <class name="App\Repositories\UserRepository" namespace="App\Repositories">
-          <metrics complexity="7" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+          <metrics complexity="7" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="13" coveredelements="2"/>
         </class>
         <line num="27" type="method" name="getAll" visibility="public" complexity="2" crap="6" count="0"/>
         <line num="29" type="stmt" count="0"/>
@@ -1736,9 +1757,9 @@
         <line num="58" type="stmt" count="0"/>
         <line num="65" type="method" name="getByInvitation" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="67" type="stmt" count="0"/>
-        <line num="74" type="method" name="getByReservation" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="76" type="stmt" count="0"/>
-        <metrics loc="78" ncloc="48" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="13" coveredelements="0"/>
+        <line num="74" type="method" name="getByReservation" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <metrics loc="78" ncloc="48" classes="1" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="1" elements="13" coveredelements="2"/>
       </file>
     </package>
     <package name="App\Repositories\Traits">
@@ -1746,18 +1767,18 @@
         <class name="FormatPaginationTrait" namespace="App\Repositories\Traits">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
-        <line num="13" type="method" name="formatPagination" visibility="private" complexity="1" crap="1" count="1"/>
-        <line num="16" type="stmt" count="1"/>
-        <line num="17" type="stmt" count="1"/>
+        <line num="13" type="method" name="formatPagination" visibility="private" complexity="1" crap="1" count="3"/>
+        <line num="16" type="stmt" count="3"/>
+        <line num="17" type="stmt" count="3"/>
         <metrics loc="19" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Repositories\Traits\GeneralFunctionTrait.php">
         <class name="GeneralFunctionTrait" namespace="App\Repositories\Traits">
           <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="9" coveredelements="9"/>
         </class>
-        <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
-        <line num="17" type="stmt" count="5"/>
-        <line num="18" type="stmt" count="5"/>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="17" type="stmt" count="9"/>
+        <line num="18" type="stmt" count="9"/>
         <line num="25" type="method" name="update" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="27" type="stmt" count="1"/>
         <line num="34" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
@@ -1770,15 +1791,15 @@
     <package name="App\Traits">
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Traits\ObserverTrait.php">
         <class name="ObserverTrait" namespace="App\Traits">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
-        <line num="19" type="method" name="created" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="30" type="method" name="updated" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <metrics loc="70" ncloc="-20" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+        <line num="19" type="method" name="created" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="21" type="stmt" count="10"/>
+        <line num="22" type="stmt" count="10"/>
+        <line num="30" type="method" name="updated" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <metrics loc="70" ncloc="-20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Traits\TopTitleTrait.php">
         <class name="TopTitleTrait" namespace="App\Traits">
@@ -1798,14 +1819,14 @@
       </file>
       <file name="D:\CODE\PHP\laradock\restaurant_reservation\app\Traits\UserTrait.php">
         <class name="UserTrait" namespace="App\Traits">
-          <metrics complexity="13" methods="13" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="2" elements="27" coveredelements="4"/>
+          <metrics complexity="13" methods="13" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="27" coveredelements="6"/>
         </class>
-        <line num="15" type="method" name="isSuperAdmin" visibility="public" complexity="1" crap="1" count="5"/>
-        <line num="17" type="stmt" count="5"/>
+        <line num="15" type="method" name="isSuperAdmin" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="17" type="stmt" count="6"/>
         <line num="20" type="method" name="hasRight" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="22" type="stmt" count="0"/>
-        <line num="25" type="method" name="hasVerifiedEmail" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="27" type="stmt" count="4"/>
+        <line num="25" type="method" name="hasVerifiedEmail" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="27" type="stmt" count="2"/>
         <line num="30" type="method" name="getFullName" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="32" type="stmt" count="0"/>
         <line num="35" type="method" name="getFullNameWithLink" visibility="public" complexity="1" crap="2" count="0"/>
@@ -1819,17 +1840,17 @@
         <line num="53" type="stmt" count="0"/>
         <line num="56" type="method" name="ownedRestaurants" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="58" type="stmt" count="0"/>
-        <line num="61" type="method" name="reservations" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="63" type="stmt" count="0"/>
+        <line num="61" type="method" name="reservations" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="63" type="stmt" count="3"/>
         <line num="66" type="method" name="peoples" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="68" type="stmt" count="0"/>
         <line num="71" type="method" name="invitations" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="73" type="stmt" count="0"/>
         <line num="76" type="method" name="comments" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="78" type="stmt" count="0"/>
-        <metrics loc="81" ncloc="81" classes="1" methods="13" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="2" elements="27" coveredelements="4"/>
+        <metrics loc="81" ncloc="81" classes="1" methods="13" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="3" elements="27" coveredelements="6"/>
       </file>
     </package>
-    <metrics files="116" loc="5673" ncloc="3802" classes="103" methods="384" coveredmethods="42" conditionals="0" coveredconditionals="0" statements="703" coveredstatements="85" elements="1087" coveredelements="127"/>
+    <metrics files="118" loc="5724" ncloc="3847" classes="105" methods="385" coveredmethods="88" conditionals="0" coveredconditionals="0" statements="711" coveredstatements="194" elements="1096" coveredelements="282"/>
   </project>
 </coverage>

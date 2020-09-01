@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
@@ -80,16 +79,6 @@ class ReservationController extends Controller
         app(ReservationRepository::class)->delete($reservation);
 
         return response()->json([], HttpStatus::HTTP_NO_CONTENT);
-    }
-
-    /**
-     *
-     * @param Invitation $invitation
-     * @return JsonResponse
-     */
-    public function getByInvitation(Invitation $invitation): JsonResponse
-    {
-        return response()->json(app(ReservationRepository::class)->getByInvitation($invitation), HttpStatus::HTTP_OK);
     }
 
     /**

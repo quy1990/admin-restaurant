@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Invitation;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Repositories\Traits\FormatPaginationTrait;
@@ -72,15 +71,5 @@ class ReservationRepository
     public function getByRestaurant(Restaurant $restaurant): Collection
     {
         return self::formatPagination($restaurant->reservations()->paginate());
-    }
-
-    /**
-     * get all reservations by Restaurant
-     * @param Invitation $invitation
-     * @return array
-     */
-    public function getByInvitation(Invitation $invitation): array
-    {
-        return $invitation->reservation()->get()->first()->format();
     }
 }
