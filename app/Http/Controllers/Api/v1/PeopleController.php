@@ -71,7 +71,7 @@ class PeopleController extends Controller
      */
     public function update(UpdatePeopleRequest $request, int $id): JsonResponse
     {
-        return response()->json(app(PeopleRepository::class)->update($request, $id), Httpstatus::HTTP_OK);
+        return response()->json("Can not update!!!", Httpstatus::HTTP_OK);
     }
 
     /**

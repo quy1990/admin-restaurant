@@ -7,6 +7,35 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/06" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/0b" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/0e" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/1a" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/24" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/2d" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/39" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/44" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/53" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/5d" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/61" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/67" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/76" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/83" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/8e" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/94" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/9c" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/a3" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/a9" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/aa" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/ac" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/c2" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/db" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/e5" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/ea" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/f4" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/f9" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/fa" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/reflection-docblock" />
