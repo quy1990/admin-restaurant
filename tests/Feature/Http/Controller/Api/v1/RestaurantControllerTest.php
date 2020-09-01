@@ -1,10 +1,14 @@
 <?php
 
 namespace Tests\Feature\Http\Controller\Api\v1;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Image;
 use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
+use App\Models\Tag;
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -246,9 +250,7 @@ class RestaurantControllerTest extends TestCase
     public function can_get_all_reservations_of_a_restaurant()
     {
         $this->withoutExceptionHandling();
-
         $data = $this->create_relation();
-
         $restaurant = $data['restaurant'];
         $user = factory(User::class)->create();
 
@@ -361,5 +363,133 @@ class RestaurantControllerTest extends TestCase
             'user_id'       => (string)$user->id,
             'restaurant_id' => (string)$i
         ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_reservations_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        factory(Reservation::class, $this->rowToCheck)->create([
+            'restaurant_id' => $restaurant->id
+        ]);
+
+        $response = $this->actingAs($user, 'api')->json("GET",
+            $this->endPoint . "/" . $restaurant->id . "/reservations");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'restaurant_id',
+                    'user_id',
+                    'number_people',
+                    'booking_time',
+                ]
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_owners_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $owners = factory(User::class, $this->rowToCheck)->create();
+        $restaurant->owners()->sync($owners);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id . "/owners");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'name',
+                ]
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_categories_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $categories = factory(Category::class, $this->rowToCheck)->create();
+        $restaurant->categories()->sync($categories);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id . "/categories");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'name',
+                ]
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_tags_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $tags = factory(Tag::class, $this->rowToCheck)->create();
+        $restaurant->tags()->sync($tags);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id . "/tags");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'name',
+                ]
+            ]);
+    }
+
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_images_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $images = factory(Image::class, $this->rowToCheck)->create();
+        $restaurant->images()->saveMany($images);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id . "/images");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'url',
+                ]
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_comment_of_the_restaurant()
+    {
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $comments = factory(Comment::class, $this->rowToCheck)->create();
+        $restaurant->comments()->saveMany($comments);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $restaurant->id . "/comments");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    'id',
+                    'body',
+                    'user_id'
+                ]
+            ]);
     }
 }

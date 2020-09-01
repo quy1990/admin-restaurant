@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controller\Api\v1;
 
+use App\Models\Restaurant;
 use App\Models\Tag;
 use App\User;
 use Faker\Factory;
@@ -174,6 +175,30 @@ class TagControllerTest extends TestCase
         $this
             ->assertDatabaseMissing($this->table, [
                 'id' => $object->id
+            ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_category
+     * @test
+     */
+    public function can_get_restaurants_a_category()
+    {
+        $user = factory(User::class)->create();
+        $tag = factory(Tag::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        $restaurant->tags()->sync($tag->id);
+        $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $tag->id . "/restaurants");
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                "*" => [
+                    "id",
+                    "name",
+                    "address",
+                    "email",
+                    "phone",
+                    "seat_number",
+                ]
             ]);
     }
 

@@ -89,17 +89,6 @@ class RestaurantController extends Controller
      * @param Restaurant $restaurant
      * @return JsonResponse
      */
-    public function getInvitations(Restaurant $restaurant): JsonResponse
-    {
-        return response()->json(app(RestaurantRepository::class)->getInvitations($restaurant), HttpStatus::HTTP_OK);
-    }
-
-    /**
-     * get all Reservations of this restaurant
-     *
-     * @param Restaurant $restaurant
-     * @return JsonResponse
-     */
     public function getOwners(Restaurant $restaurant): JsonResponse
     {
         return response()->json(app(RestaurantRepository::class)->getOwners($restaurant), HttpStatus::HTTP_OK);

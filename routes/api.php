@@ -38,9 +38,6 @@ Route::group(['middleware' => 'auth:api', "namespace" => "Api\\v1", "prefix" => 
         Route::get('{restaurant}/owners',
             'RestaurantController@getOwners');
 
-        Route::get('{restaurant}/invitations',
-            'RestaurantController@getInvitations');
-
         Route::get('{restaurant}/categories',
             'RestaurantController@getCategories');
 

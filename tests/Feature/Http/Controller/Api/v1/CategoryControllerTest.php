@@ -104,7 +104,7 @@ class CategoryControllerTest extends TestCase
         $object = $this->generateCategory();
         $category = factory(Category::class)->create($object);
         $restaurant = factory(Restaurant::class)->create();
-        $restaurant->categories->sync($category->id);
+        $restaurant->categories()->sync($category->id);
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . "/" . $category->id."/restaurants");
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -187,13 +187,10 @@ class CategoryControllerTest extends TestCase
     public function can_delete_a_category()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
         $object = $this->generateCategory();
         $object = factory(Category::class)->create($object);
-
         $response = $this->actingAs($user, 'api')->json("DELETE", $this->endPoint . '/' . $object->id);
-
         $response
             ->assertStatus(204)
             ->assertSee(null);
