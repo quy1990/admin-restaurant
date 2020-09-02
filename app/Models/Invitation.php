@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static findOrFail($id)
  * @method static create($all)
  * @property string message
+ * @property mixed reservation
+ * @property mixed restaurant
+ * @property mixed user
  */
 class Invitation extends Model
 {

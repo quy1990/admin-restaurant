@@ -59,7 +59,7 @@ class ReservationController extends Controller
     public function show(Reservation $reservation)
     {
         $user = $this->user;
-        $invitations = InvitationRepository::getByReservation($reservation);
+        $invitations = app(ReservationRepository::class)->getInvitations($reservation);
         return view('reservation.show', compact("reservation", "invitations", "user"));
     }
 

@@ -45,14 +45,14 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
         $user = $this->user;
-        RestaurantRepository::store($request, $user);
+        app(RestaurantRepository::class)->store($request, $user);
         return redirect()->route('restaurants.index');
     }
 
     public function show(Restaurant $restaurant)
     {
         $user = $this->user;
-        $reservations = ReservationRepository::getByRestaurant($restaurant);
+        $reservations =app(RestaurantRepository::class)->getReservations($restaurant);
         return view('restaurant.show', compact("restaurant", "reservations", "user"));
     }
 

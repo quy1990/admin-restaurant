@@ -44,13 +44,4 @@ class CommentRepository
     {
         return Comment::findOrFail($id);
     }
-
-    /**
-     * @param Restaurant $restaurant
-     * @return Collection
-     */
-    public function getByRestaurant(Restaurant $restaurant): Collection
-    {
-        return self::formatPagination($restaurant->comments()->paginate());
-    }
 }

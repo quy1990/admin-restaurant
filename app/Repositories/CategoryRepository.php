@@ -45,15 +45,6 @@ class CategoryRepository
     }
 
     /**
-     * @param Restaurant $restaurant
-     * @return Collection
-     */
-    public function getByRestaurant(Restaurant $restaurant): Collection
-    {
-        return self::formatPagination($restaurant->categories()->paginate());
-    }
-
-    /**
      * @param Category $category
      * @return Collection
      */

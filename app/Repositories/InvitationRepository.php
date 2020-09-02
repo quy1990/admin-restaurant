@@ -52,15 +52,6 @@ class InvitationRepository
     }
 
     /**
-     * @param Reservation $reservation
-     * @return Collection
-     */
-    public function getByReservation(Reservation $reservation): Collection
-    {
-        return self::formatPagination($reservation->invitations()->paginate());
-    }
-
-    /**
      * @param User $user
      * @return paginate
      */

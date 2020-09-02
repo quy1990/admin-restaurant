@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static truncate()
  * @method static findOrFail($id)
  * @method static paginate()
+ * @property mixed restaurant
+ * @property mixed user
  */
 class Reservation extends Model
 {

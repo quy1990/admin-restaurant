@@ -80,36 +80,9 @@ class RestaurantRepository
      * @param User $user
      * @return Collection
      */
-    public function getByOwner(User $user): Collection
-    {
-        return self::formatPagination($user->restaurants()->paginate());
-    }
-
-    /**
-     * @param User $user
-     * @return Collection
-     */
     public function getByUser(User $user): Collection
     {
         return self::formatPagination($user->ownedRestaurants()->paginate());
-    }
-
-    /**
-     * @param Invitation $invitation
-     * @return array
-     */
-    public function getByInvitation(Invitation $invitation): array
-    {
-        return $invitation->restaurant()->get()->first()->format();
-    }
-
-    /**
-     * @param Reservation $reservation
-     * @return array
-     */
-    public function getByReservation(Reservation $reservation): array
-    {
-        return $reservation->restaurant()->get()->first()->format();
     }
 
     /**

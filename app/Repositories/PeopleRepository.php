@@ -52,25 +52,6 @@ class PeopleRepository
     }
 
     /**
-     * @param Invitation $invitation
-     * @return Collection
-     */
-    public function getByInvitation(Invitation $invitation): Collection
-    {
-        return self::formatPagination($invitation->peoples()->paginate());
-    }
-
-    /**
-     * @param Reservation $reservation
-     * @return Collection
-     */
-    public function getByReservation(Reservation $reservation): Collection
-    {
-        return self::formatPagination($reservation->peoples()->paginate());
-    }
-
-
-    /**
      * @param User $user
      * @return paginate
      */

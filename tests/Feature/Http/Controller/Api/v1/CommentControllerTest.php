@@ -62,14 +62,11 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
         $object = $this->generateComment($user);
         $response = $this->actingAs($user, 'api')->json('POST', $this->endPoint, $object);
-
-        $response
-            ->assertStatus(201)
-            ->assertJsonStructure([
-                'id',
-                "body",
-                "user_id"
-            ]);
+        $response->assertStatus(201)->assertJsonStructure([
+            'id',
+            "body",
+            "user_id"
+        ]);
 
         $this->assertDatabaseHas($this->table, [
             "body"    => $object['body'],

@@ -54,22 +54,38 @@ class ReservationRepository
     }
 
     /**
-     * get all Reservation by User
-     * @param User $user
-     * @return Collection
+     * @param Reservation $reservation
+     * @return array
      */
-    public function getByUser(User $user): Collection
+    public function getRestaurant(Reservation $reservation): array
     {
-        return self::formatPagination($user->reservations()->paginate());
+        return $reservation->restaurant->format();
     }
 
     /**
-     * get all reservations by Restaurant
-     * @param Restaurant $restaurant
+     * @param Reservation $reservation
+     * @return array
+     */
+    public function getUser(Reservation $reservation): array
+    {
+        return $reservation->user->format();
+    }
+
+    /**
+     * @param Reservation $reservation
      * @return Collection
      */
-    public function getByRestaurant(Restaurant $restaurant): Collection
+    public function getInvitations(Reservation $reservation): Collection
     {
-        return self::formatPagination($restaurant->reservations()->paginate());
+        return self::formatPagination($reservation->invitations()->paginate());
+    }
+
+    /**
+     * @param Reservation $reservation
+     * @return Collection
+     */
+    public function getPeoples(Reservation $reservation): Collection
+    {
+        return self::formatPagination($reservation->peoples()->paginate());
     }
 }
