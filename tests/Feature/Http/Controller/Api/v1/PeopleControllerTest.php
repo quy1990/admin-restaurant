@@ -44,7 +44,6 @@ class PeopleControllerTest extends TestCase
             'user_id' => $user->id
         ]);
 
-
         $response = $this->actingAs($user, 'api')
             ->json('GET', $this->endPoint);
 
@@ -102,14 +101,9 @@ class PeopleControllerTest extends TestCase
     public function can_create_multi_peoples()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
-
         $object = $this->generateObjects($user);
-
-        $response = $this->actingAs($user, 'api')
-            ->json('POST', $this->endPoint, $object);
-
+        $response = $this->actingAs($user, 'api')->json('POST', $this->endPoint, $object);
         $response
             ->assertStatus(201)
             ->assertJsonStructure([
@@ -128,6 +122,20 @@ class PeopleControllerTest extends TestCase
                 'email'         => $object['peoples'][$i]['email'],
             ]);
         }
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_create_multi_peoples
+     * @test
+     */
+    public function will_fail_with_multi_non_peoples()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $object = $this->generateObjectsWithoutPeoples($user);
+        $response = $this->actingAs($user, 'api')->json('POST', $this->endPoint, $object);
+        $response
+            ->assertStatus(500);
     }
 
     /**
@@ -175,49 +183,6 @@ class PeopleControllerTest extends TestCase
     }
 
     /**
-     * docker exec -it app ./vendor/bin/phpunit --filter can_update_a_people
-     */
-    public function can_update_a_people()
-    {
-        $this->withoutExceptionHandling();
-
-        $user = factory(User::class)->create();
-
-        $object = $this->generatePeople($user);
-
-        $people = factory(People::class)->create($object);
-
-        $response = $this->actingAs($user, 'api')
-            ->putJson($this->endPoint . "/" . $people->id,
-                [
-                    'phone'         => $people->phone,
-                    'email'         => "update_" . $people->email,
-                    'user_id'       => $people->user_id,
-                    'invitation_id' => $people->invitation_id,
-                    'restaurant_id' => $people->restaurant_id,
-                ]);
-
-        $response
-            ->assertStatus(200)
-            ->assertExactJson([
-                'id'            => $people->id,
-                'invitation_id' => $people->invitation_id,
-                'user_id'       => $people->user_id,
-                'email'         => "update_" . $people->email,
-                'restaurant_id' => $people->restaurant_id,
-                'phone'         => $people->phone,
-            ]);
-
-        $this->assertDatabaseHas($this->table, [
-            'id'            => $people->id,
-            'invitation_id' => $people->invitation_id,
-            'user_id'       => $people->user_id,
-            'email'         => "update_" . $people->email,
-            'phone'         => $people->phone,
-        ]);
-    }
-
-    /**
      * docker exec -it app ./vendor/bin/phpunit --filter will_fail_with_a_404_if_we_want_to_delete_people_not_found
      * @test
      */
@@ -236,24 +201,17 @@ class PeopleControllerTest extends TestCase
     public function can_delete_a_people()
     {
         $this->withoutExceptionHandling();
-
         $user = factory(User::class)->create();
-
         $object = $this->generatePeople($user);
-
         $people = factory(People::class)->create($object);
-
         $response = $this->actingAs($user, 'api')
             ->deleteJson($this->endPoint . '/' . $people->id);
 
-        $response
-            ->assertStatus(204)
-            ->assertSee(null);
+        $response->assertStatus(204)->assertSee(null);
 
-        $this
-            ->assertDatabaseMissing($this->table, [
-                'id' => (string)$people->id
-            ]);
+        $this->assertDatabaseMissing($this->table, [
+            'id' => (string)$people->id
+        ]);
     }
 
     /**
@@ -351,6 +309,29 @@ class PeopleControllerTest extends TestCase
             "restaurant_id"  => $restaurant->id,
             "user_id"        => $user->id,
             'peoples'        => $peoples
+        ];
+    }
+
+
+    protected function generateObjectsWithoutPeoples(User $user): array
+    {
+        $restaurant = factory(Restaurant::class)->create();
+        $reservation = factory(Reservation::class)->create([
+            'user_id'       => $user->id,
+            'restaurant_id' => $restaurant->id,
+        ]);
+
+        $invitation = factory(Invitation::class)->create([
+            'user_id'        => $user->id,
+            'restaurant_id'  => $restaurant->id,
+            'reservation_id' => $reservation->id,
+        ]);
+
+        return [
+            "invitation_id"  => $invitation->id,
+            "reservation_id" => $reservation->id,
+            "restaurant_id"  => $restaurant->id,
+            "user_id"        => $user->id
         ];
     }
 }

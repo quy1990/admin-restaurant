@@ -33,6 +33,32 @@ class ReservationControllerTest extends TestCase
     protected $table = "reservations";
     protected $rowToCheck = 10;
 
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter can_get_all_reservations_of_a_restaurant
+     * @test
+     */
+    public function can_get_paginated_reservation()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        factory(Reservation::class, 20)->create($this->generateReservation($user));
+
+        $response = $this->actingAs($user, 'api')
+            ->json("GET", $this->endPoint);
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                '*' => [
+                    'id',
+                    'restaurant_id',
+                    'user_id',
+                    'number_people',
+                    'booking_time',
+                ]
+            ]);
+    }
+
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_reservations
      * @test
@@ -70,7 +96,7 @@ class ReservationControllerTest extends TestCase
     public function can_create_a_reservation()
     {
         $user = factory(User::class)->create();
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
         $response = $this->actingAs($user, 'api')
             ->json('POST', $this->endPoint, $object);
         $response
@@ -109,7 +135,7 @@ class ReservationControllerTest extends TestCase
      */
     public function create_reservation(User $user, int $i)
     {
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
 
         $response = $this->actingAs($user, 'api')
             ->json('POST', $this->endPoint, $object);
@@ -259,7 +285,7 @@ class ReservationControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
         $reservation = factory(Reservation::class)->create($object);
         $restaurant = $reservation->restaurant;
         $response = $this->actingAs($user, 'api')->json("GET",
@@ -284,7 +310,7 @@ class ReservationControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
         $reservation = factory(Reservation::class)->create($object);
         factory(Invitation::class, $this->rowToCheck)->create($this->generateInvitations($user, $reservation));
         $response = $this->actingAs($user, 'api')->json("GET",
@@ -308,7 +334,7 @@ class ReservationControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
         $reservation = factory(Reservation::class)->create($object);
         $invitation = factory(Invitation::class)->create($this->generateInvitations($user, $reservation));
         factory(People::class)->create($this->generatePeople($user, $invitation));
@@ -346,7 +372,7 @@ class ReservationControllerTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $object = $this->generateObject($user);
+        $object = $this->generateReservation($user);
         $reservation = factory(Reservation::class)->create($object);
         $response = $this->actingAs($user, 'api')->json("GET", $this->endPoint . '/' . $reservation->id . '/user');
         $response
@@ -357,7 +383,7 @@ class ReservationControllerTest extends TestCase
             ]);
     }
 
-    protected function generateObject(User $user)
+    protected function generateReservation(User $user)
     {
         $restaurant = factory(Restaurant::class)->create();
         return [

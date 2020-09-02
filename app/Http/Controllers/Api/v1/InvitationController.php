@@ -75,7 +75,6 @@ class InvitationController extends Controller
     public function getRestaurant(Invitation $invitation)
     {
         return response()->json(app(InvitationRepository::class)->getRestaurant($invitation), HttpStatus::HTTP_OK);
-
     }
 
     /**

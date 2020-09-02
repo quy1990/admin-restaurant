@@ -7,6 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * @method static findOrFail($id)
+ * @method static paginate()
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, UserTrait;

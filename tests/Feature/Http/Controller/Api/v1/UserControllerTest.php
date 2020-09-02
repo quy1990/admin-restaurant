@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controller\Api\v1;
 
+use App\Models\Invitation;
 use App\Models\People;
 use App\Models\Reservation;
 use App\Models\Restaurant;
@@ -133,6 +134,33 @@ class UserControllerTest extends TestCase
                     "phone",
                 ]
             ]);
+    }
+
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter user_cans_get_his_reservations
+     * @test
+     */
+    public function user_cans_get_his_invitations()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        factory(Invitation::class, $this->rowToCheck)->create(['user_id' => $user->id]);
+
+        $response = $this->actingAs($user, 'api')
+            ->json("GET", $this->endPoint . '/' . $user->id . '/invitations');
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            '*' => [
+                "id",
+                "user_id",
+                "restaurant_id",
+                "reservation_id",
+                "message",
+            ]
+        ]);
     }
 
     protected function generateObject(User $user)
