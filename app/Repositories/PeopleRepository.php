@@ -32,16 +32,6 @@ class PeopleRepository
     }
 
     /**
-     * get A People by id
-     * @param $id
-     * @return People
-     */
-    public function get($id): People
-    {
-        return People::findOrfail($id);
-    }
-
-    /**
      * Create a new People
      * @param array $item
      * @return array

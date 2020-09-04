@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Repositories\CommentRepository;
 use Illuminate\Http\JsonResponse;
@@ -25,10 +26,10 @@ class CommentController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param CommentRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(CommentRequest $request): JsonResponse
     {
         return response()->json(app(CommentRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -47,13 +48,13 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Comment $comment
+     * @param CommentRequest $request
+     * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, Comment $comment): JsonResponse
+    public function update(CommentRequest $request, int $id): JsonResponse
     {
-        return response()->json(app(CommentRepository::class)->update($request, $comment->id),
+        return response()->json(app(CommentRepository::class)->update($request, $id),
             HttpStatus::HTTP_OK);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\JsonResponse;
@@ -25,10 +26,10 @@ class ImageController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param ImageRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(ImageRequest $request): JsonResponse
     {
         return response()->json(app(ImageRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -47,11 +48,11 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ImageRequest $request
      * @param Image $image
      * @return JsonResponse
      */
-    public function update(Request $request, Image $image): JsonResponse
+    public function update(ImageRequest $request, Image $image): JsonResponse
     {
         return response()->json(app(ImageRepository::class)->update($request, $image->id),
             HttpStatus::HTTP_OK);

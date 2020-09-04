@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RestaurantRequest;
 use App\Models\Restaurant;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
@@ -28,10 +29,10 @@ class RestaurantController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param RestaurantRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(RestaurantRequest $request): JsonResponse
     {
         return response()->json(app(RestaurantRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -50,11 +51,11 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param RestaurantRequest $request
      * @param Restaurant $restaurant
      * @return JsonResponse
      */
-    public function update(Request $request, Restaurant $restaurant): JsonResponse
+    public function update(RestaurantRequest $request, Restaurant $restaurant): JsonResponse
     {
         return response()
             ->json(app(RestaurantRepository::class)->update($request, $restaurant->id), HttpStatus::HTTP_OK);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\JsonResponse;
@@ -28,10 +29,10 @@ class CategoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param CategoryRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(CategoryRequest $request): JsonResponse
     {
         return response()->json(app(CategoryRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -50,11 +51,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @param Category $category
      * @return JsonResponse
      */
-    public function update(Request $request, Category $category): JsonResponse
+    public function update(CategoryRequest $request, Category $category): JsonResponse
     {
         return response()->json(app(CategoryRepository::class)->update($request, $category->id),
             HttpStatus::HTTP_OK);

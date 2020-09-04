@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InvitationRequest;
 use App\Models\Invitation;
 use App\Repositories\InvitationRepository;
 use Illuminate\Http\JsonResponse;
@@ -25,10 +26,10 @@ class InvitationController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param InvitationRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(InvitationRequest $request): JsonResponse
     {
         return response()->json(app(InvitationRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -47,11 +48,11 @@ class InvitationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param InvitationRequest $request
      * @param Invitation $invitation
      * @return JsonResponse
      */
-    public function update(Request $request, Invitation $invitation): JsonResponse
+    public function update(InvitationRequest $request, Invitation $invitation): JsonResponse
     {
         return response()->json(app(InvitationRepository::class)->update($request, $invitation->id),
             HttpStatus::HTTP_OK);

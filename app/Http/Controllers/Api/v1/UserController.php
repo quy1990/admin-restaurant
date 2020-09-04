@@ -22,7 +22,16 @@ class UserController extends Controller
      */
     public function getRestaurants(User $user)
     {
-        return response()->json(app(RestaurantRepository::class)->getByUser($user), 200);
+        return response()->json(app(UserRepository::class)->getRestaurants($user), 200);
+    }
+
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public function getOwnedRestaurants(User $user)
+    {
+        return response()->json(app(UserRepository::class)->ownedRestaurants($user), 200);
     }
 
     /**

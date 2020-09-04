@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use App\Repositories\TagRepository;
 use Illuminate\Http\JsonResponse;
@@ -25,10 +26,10 @@ class TagController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param TagRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(TagRequest $request): JsonResponse
     {
         return response()->json(app(TagRepository::class)->store($request), HttpStatus::HTTP_CREATED);
     }
@@ -47,11 +48,11 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param TagRequest $request
      * @param Tag $tag
      * @return JsonResponse
      */
-    public function update(Request $request, Tag $tag): JsonResponse
+    public function update(TagRequest $request, Tag $tag): JsonResponse
     {
         return response()->json(app(TagRepository::class)->update($request, $tag->id),
             HttpStatus::HTTP_OK);

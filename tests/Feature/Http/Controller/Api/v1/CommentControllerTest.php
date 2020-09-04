@@ -126,7 +126,6 @@ class CommentControllerTest extends TestCase
         $object = factory(Comment::class)->create($comment);
         $response = $this->actingAs($user, 'api')
             ->json("PUT", $this->endPoint . "/" . $object->id, [
-                'id'   => $object->id,
                 'body' => "update_" . $object['body'],
                 'user_id' => $object['user_id'],
             ]);

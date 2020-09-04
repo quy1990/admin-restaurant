@@ -37,15 +37,14 @@ class PeopleControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_collection_of_paginated_peoples
      * @test
      */
-    public function can_return_a_collection_of_paginated_peoples()
+    public function can_return_a_array_peoples()
     {
         $user = factory(User::class)->create();
         factory(People::class, $this->rowToCheck)->create([
             'user_id' => $user->id
         ]);
 
-        $response = $this->actingAs($user, 'api')
-            ->json('GET', $this->endPoint);
+        $response = $this->actingAs($user, 'api')->json('GET', $this->endPoint);
 
         $response->assertStatus(200)
             ->assertJsonStructure([

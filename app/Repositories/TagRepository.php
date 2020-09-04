@@ -45,15 +45,6 @@ class TagRepository
     }
 
     /**
-     * @param Restaurant $restaurant
-     * @return Collection
-     */
-    public function getByRestaurant(Restaurant $restaurant): Collection
-    {
-        return self::formatPagination($restaurant->tags()->paginate());
-    }
-
-    /**
      * @param Tag $tag
      * @return Collection
      */

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use App\Repositories\InvitationRepository;
 use App\Repositories\PeopleRepository;
@@ -35,10 +36,10 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param ReservationRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(ReservationRequest $request): JsonResponse
     {
         return response()->json(app(ReservationRepository::class)->store($request, auth()->user()),
             HttpStatus::HTTP_CREATED);
@@ -59,11 +60,11 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param ReservationRequest $request
      * @param Reservation $reservation
      * @return JsonResponse
      */
-    public function update(Request $request, Reservation $reservation): JsonResponse
+    public function update(ReservationRequest $request, Reservation $reservation): JsonResponse
     {
         return response()->json(app(ReservationRepository::class)->update($request, $reservation->id), HttpStatus::HTTP_OK);
     }
