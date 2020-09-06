@@ -33,7 +33,6 @@ class ReservationControllerTest extends TestCase
     protected $table = "reservations";
     protected $rowToCheck = 10;
 
-
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_get_all_reservations_of_a_restaurant
      * @test
@@ -71,8 +70,6 @@ class ReservationControllerTest extends TestCase
             'user_id'       => $user->id,
             'restaurant_id' => random_int(0, 100)
         ]);
-
-
         $response = $this->actingAs($user, 'api')
             ->json('GET', $this->endPoint);
 
@@ -86,7 +83,6 @@ class ReservationControllerTest extends TestCase
                     'booking_time',
                 ]
             ]);
-
     }
 
     /**
@@ -99,14 +95,14 @@ class ReservationControllerTest extends TestCase
         $object = $this->generateReservation($user);
         $response = $this->actingAs($user, 'api')
             ->json('POST', $this->endPoint, $object);
-        $response
-            ->assertJsonStructure([
-                'id',
-                'restaurant_id',
-                'user_id',
-                'number_people',
-                'booking_time'])
-            ->assertStatus(201);
+
+        $response->assertJsonStructure([
+            'id',
+            'restaurant_id',
+            'user_id',
+            'number_people',
+            'booking_time'
+        ])->assertStatus(201);
 
         $this->assertDatabaseHas($this->table, [
             'restaurant_id' => $object['restaurant_id'],
@@ -128,36 +124,6 @@ class ReservationControllerTest extends TestCase
             $this->create_reservation($user, $i);
         }
     }
-
-    /**
-     * @param User $user
-     * @param int $i
-     */
-    public function create_reservation(User $user, int $i)
-    {
-        $object = $this->generateReservation($user);
-
-        $response = $this->actingAs($user, 'api')
-            ->json('POST', $this->endPoint, $object);
-
-        $response
-            ->assertStatus(201)
-            ->assertExactJson([
-                'id'            => $i,
-                'restaurant_id' => $object['restaurant_id'],
-                'user_id'       => $object['user_id'],
-                'number_people' => (string)$object['number_people'],
-                'booking_time'  => $object['booking_time'],
-            ]);
-
-        $this->assertDatabaseHas($this->table, [
-            'restaurant_id' => $object['restaurant_id'],
-            'user_id'       => $object['user_id'],
-            'number_people' => (string)$object['number_people'],
-            'booking_time'  => $object['booking_time'],
-        ]);
-    }
-
 
     /**
      * docker exec -it app ./vendor/bin/phpunit --filter can_return_a_reservation
@@ -417,4 +383,34 @@ class ReservationControllerTest extends TestCase
             'phone'          => $faker->phoneNumber,
         ];
     }
+
+    /**
+     * @param User $user
+     * @param int $i
+     */
+    public function create_reservation(User $user, int $i)
+    {
+        $object = $this->generateReservation($user);
+
+        $response = $this->actingAs($user, 'api')
+            ->json('POST', $this->endPoint, $object);
+
+        $response
+            ->assertStatus(201)
+            ->assertExactJson([
+                'id'            => $i,
+                'restaurant_id' => $object['restaurant_id'],
+                'user_id'       => $object['user_id'],
+                'number_people' => (string)$object['number_people'],
+                'booking_time'  => $object['booking_time'],
+            ]);
+
+        $this->assertDatabaseHas($this->table, [
+            'restaurant_id' => $object['restaurant_id'],
+            'user_id'       => $object['user_id'],
+            'number_people' => (string)$object['number_people'],
+            'booking_time'  => $object['booking_time'],
+        ]);
+    }
+
 }

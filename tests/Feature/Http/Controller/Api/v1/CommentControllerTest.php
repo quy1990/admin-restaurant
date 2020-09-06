@@ -121,27 +121,32 @@ class CommentControllerTest extends TestCase
      */
     public function can_update_a_comment()
     {
+        $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
         $comment = $this->generateComment($user);
         $object = factory(Comment::class)->create($comment);
         $response = $this->actingAs($user, 'api')
             ->json("PUT", $this->endPoint . "/" . $object->id, [
-                'body' => "update_" . $object['body'],
-                'user_id' => $object['user_id'],
+                'body'             => "update_" . $object['body'],
+                'user_id'          => $object['user_id'],
+                'commentable_id'   => $object['commentable_id'],
+                'commentable_type' => $object['commentable_type'],
             ]);
 
         $response
             ->assertStatus(200)
             ->assertExactJson([
-                'id'   => $object->id,
-                'body' => "update_" . $object['body'],
-                'user_id' => $object['user_id'],
+                'id'               => $object->id,
+                'body'             => "update_" . $object['body'],
+                'user_id'          => $object['user_id'],
             ]);
 
         $this->assertDatabaseHas($this->table, [
-            'id'   => $object->id,
-            'body' => "update_" . $object['body'],
-            'user_id' => $object['user_id'],
+            'id'               => $object->id,
+            'body'             => "update_" . $object['body'],
+            'user_id'          => $object['user_id'],
+            'commentable_id'   => $object['commentable_id'],
+            'commentable_type' => $object['commentable_type'],
         ]);
     }
 
@@ -185,7 +190,7 @@ class CommentControllerTest extends TestCase
             "body"             => Factory::create()->text,
             "user_id"          => $user->id,
             "commentable_id"   => factory(Restaurant::class)->create()->id,
-            "commentable_type" => "App\Models\Restaurant"
+            "commentable_type" => "App\Models\Restaurant",
         ];
     }
 }

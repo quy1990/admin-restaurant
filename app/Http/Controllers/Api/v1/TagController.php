@@ -7,7 +7,6 @@ use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use App\Repositories\TagRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class TagController extends Controller
@@ -54,8 +53,7 @@ class TagController extends Controller
      */
     public function update(TagRequest $request, Tag $tag): JsonResponse
     {
-        return response()->json(app(TagRepository::class)->update($request, $tag->id),
-            HttpStatus::HTTP_OK);
+        return response()->json(app(TagRepository::class)->update($request, $tag), HttpStatus::HTTP_OK);
     }
 
     /**

@@ -4,13 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
-use App\Repositories\InvitationRepository;
-use App\Repositories\PeopleRepository;
 use App\Repositories\ReservationRepository;
-use App\Repositories\RestaurantRepository;
-use App\Repositories\UserRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class ReservationController extends Controller
@@ -66,7 +61,7 @@ class ReservationController extends Controller
      */
     public function update(ReservationRequest $request, Reservation $reservation): JsonResponse
     {
-        return response()->json(app(ReservationRepository::class)->update($request, $reservation->id), HttpStatus::HTTP_OK);
+        return response()->json(app(ReservationRepository::class)->update($request, $reservation), HttpStatus::HTTP_OK);
     }
 
     /**

@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\RestaurantRepository;
 use App\Repositories\UserRepository;
 use App\User;
 
@@ -20,9 +19,9 @@ class UserController extends Controller
      * @param User $user
      * @return mixed
      */
-    public function getRestaurants(User $user)
+    public function getVisitedRestaurants(User $user)
     {
-        return response()->json(app(UserRepository::class)->getRestaurants($user), 200);
+        return response()->json(app(UserRepository::class)->getVisitedRestaurants($user), 200);
     }
 
     /**

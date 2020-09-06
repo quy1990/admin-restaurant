@@ -47,7 +47,7 @@ trait UserTrait
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
-    public function restaurants()
+    public function visitedRestaurants()
     {
         return $this->belongsToMany(Restaurant::class, 'reservations')
             ->withPivot('number_people', 'booking_time');

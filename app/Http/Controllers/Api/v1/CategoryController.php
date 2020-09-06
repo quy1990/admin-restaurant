@@ -7,7 +7,6 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class CategoryController extends Controller
@@ -57,7 +56,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category): JsonResponse
     {
-        return response()->json(app(CategoryRepository::class)->update($request, $category->id),
+        return response()->json(app(CategoryRepository::class)->update($request, $category),
             HttpStatus::HTTP_OK);
     }
 

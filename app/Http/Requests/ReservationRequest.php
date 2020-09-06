@@ -24,10 +24,10 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'         => 'required',
+            'restaurant_id' => 'required',
+            'user_id'       => 'required',
             'number_people' => 'required',
-            'date'          => 'required',
-            'time'          => 'required',
+            'booking_time'  => 'required',
         ];
     }
 }

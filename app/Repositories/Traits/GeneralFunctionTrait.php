@@ -3,8 +3,8 @@
 
 namespace App\Repositories\Traits;
 
-
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -19,12 +19,12 @@ trait GeneralFunctionTrait
 
     /**
      * @param Request $request
-     * @param $id
+     * @param Model $model
      * @return array
      */
-    public function update(Request $request, int $id): array
+    public function update(Request $request, Model $model): array
     {
-        return tap(self::get($id))->update($request->all())->format();
+        return tap($model)->update($request->all())->format();
     }
 
     /**

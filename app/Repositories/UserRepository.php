@@ -50,9 +50,9 @@ class UserRepository
      * @param User $user
      * @return Collection
      */
-    public function getRestaurants(User $user): Collection
+    public function getVisitedRestaurants(User $user): Collection
     {
-        return self::formatPagination($user->restaurants()->paginate());
+        return self::formatPagination($user->visitedRestaurants()->paginate());
     }
 
     /**

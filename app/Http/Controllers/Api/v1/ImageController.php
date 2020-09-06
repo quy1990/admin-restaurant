@@ -7,7 +7,6 @@ use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class ImageController extends Controller
@@ -54,7 +53,7 @@ class ImageController extends Controller
      */
     public function update(ImageRequest $request, Image $image): JsonResponse
     {
-        return response()->json(app(ImageRepository::class)->update($request, $image->id),
+        return response()->json(app(ImageRepository::class)->update($request, $image),
             HttpStatus::HTTP_OK);
     }
 

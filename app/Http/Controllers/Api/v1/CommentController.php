@@ -7,7 +7,6 @@ use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Repositories\CommentRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class CommentController extends Controller
@@ -49,13 +48,12 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param CommentRequest $request
-     * @param int $id
+     * @param Comment $comment
      * @return JsonResponse
      */
-    public function update(CommentRequest $request, int $id): JsonResponse
+    public function update(CommentRequest $request, Comment $comment): JsonResponse
     {
-        return response()->json(app(CommentRepository::class)->update($request, $id),
-            HttpStatus::HTTP_OK);
+        return response()->json(app(CommentRepository::class)->update($request, $comment), HttpStatus::HTTP_OK);
     }
 
     /**

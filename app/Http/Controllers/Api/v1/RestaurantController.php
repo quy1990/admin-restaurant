@@ -6,7 +6,6 @@ use App\Http\Requests\RestaurantRequest;
 use App\Models\Restaurant;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class RestaurantController extends Controller
@@ -58,7 +57,7 @@ class RestaurantController extends Controller
     public function update(RestaurantRequest $request, Restaurant $restaurant): JsonResponse
     {
         return response()
-            ->json(app(RestaurantRepository::class)->update($request, $restaurant->id), HttpStatus::HTTP_OK);
+            ->json(app(RestaurantRepository::class)->update($request, $restaurant), HttpStatus::HTTP_OK);
     }
 
     /**

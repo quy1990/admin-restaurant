@@ -7,7 +7,6 @@ use App\Http\Requests\InvitationRequest;
 use App\Models\Invitation;
 use App\Repositories\InvitationRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class InvitationController extends Controller
@@ -54,7 +53,7 @@ class InvitationController extends Controller
      */
     public function update(InvitationRequest $request, Invitation $invitation): JsonResponse
     {
-        return response()->json(app(InvitationRepository::class)->update($request, $invitation->id),
+        return response()->json(app(InvitationRepository::class)->update($request, $invitation),
             HttpStatus::HTTP_OK);
     }
 

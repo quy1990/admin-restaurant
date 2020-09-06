@@ -35,7 +35,36 @@ class UserControllerTest extends TestCase
      * docker exec -it app ./vendor/bin/phpunit --filter user_cans_get_his_restaurants
      * @test
      */
-    public function user_cans_get_his_restaurants()
+    public function user_cans_get_visited_restaurants()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $restaurant = factory(Restaurant::class)->create();
+        factory(Reservation::class, $this->rowToCheck)->create([
+            'restaurant_id' => $restaurant->id,
+            'user_id'       => $user->id,
+        ]);
+
+        $response = $this->actingAs($user, 'api')
+            ->getJson($this->endPoint . '/' . $user->id . '/visited-restaurants');
+
+        $response->assertStatus(200)->assertJsonStructure([
+            '*' => [
+                'id',
+                'name',
+                'address',
+                'email',
+                'phone',
+                'seat_number'
+            ]
+        ]);
+    }
+
+    /**
+     * docker exec -it app ./vendor/bin/phpunit --filter user_cans_get_his_restaurants
+     * @test
+     */
+    public function user_cans_get_his_owned_restaurants()
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
@@ -48,17 +77,16 @@ class UserControllerTest extends TestCase
         $response
             ->assertStatus(200);
 
-        $response
-            ->assertJsonStructure([
-                '*' => [
-                    'id',
-                    'name',
-                    'address',
-                    'email',
-                    'phone',
-                    'seat_number'
-                ]
-            ]);
+        $response->assertJsonStructure([
+            '*' => [
+                'id',
+                'name',
+                'address',
+                'email',
+                'phone',
+                'seat_number'
+            ]
+        ]);
         for ($i = 0; $i < $this->rowToCheck; $i++) {
             $this->assertDatabaseHas("restaurants", [
                 'id'          => $restaurants[$i]['id'],

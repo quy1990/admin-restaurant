@@ -21,7 +21,7 @@ Seeder Database:
 
     docker exec -it laradock_workspace_1 php artisan migrate:refresh --seed
 
-generate key for passportdatabase
+generate key for passport database
 
     docker exec -it laradock_workspace_1 php artisan passport:install --force
 
