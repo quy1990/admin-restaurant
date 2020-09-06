@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\InvitationEvent;
-use App\Jobs\SendConfirmInvitationJob;
+use App\Jobs\InvitationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMailConfirmInvitationListener implements ShouldQueue
+class InvitationListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -35,6 +35,6 @@ class SendMailConfirmInvitationListener implements ShouldQueue
             'messages' => $invitation->message
         ];
 
-        SendConfirmInvitationJob::dispatch($invitation, $details)->delay(now());;
+        InvitationJob::dispatch($invitation, $details)->delay(now());;
     }
 }

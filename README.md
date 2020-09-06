@@ -28,3 +28,13 @@ generate key for passport database
 Test:
 
     vendor/bin/phpunit --coverage-html /reports
+
+Generate:
+
+	Change fileName hang loat:
+	find . -name 'XXXXXXXXXYYYYYYXXXXXX*.php' -type f -exec bash -c 'mv "$1" "${1/\/XXXXXXXXXYYYYYYXXXXXX//Category}"' -- {} \;
+	
+	Change noi dung hang loat:
+	grep -RiIl 'XXXXXXXXXYYYYYYXXXXXX' | xargs sed -i 's/XXXXXXXXXYYYYYYXXXXXX/Category/g'
+	
+	grep -RiIl 'zzzzzzzzzzzxxxxxxxxxxxzzzzzzzzz' | xargs sed -i 's/zzzzzzzzzzzxxxxxxxxxxxzzzzzzzzz/category/g'

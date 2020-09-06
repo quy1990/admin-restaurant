@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendConfirmCommentMail;
+use App\Mail\CommentMail;
 use App\Models\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendConfirmCommentJob implements ShouldQueue
+class CommentJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -38,7 +38,7 @@ class SendConfirmCommentJob implements ShouldQueue
         $restaurant = $this->comment->commentable;
         $emails = array_unique($restaurant->users->pluck('email')->toArray());
         foreach ($emails as $email) {
-            Mail::to($email)->send(new SendConfirmCommentMail($this->details));
+            Mail::to($email)->send(new CommentMail($this->details));
         }
     }
 }

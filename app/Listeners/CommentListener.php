@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\CommentEvent;
-use App\Jobs\SendConfirmCommentJob;
+use App\Jobs\CommentJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMailConfirmCommentListener implements ShouldQueue
+class CommentListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -34,6 +34,6 @@ class SendMailConfirmCommentListener implements ShouldQueue
             'messages' => $comment->body
         ];
 
-        SendConfirmCommentJob::dispatch($comment, $details)->delay(now());;
+        CommentJob::dispatch($comment, $details)->delay(now());;
     }
 }

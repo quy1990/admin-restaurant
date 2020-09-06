@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendConfirmReservationMail;
+use App\Mail\ReservationMail;
 use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendConfirmReservationJob implements ShouldQueue
+class ReservationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -38,7 +38,7 @@ class SendConfirmReservationJob implements ShouldQueue
     {
         $emails = array_unique($this->reservation->restaurant->users->pluck('email')->toArray());
         foreach ($emails as $email) {
-            Mail::to($email)->send(new SendConfirmReservationMail($this->details));
+            Mail::to($email)->send(new ReservationMail($this->details));
         }
     }
 }

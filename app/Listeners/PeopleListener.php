@@ -4,10 +4,10 @@ namespace App\Listeners;
 
 
 use App\Events\PeopleEvent;
-use App\Jobs\SendConfirmPeopleJob;
+use App\Jobs\PeopleJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMailConfirmPeopleListener implements ShouldQueue
+class PeopleListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -34,6 +34,6 @@ class SendMailConfirmPeopleListener implements ShouldQueue
             'messages' => $peopleEvent->people->invitation->message
         ];
 
-        SendConfirmPeopleJob::dispatch($peopleEvent->people, $details)->delay(now());;
+        PeopleJob::dispatch($peopleEvent->people, $details)->delay(now());;
     }
 }

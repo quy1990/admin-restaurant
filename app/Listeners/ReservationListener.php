@@ -4,10 +4,10 @@ namespace App\Listeners;
 
 
 use App\Events\ReservationEvent;
-use App\Jobs\SendConfirmReservationJob;
+use App\Jobs\ReservationJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMailConfirmReservationListener implements ShouldQueue
+class ReservationListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -34,6 +34,6 @@ class SendMailConfirmReservationListener implements ShouldQueue
             'to'       => 10,
             'messages' => "Your Restaurant have a new Reservation"
         ];
-        SendConfirmReservationJob::dispatch($event->reservation, $details)->delay(now());
+        ReservationJob::dispatch($event->reservation, $details)->delay(now());
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendConfirmCommentMail extends Mailable
+class PeopleMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class SendConfirmCommentMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("You have some comment on your restaurant")->view('email.ConfirmInvitationEmail');
+        return $this->subject("You have a invitation")->view('email.ConfirmPeopleEmail');
     }
 }

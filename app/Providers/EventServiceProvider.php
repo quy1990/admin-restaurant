@@ -6,10 +6,10 @@ use App\Events\CommentEvent;
 use App\Events\InvitationEvent;
 use App\Events\PeopleEvent;
 use App\Events\ReservationEvent;
-use App\Listeners\SendMailConfirmCommentListener;
-use App\Listeners\SendMailConfirmInvitationListener;
-use App\Listeners\SendMailConfirmPeopleListener;
-use App\Listeners\SendMailConfirmReservationListener;
+use App\Listeners\CommentListener;
+use App\Listeners\InvitationListener;
+use App\Listeners\PeopleListener;
+use App\Listeners\ReservationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -26,16 +26,16 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         ReservationEvent::class => [
-            SendMailConfirmReservationListener::class,
+            ReservationListener::class,
         ],
         InvitationEvent::class  => [
-            SendMailConfirmInvitationListener::class,
+            InvitationListener::class,
         ],
         PeopleEvent::class      => [
-            SendMailConfirmPeopleListener::class,
+            PeopleListener::class,
         ],
         CommentEvent::class     => [
-            SendMailConfirmCommentListener::class,
+            CommentListener::class,
         ]
     ];
 

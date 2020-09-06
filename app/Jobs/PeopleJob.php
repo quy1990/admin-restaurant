@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendConfirmPeopleMail;
+use App\Mail\PeopleMail;
 use App\Models\People;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendConfirmPeopleJob implements ShouldQueue
+class PeopleJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -36,6 +36,6 @@ class SendConfirmPeopleJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->people->email)->send(new SendConfirmPeopleMail($this->details));
+        Mail::to($this->people->email)->send(new PeopleMail($this->details));
     }
 }

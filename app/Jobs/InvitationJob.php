@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendConfirmInvitationMail;
+use App\Mail\InvitationMail;
 use App\Models\Invitation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendConfirmInvitationJob implements ShouldQueue
+class InvitationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -35,6 +35,6 @@ class SendConfirmInvitationJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to( $this->invitation->user->email)->send(new SendConfirmInvitationMail($this->details));
+        Mail::to( $this->invitation->user->email)->send(new InvitationMail($this->details));
     }
 }
