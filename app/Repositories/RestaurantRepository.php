@@ -10,6 +10,7 @@ use App\Repositories\Traits\GeneralFunctionTrait;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Spatie\Searchable\Search;
 
 
 /**
@@ -120,5 +121,10 @@ class RestaurantRepository
     public function getComments(Restaurant $restaurant): Collection
     {
         return self::formatPagination($restaurant->Comments()->paginate());
+    }
+
+    public function search(string $name)
+    {
+        return self::formatPagination(Restaurant::where('name', "like", $name."%")->paginate());
     }
 }

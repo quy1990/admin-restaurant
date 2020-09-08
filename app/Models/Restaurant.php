@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
  * @method static truncate()
  * @method static paginate()
  * @method static findOrFail($id)
+ * @method static where(string $name, string[] $array)
  */
 class Restaurant extends Model
 {
+    /**
+     * @var mixed
+     */
+    private $name;
+
     protected $fillable = ["name", "address", "email", "phone", "seat_number"];
 
     protected $hidden = array('created_at', 'updated_at');
@@ -29,7 +35,6 @@ class Restaurant extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
 
     public function categories()
     {

@@ -6,6 +6,7 @@ use App\Http\Requests\RestaurantRequest;
 use App\Models\Restaurant;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
 class RestaurantController extends Controller
@@ -130,5 +131,10 @@ class RestaurantController extends Controller
     public function getComments(Restaurant $restaurant): JsonResponse
     {
         return response()->json(app(RestaurantRepository::class)->getComments($restaurant), HttpStatus::HTTP_OK);
+    }
+
+    public function search(Request $request)
+    {
+        return response()->json(app(RestaurantRepository::class)->search($request->get('q')), HttpStatus::HTTP_OK);
     }
 }
