@@ -5,8 +5,7 @@
          colors="true"
          cacheResult="true"
          backupGlobals="false"
-         backupStaticAttributes="false"
->
+         backupStaticAttributes="false">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
